@@ -1,5 +1,5 @@
-import { z } from "zod";
-import { BaseResourceSchema } from "./base.schema";
+import {z} from "zod";
+import {BaseResourceSchema} from "@/schema/zod/base.schema";
 
 const ActivityLevelSchema = z.enum(["low", "medium", "high", "very-high"], {
   message: "Activity level must be one of: low, medium, high, or very-high.",

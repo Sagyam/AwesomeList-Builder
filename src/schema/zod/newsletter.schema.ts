@@ -1,5 +1,5 @@
-import { z } from "zod";
-import { BaseResourceSchema } from "./base.schema";
+import {z} from "zod";
+import {BaseResourceSchema} from "@/schema/zod/base.schema";
 
 export const NewsletterSchema = BaseResourceSchema.extend({
   type: z.literal("newsletter"),

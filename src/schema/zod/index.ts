@@ -2,6 +2,7 @@
 
 export type { ArticleInput } from "./article.schema";
 export { ArticleSchema } from "./article.schema";
+
 // Export Zod input types
 export type { BaseResourceInput } from "./base.schema";
 export {
