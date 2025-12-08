@@ -8,6 +8,7 @@ export type { BaseResourceInput } from "./base.schema";
 export {
   AccessLevelSchema,
   BaseResourceSchema,
+  BaseResourceSchemaObject,
   DifficultySchema,
   MaturitySchema,
   RegistrySchema,
@@ -51,3 +52,5 @@ export {
 export type { ResourceArrayInput, ResourceInput } from "./validation.ts";
 export type { VideoInput } from "./video.schema.ts";
 export { VideoSchema } from "./video.schema.ts";
+export type { ProjectInput, ProjectMetadataInput } from "./project.schema.ts";
+export { ProjectMetadataSchema, ProjectSchema } from "./project.schema.ts";

@@ -1,17 +1,14 @@
 import {z} from "zod";
-import {BaseResourceSchema} from "@/schema/zod/base.schema";
+import {BaseResourceSchemaObject} from "@/schema/zod/base.schema";
 
-export const CourseSchema = BaseResourceSchema.extend({
+export const CourseSchema = BaseResourceSchemaObject.extend({
   type: z.literal("course"),
   title: z.string().min(1, "Course title is required"),
   platform: z.string().min(1, "Platform name is required (e.g., Udemy, Coursera)"),
   instructor: z.string().min(1, "Instructor name is required"),
-  instructorUrl: z.string().url("Instructor URL must be a valid URL").optional(),
-  published: z.string().datetime({ message: "Published date must be a valid ISO 8601 datetime" }),
-  updated: z
-    .string()
-    .datetime({ message: "Updated date must be a valid ISO 8601 datetime" })
-    .optional(),
+  instructorUrl: z.url("Instructor URL must be a valid URL").optional(),
+  published: z.iso.datetime({ message: "Published date must be a valid ISO 8601 datetime" }),
+  updated: z.iso.datetime({ message: "Updated date must be a valid ISO 8601 datetime" }).optional(),
   duration: z.string().optional(),
   lessons: z.number().int().positive("Number of lessons must be a positive integer").optional(),
   hasSubtitles: z.boolean().optional(),

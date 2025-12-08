@@ -1,7 +1,7 @@
 import {z} from "zod";
-import {BaseResourceSchema, ResourceStatusSchema} from "@/schema/zod/base.schema";
+import {BaseResourceSchemaObject, ResourceStatusSchema} from "@/schema/zod/base.schema";
 
-export const ToolSchema = BaseResourceSchema.extend({
+export const ToolSchema = BaseResourceSchemaObject.extend({
   type: z.literal("tool"),
   name: z.string().min(1, "Tool name is required"),
   homepage: z.url("Homepage must be a valid URL").optional(),

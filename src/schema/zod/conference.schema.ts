@@ -1,7 +1,7 @@
 import {z} from "zod";
-import {BaseResourceSchema} from "@/schema/zod/base.schema";
+import {BaseResourceSchemaObject} from "@/schema/zod/base.schema";
 
-export const ConferenceSchema = BaseResourceSchema.extend({
+export const ConferenceSchema = BaseResourceSchemaObject.extend({
   type: z.literal("conference"),
   name: z.string().min(1, "Conference name is required"),
   organizer: z.string().optional(),

@@ -1,7 +1,7 @@
 import {z} from "zod";
-import {BaseResourceSchema} from "@/schema";
+import {BaseResourceSchemaObject} from "@/schema/zod/base.schema";
 
-export const CertificationSchema = BaseResourceSchema.extend({
+export const CertificationSchema = BaseResourceSchemaObject.extend({
   type: z.literal("certification"),
   title: z.string().min(1, "Certification title is required"),
   provider: z.string().min(1, "Provider name is required"),

@@ -1,5 +1,5 @@
-import type { BaseResource } from "@/schema/base.interface.ts";
-import type { Maturity, Registry, ResourceStatus } from "@/schema/ts/types.ts";
+import type {BaseResource} from "@/schema/ts/base.interface.ts";
+import type {Maturity, Registry, ResourceStatus} from "@/schema/ts/types.ts";
 
 export interface Library extends BaseResource {
   type: "library";

@@ -1,7 +1,7 @@
 import {z} from "zod";
-import {BaseResourceSchema} from "@/schema/zod/base.schema";
+import {BaseResourceSchemaObject} from "@/schema/zod/base.schema";
 
-export const PaperSchema = BaseResourceSchema.extend({
+export const PaperSchema = BaseResourceSchemaObject.extend({
   type: z.literal("paper"),
   title: z.string().min(1, "Paper title is required"),
   authors: z

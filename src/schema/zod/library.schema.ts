@@ -1,7 +1,12 @@
 import {z} from "zod";
-import {BaseResourceSchema, MaturitySchema, RegistrySchema, ResourceStatusSchema,} from "@/schema/zod/base.schema";
+import {
+  BaseResourceSchemaObject,
+  MaturitySchema,
+  RegistrySchema,
+  ResourceStatusSchema,
+} from "@/schema/zod/base.schema";
 
-export const LibrarySchema = BaseResourceSchema.extend({
+export const LibrarySchema = BaseResourceSchemaObject.extend({
   type: z.literal("library"),
   name: z.string().min(1, "Library name is required"),
   package: z.object(

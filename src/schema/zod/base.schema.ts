@@ -1,4 +1,4 @@
-import { z } from "zod";
+import {z} from "zod";
 
 // Reusable enum schemas with helpful error messages
 export const TypesSchema = z.enum(
@@ -48,45 +48,49 @@ export const RegistrySchema = z.enum(
   }
 );
 
-// Base resource schema with helpful error messages
-export const BaseResourceSchema = z
-  .object({
-    // Required fields
-    type: TypesSchema,
-    id: z.string().min(1, "ID is required and cannot be empty"),
-    title: z.string().optional(),
-    name: z.string().optional(),
-    url: z.url("URL must be a valid URL (e.g., https://example.com)"),
-    description: z.string().min(10, "Description must be at least 10 characters long"),
-    category: z.string().min(1, "Category is required and cannot be empty"),
+// Base resource schema without refinements (for extending)
+export const BaseResourceSchemaObject = z.object({
+  // Required fields
+  type: TypesSchema,
+  id: z.string().min(1, "ID is required and cannot be empty"),
+  title: z.string().optional(),
+  name: z.string().optional(),
+  url: z.url("URL must be a valid URL (e.g., https://example.com)"),
+  description: z.string().min(10, "Description must be at least 10 characters long"),
+  category: z.string().min(1, "Category is required and cannot be empty"),
 
-    // Mandatory arrays
-    tags: z.array(z.string().min(1)).min(1, "At least one tag is required"),
-    topics: z.array(z.string().min(1)).min(1, "At least one topic is required"),
-    language: z.string().min(2, "Language must be at least 2 characters (e.g., 'en', 'es')"),
+  // Mandatory arrays
+  tags: z.array(z.string().min(1)).min(1, "At least one tag is required"),
+  topics: z.array(z.string().min(1)).min(1, "At least one topic is required"),
+  language: z.string().min(2, "Language must be at least 2 characters (e.g., 'en', 'es')"),
 
-    // ISO 8601 dates with validation
-    dateAdded: z.iso.datetime({ message: "dateAdded must be a valid ISO 8601 datetime string" }),
-    lastVerified: z.iso.datetime({
-      message: "lastVerified must be a valid ISO 8601 datetime string",
-    }),
+  // ISO 8601 dates with validation
+  dateAdded: z.iso.datetime({ message: "dateAdded must be a valid ISO 8601 datetime string" }),
+  lastVerified: z.iso.datetime({
+    message: "lastVerified must be a valid ISO 8601 datetime string",
+  }),
 
-    // Optional fields
-    featured: z.boolean().optional(),
-    trending: z.boolean().optional(),
-    archived: z.boolean().optional(),
-    deprecated: z.boolean().optional(),
-    replacedBy: z.string().optional(),
-    relatedResources: z.array(z.string()).optional(),
-    difficulty: DifficultySchema.optional(),
-    isFree: z.boolean().optional(),
-    isPaid: z.boolean().optional(),
-    requiresSignup: z.boolean().optional(),
-    accessLevel: AccessLevelSchema.optional(),
-  })
-  .refine((data) => data.title || data.name, {
+  // Optional fields
+  featured: z.boolean().optional(),
+  trending: z.boolean().optional(),
+  archived: z.boolean().optional(),
+  deprecated: z.boolean().optional(),
+  replacedBy: z.string().optional(),
+  relatedResources: z.array(z.string()).optional(),
+  difficulty: DifficultySchema.optional(),
+  isFree: z.boolean().optional(),
+  isPaid: z.boolean().optional(),
+  requiresSignup: z.boolean().optional(),
+  accessLevel: AccessLevelSchema.optional(),
+});
+
+// Base resource schema with refinements
+export const BaseResourceSchema = BaseResourceSchemaObject.refine(
+  (data) => data.title || data.name,
+  {
     message: "Either 'title' or 'name' must be provided",
     path: ["title"],
-  });
+  }
+);
 
 export type BaseResourceInput = z.infer<typeof BaseResourceSchema>;

@@ -1,7 +1,7 @@
 import {z} from "zod";
-import {BaseResourceSchema, MaturitySchema, ResourceStatusSchema} from "@/schema/zod/base.schema";
+import {BaseResourceSchemaObject, MaturitySchema, ResourceStatusSchema} from "@/schema/zod/base.schema";
 
-export const RepositorySchema = BaseResourceSchema.extend({
+export const RepositorySchema = BaseResourceSchemaObject.extend({
   type: z.literal("repository"),
   name: z.string().min(1, "Repository name is required"),
   owner: z.string().min(1, "Owner name is required"),

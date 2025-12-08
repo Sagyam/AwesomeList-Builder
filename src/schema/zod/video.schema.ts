@@ -1,7 +1,7 @@
 import {z} from "zod";
-import {BaseResourceSchema} from "@/schema/zod/base.schema";
+import {BaseResourceSchemaObject} from "@/schema/zod/base.schema";
 
-export const VideoSchema = BaseResourceSchema.extend({
+export const VideoSchema = BaseResourceSchemaObject.extend({
   type: z.literal("video"),
   title: z.string().min(1, "Video title is required"),
   platform: z.string().min(1, "Platform name is required (e.g., YouTube, Vimeo)"),

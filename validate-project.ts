@@ -1,10 +1,8 @@
 import * as fs from "node:fs";
 import chalk from "chalk";
 import * as yaml from "yaml";
-import {
-  ProjectSchema,
-  ResourceArraySchema,
-} from "./src/schema/zod/index.ts";
+
+import {ProjectSchema, ResourceArraySchema,} from "@/schema";
 
 const log = {
   info: (msg: string) => console.log(chalk.blue("ℹ"), msg),
@@ -88,7 +86,11 @@ async function validateProject() {
       chalk.bold("Categories:"),
       chalk.green(new Set(data.resources.map((r: any) => r.category)).size)
     );
-    console.log(chalk.gray("  │"), chalk.bold("Author:    "), chalk.green(data.metadata.author.name));
+    console.log(
+      chalk.gray("  │"),
+      chalk.bold("Author:    "),
+      chalk.green(data.metadata.author.name)
+    );
     console.log(chalk.gray("  └─────────────────────────────────────\n"));
 
     process.exit(0);

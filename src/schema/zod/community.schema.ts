@@ -1,11 +1,11 @@
 import {z} from "zod";
-import {BaseResourceSchema} from "@/schema/zod/base.schema";
+import {BaseResourceSchemaObject} from "@/schema/zod/base.schema";
 
 const ActivityLevelSchema = z.enum(["low", "medium", "high", "very-high"], {
   message: "Activity level must be one of: low, medium, high, or very-high.",
 });
 
-export const CommunitySchema = BaseResourceSchema.extend({
+export const CommunitySchema = BaseResourceSchemaObject.extend({
   type: z.literal("community"),
   name: z.string().min(1, "Community name is required"),
   platform: z.string().min(1, "Platform name is required (e.g., Discord, Slack, Reddit)"),

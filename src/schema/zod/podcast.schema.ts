@@ -1,7 +1,7 @@
 import {z} from "zod";
-import {BaseResourceSchema} from "@/schema/zod/base.schema";
+import {BaseResourceSchemaObject} from "@/schema/zod/base.schema";
 
-export const PodcastSchema = BaseResourceSchema.extend({
+export const PodcastSchema = BaseResourceSchemaObject.extend({
   type: z.literal("podcast"),
   title: z.string().min(1, "Podcast episode title is required"),
   host: z.string().min(1, "Host name is required"),

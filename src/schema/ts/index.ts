@@ -23,3 +23,4 @@ export type {
   Types,
 } from "./types.ts";
 export type { Video } from "./video.interface.ts";
+export type { Project, ProjectMetadata } from "./project.interface.ts";

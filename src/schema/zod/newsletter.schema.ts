@@ -1,7 +1,7 @@
 import {z} from "zod";
-import {BaseResourceSchema} from "@/schema/zod/base.schema";
+import {BaseResourceSchemaObject} from "@/schema/zod/base.schema";
 
-export const NewsletterSchema = BaseResourceSchema.extend({
+export const NewsletterSchema = BaseResourceSchemaObject.extend({
   type: z.literal("newsletter"),
   name: z.string().min(1, "Newsletter name is required"),
   author: z.string().optional(),

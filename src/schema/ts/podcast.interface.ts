@@ -1,4 +1,4 @@
-import type { BaseResource } from "@/schema/base.interface.ts";
+import type {BaseResource} from "@/schema/ts/base.interface.ts";
 
 export interface Podcast extends BaseResource {
   type: "podcast";

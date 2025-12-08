@@ -1,7 +1,7 @@
 import {z} from "zod";
-import {BaseResourceSchema} from "@/schema";
+import {BaseResourceSchemaObject} from "@/schema/zod/base.schema";
 
-export const ArticleSchema = BaseResourceSchema.extend({
+export const ArticleSchema = BaseResourceSchemaObject.extend({
   type: z.literal("article"),
   title: z.string().min(1, "Article title is required"),
   author: z.string().min(1, "Author name is required"),
