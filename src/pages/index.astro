@@ -1,46 +1,46 @@
 ---
 import Layout from "@/layouts/main.astro";
 import { ProjectCard } from "@/components/ProjectCard";
+import {
+  getFeaturedResources,
+  getAllResources,
+  getAllCategories,
+  getResourceName,
+  getSEOMetadata,
+  getTotalStars,
+  getProjectMetadata,
+} from "@/data/projects";
 
-// Sample static data for demonstration
-const sampleProjects = [
-  {
-    name: "Astro",
-    description: "The web framework for content-driven websites. Build fast, content-focused websites with modern tooling.",
-    url: "https://astro.build",
-    category: "Framework",
-    language: "TypeScript",
-    stars: 42500,
-    license: "MIT",
-    tags: ["web", "static-site", "performance"],
-  },
-  {
-    name: "React",
-    description: "The library for web and native user interfaces. Build user interfaces out of individual pieces called components.",
-    url: "https://react.dev",
-    category: "Library",
-    language: "JavaScript",
-    stars: 220000,
-    license: "MIT",
-    tags: ["ui", "frontend", "javascript"],
-  },
-  {
-    name: "Tailwind CSS",
-    description: "A utility-first CSS framework packed with classes that can be composed to build any design, directly in your markup.",
-    url: "https://tailwindcss.com",
-    category: "CSS Framework",
-    language: "CSS",
-    stars: 78000,
-    license: "MIT",
-    tags: ["css", "styling", "utility-first"],
-  },
-];
+const allResources = getAllResources();
+const featuredResources = getFeaturedResources();
+const categories = getAllCategories();
+const seoMetadata = getSEOMetadata();
+const totalStars = getTotalStars();
+const metadata = getProjectMetadata();
+
+// Use featured resources or fallback to first 3 if no featured
+const displayResources =
+  featuredResources.length > 0 ? featuredResources.slice(0, 3) : allResources.slice(0, 3);
+
+// Transform resources to match ProjectCard props
+const projects = displayResources.map((resource) => ({
+  name: getResourceName(resource),
+  description: resource.description,
+  url: resource.url,
+  category: resource.category,
+  language: ("primaryLanguage" in resource ? resource.primaryLanguage : undefined) ||
+    ("languages" in resource && Array.isArray(resource.languages) ? resource.languages[0] : undefined),
+  stars: "stars" in resource ? resource.stars : undefined,
+  license: "license" in resource ? resource.license : undefined,
+  tags: resource.tags,
+}));
 ---
 
 <Layout
-  title="AwesomeKit - Beautiful Curated Lists"
-  description="Discover and explore curated collections of awesome projects, libraries, and resources."
-  keywords={["awesome list", "curated", "projects", "resources", "open source"]}
+  title={seoMetadata.title}
+  description={seoMetadata.description}
+  keywords={seoMetadata.keywords}
+  author={seoMetadata.author}
 >
   <!-- Hero Section -->
   <section class="border-b bg-gradient-to-b from-background to-secondary/20">
@@ -76,15 +76,15 @@ const sampleProjects = [
     <div class="container mx-auto px-4 sm:px-6 lg:px-8 py-12">
       <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
         <div class="text-center">
-          <div class="text-4xl font-bold text-primary">500+</div>
+          <div class="text-4xl font-bold text-primary">{allResources.length}</div>
           <div class="text-sm text-muted-foreground mt-2">Curated Projects</div>
         </div>
         <div class="text-center">
-          <div class="text-4xl font-bold text-primary">50+</div>
+          <div class="text-4xl font-bold text-primary">{categories.length}</div>
           <div class="text-sm text-muted-foreground mt-2">Categories</div>
         </div>
         <div class="text-center">
-          <div class="text-4xl font-bold text-primary">1M+</div>
+          <div class="text-4xl font-bold text-primary">{totalStars.toLocaleString()}</div>
           <div class="text-sm text-muted-foreground mt-2">Total Stars</div>
         </div>
       </div>
@@ -103,7 +103,7 @@ const sampleProjects = [
 
       <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
         {
-          sampleProjects.map((project) => (
+          projects.map((project) => (
             <ProjectCard client:load {...project} />
           ))
         }

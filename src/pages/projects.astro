@@ -1,0 +1,163 @@
+---
+import { ProjectCard } from "@/components/ProjectCard";
+import {
+  getAllCategories,
+  getAllResources,
+  getProjectMetadata,
+  getResourceName,
+} from "@/data/projects";
+import Layout from "@/layouts/main.astro";
+
+const resources = getAllResources();
+const categories = getAllCategories();
+const metadata = getProjectMetadata();
+
+// Transform resources to match ProjectCard props
+const projects = resources.map((resource) => ({
+  name: getResourceName(resource),
+  description: resource.description,
+  url: resource.url,
+  category: resource.category,
+  language:
+    ("primaryLanguage" in resource ? resource.primaryLanguage : undefined) ||
+    ("languages" in resource && Array.isArray(resource.languages)
+      ? resource.languages[0]
+      : undefined),
+  stars: "stars" in resource ? resource.stars : undefined,
+  license: "license" in resource ? resource.license : undefined,
+  tags: resource.tags,
+}));
+---
+
+<Layout
+  title={`Projects - ${metadata.title}`}
+  description={`Browse our curated collection of ${projects.length} awesome projects, libraries, tools, and resources.`}
+  keywords={[...metadata.keywords, "projects", "browse"]}
+  author={metadata.author.name}
+>
+  <!-- Page Header -->
+  <section class="border-b bg-gradient-to-b from-background to-secondary/20">
+    <div class="container mx-auto px-4 sm:px-6 lg:px-8 py-12 md:py-16">
+      <div class="max-w-3xl">
+        <h1 class="text-4xl md:text-5xl font-bold tracking-tight mb-4">
+          All Projects
+        </h1>
+        <p class="text-xl text-muted-foreground">
+          Browse our curated collection of {projects.length} awesome projects, libraries, tools, and resources.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Filters Section -->
+  <section class="border-b bg-background">
+    <div class="container mx-auto px-4 sm:px-6 lg:px-8 py-6">
+      <div class="flex flex-col md:flex-row gap-4 items-start md:items-center justify-between">
+        <!-- Category Filter Chips -->
+        <div class="flex flex-wrap gap-2">
+          <a
+            href="/projects"
+            class="inline-flex items-center rounded-full bg-primary text-primary-foreground px-3 py-1.5 text-sm font-medium transition-colors hover:bg-primary/90"
+          >
+            All ({projects.length})
+          </a>
+          {
+            categories.map((category) => {
+              const count = resources.filter((r) => r.category === category).length;
+              return (
+                <a
+                  href={`/categories/${encodeURIComponent(category.toLowerCase().replace(/\s+/g, "-"))}`}
+                  class="inline-flex items-center rounded-full border bg-background px-3 py-1.5 text-sm font-medium transition-colors hover:bg-accent hover:text-accent-foreground"
+                >
+                  {category} ({count})
+                </a>
+              );
+            })
+          }
+        </div>
+
+        <!-- View Options (placeholder for future) -->
+        <div class="flex items-center gap-2">
+          <span class="text-sm text-muted-foreground">View:</span>
+          <button
+            class="inline-flex items-center justify-center rounded-md text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring bg-primary text-primary-foreground hover:bg-primary/90 h-8 px-3"
+          >
+            <svg
+              class="h-4 w-4"
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            >
+              <rect width="7" height="7" x="3" y="3" rx="1" />
+              <rect width="7" height="7" x="14" y="3" rx="1" />
+              <rect width="7" height="7" x="14" y="14" rx="1" />
+              <rect width="7" height="7" x="3" y="14" rx="1" />
+            </svg>
+          </button>
+          <button
+            class="inline-flex items-center justify-center rounded-md text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring border border-input bg-background hover:bg-accent hover:text-accent-foreground h-8 px-3"
+          >
+            <svg
+              class="h-4 w-4"
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            >
+              <line x1="8" x2="21" y1="6" y2="6" />
+              <line x1="8" x2="21" y1="12" y2="12" />
+              <line x1="8" x2="21" y1="18" y2="18" />
+              <line x1="3" x2="3.01" y1="6" y2="6" />
+              <line x1="3" x2="3.01" y1="12" y2="12" />
+              <line x1="3" x2="3.01" y1="18" y2="18" />
+            </svg>
+          </button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Projects Grid -->
+  <section class="py-12 md:py-16">
+    <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        {
+          projects.map((project) => (
+            <ProjectCard client:load {...project} />
+          ))
+        }
+      </div>
+
+      {projects.length === 0 && (
+        <div class="text-center py-12">
+          <div class="inline-flex items-center justify-center w-16 h-16 rounded-full bg-secondary mb-4">
+            <svg
+              class="h-8 w-8 text-muted-foreground"
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            >
+              <path d="M12 2v20" />
+              <path d="m19 9-7 7-7-7" />
+            </svg>
+          </div>
+          <h3 class="text-lg font-semibold mb-2">No projects found</h3>
+          <p class="text-muted-foreground">
+            Try adjusting your filters or check back later for new projects.
+          </p>
+        </div>
+      )}
+    </div>
+  </section>
+</Layout>

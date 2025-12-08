@@ -1,6 +1,8 @@
 ---
-// Footer component
+import { getProjectMetadata } from "@/data/projects";
+
 const currentYear = new Date().getFullYear();
+const metadata = getProjectMetadata();
 ---
 
 <footer class="border-t bg-background">
@@ -23,11 +25,10 @@ const currentYear = new Date().getFullYear();
             <path d="M8 7h6" />
             <path d="M8 11h8" />
           </svg>
-          <span class="text-lg font-bold">AwesomeKit</span>
+          <span class="text-lg font-bold">{metadata.title}</span>
         </div>
         <p class="text-sm text-muted-foreground max-w-md">
-          A modern, feature-rich template for creating beautiful "awesome" curated lists
-          with rich metadata, search, and analytics.
+          {metadata.description}
         </p>
       </div>
 
@@ -82,30 +83,32 @@ const currentYear = new Date().getFullYear();
               Documentation
             </a>
           </li>
-          <li>
-            <a
-              href="https://github.com"
-              target="_blank"
-              rel="noopener noreferrer"
-              class="text-sm text-muted-foreground transition-colors hover:text-foreground inline-flex items-center gap-1"
-            >
-              GitHub
-              <svg
-                class="h-3 w-3"
-                xmlns="http://www.w3.org/2000/svg"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                stroke-width="2"
-                stroke-linecap="round"
-                stroke-linejoin="round"
+          {metadata.repository && (
+            <li>
+              <a
+                href={metadata.repository.url}
+                target="_blank"
+                rel="noopener noreferrer"
+                class="text-sm text-muted-foreground transition-colors hover:text-foreground inline-flex items-center gap-1"
               >
-                <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6" />
-                <polyline points="15 3 21 3 21 9" />
-                <line x1="10" x2="21" y1="14" y2="3" />
-              </svg>
-            </a>
-          </li>
+                GitHub
+                <svg
+                  class="h-3 w-3"
+                  xmlns="http://www.w3.org/2000/svg"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                >
+                  <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6" />
+                  <polyline points="15 3 21 3 21 9" />
+                  <line x1="10" x2="21" y1="14" y2="3" />
+                </svg>
+              </a>
+            </li>
+          )}
           <li>
             <a
               href="/submit"
@@ -130,16 +133,17 @@ const currentYear = new Date().getFullYear();
     <div class="mt-12 pt-8 border-t">
       <div class="flex flex-col md:flex-row justify-between items-center gap-4">
         <p class="text-sm text-muted-foreground">
-          © {currentYear} AwesomeKit. Built with Astro, React, and Tailwind CSS.
+          © {currentYear} {metadata.title}. {metadata.license ? `Licensed under ${metadata.license}.` : ''} Built with Astro, React, and Tailwind CSS.
         </p>
         <div class="flex items-center gap-6">
-          <a
-            href="https://github.com"
-            target="_blank"
-            rel="noopener noreferrer"
-            class="text-muted-foreground transition-colors hover:text-foreground"
-            aria-label="GitHub"
-          >
+          {metadata.repository && (
+            <a
+              href={metadata.repository.url}
+              target="_blank"
+              rel="noopener noreferrer"
+              class="text-muted-foreground transition-colors hover:text-foreground"
+              aria-label="GitHub"
+            >
             <svg
               class="h-5 w-5"
               xmlns="http://www.w3.org/2000/svg"
@@ -150,25 +154,28 @@ const currentYear = new Date().getFullYear();
                 d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"
               />
             </svg>
-          </a>
-          <a
-            href="https://twitter.com"
-            target="_blank"
-            rel="noopener noreferrer"
-            class="text-muted-foreground transition-colors hover:text-foreground"
-            aria-label="Twitter"
-          >
-            <svg
-              class="h-5 w-5"
-              xmlns="http://www.w3.org/2000/svg"
-              viewBox="0 0 24 24"
-              fill="currentColor"
+            </a>
+          )}
+          {metadata.social?.twitter && (
+            <a
+              href={`https://twitter.com/${metadata.social.twitter}`}
+              target="_blank"
+              rel="noopener noreferrer"
+              class="text-muted-foreground transition-colors hover:text-foreground"
+              aria-label="Twitter"
             >
-              <path
-                d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"
-              />
-            </svg>
-          </a>
+              <svg
+                class="h-5 w-5"
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 24 24"
+                fill="currentColor"
+              >
+                <path
+                  d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"
+                />
+              </svg>
+            </a>
+          )}
         </div>
       </div>
     </div>
