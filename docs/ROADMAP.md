@@ -26,17 +26,17 @@ Transform static "awesome" lists into modern, discoverable, and engaging resourc
 **Goal:** Build the fundamental architecture and data layer
 
 #### 1.1 Data Layer
-- [ ] YAML schema design for projects
-- [ ] YAML schema for categories
-- [ ] Configuration file structure
-- [ ] Data validation utilities
+- [x] YAML schema design for projects
+- [x] YAML schema for resource types
+- [x] Configuration file structure
+- [x] Data validation utilities
 
 #### 1.2 Basic Components
-- [ ] shadcn/ui installation and setup
-- [ ] Base layout component
-- [ ] Basic project card (static data)
-- [ ] Header and navigation
-- [ ] Footer component
+- [x] shadcn/ui installation and setup
+- [x] Base layout component
+- [x] Basic project card (static data)
+- [x] Header and navigation
+- [x] Footer component
 
 #### 1.3 Routing & Pages
 - [ ] Homepage structure
