@@ -1,4 +1,4 @@
-import {z} from "zod";
+import { z } from "zod";
 
 // Reusable enum schemas with helpful error messages
 export const TypesSchema = z.enum(

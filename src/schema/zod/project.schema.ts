@@ -1,5 +1,5 @@
-import {z} from "zod";
-import {ResourceArraySchema} from "@/schema/zod/validation";
+import { z } from "zod";
+import { ResourceArraySchema } from "@/schema/zod/validation";
 
 /**
  * Project metadata schema

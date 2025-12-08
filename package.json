@@ -1,5 +1,9 @@
 {
   "name": "awesome-list-builder",
+  "description": "",
+  "author": {
+    "name": "Sagyam Thapa"
+  },
   "type": "module",
   "version": "0.0.1",
   "scripts": {

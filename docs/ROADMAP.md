@@ -39,10 +39,11 @@ Transform static "awesome" lists into modern, discoverable, and engaging resourc
 - [x] Footer component
 
 #### 1.3 Routing & Pages
-- [ ] Homepage structure
-- [ ] Projects listing page
-- [ ] Individual project detail pages
-- [ ] Category pages
+- [x] Homepage structure
+- [x] Resource listing page
+- [x] Individual project detail pages
+- [x] Category pages
+
 
 **Deliverable:** Static site with manually entered project data
 

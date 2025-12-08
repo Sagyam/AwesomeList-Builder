@@ -1,5 +1,5 @@
-import {z} from "zod";
-import {BaseResourceSchemaObject, ResourceStatusSchema} from "@/schema/zod/base.schema";
+import { z } from "zod";
+import { BaseResourceSchemaObject, ResourceStatusSchema } from "@/schema/zod/base.schema";
 
 export const ToolSchema = BaseResourceSchemaObject.extend({
   type: z.literal("tool"),

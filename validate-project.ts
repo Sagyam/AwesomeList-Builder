@@ -2,7 +2,7 @@ import * as fs from "node:fs";
 import chalk from "chalk";
 import * as yaml from "yaml";
 
-import {ProjectSchema, ResourceArraySchema,} from "@/schema";
+import { ProjectSchema, ResourceArraySchema } from "@/schema";
 
 const log = {
   info: (msg: string) => console.log(chalk.blue("ℹ"), msg),

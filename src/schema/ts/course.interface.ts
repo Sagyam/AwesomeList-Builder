@@ -1,4 +1,4 @@
-import type {BaseResource} from "@/schema/ts/";
+import type { BaseResource } from "@/schema/ts/";
 
 export interface Course extends BaseResource {
   type: "course";
