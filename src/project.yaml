@@ -1,0 +1,305 @@
+metadata:
+  name: awesome-list-builder
+  title: AwesomeKit - Modern Awesome List Template
+  description: A modern, feature-rich template for creating beautiful awesome curated lists that go beyond basic markdown links. Built with Astro, React, and Tailwind CSS.
+  version: 0.1.0
+  author:
+    name: AwesomeKit Team
+    email: team@awesomekit.dev
+    url: https://github.com/awesomekit
+  repository:
+    type: git
+    url: https://github.com/awesomekit/awesome-list-builder
+  homepage: https://awesomekit.dev
+  license: MIT
+  keywords:
+    - awesome-list
+    - curated-list
+    - astro
+    - react
+    - tailwind
+    - typescript
+  topics:
+    - web-development
+    - static-site-generator
+    - developer-tools
+  social:
+    twitter: awesomekit
+    github: awesomekit
+    website: https://awesomekit.dev
+  created: '2025-01-01T00:00:00.000Z'
+  updated: '2025-12-08T00:00:00.000Z'
+
+resources:
+  # Example Library - React
+  - type: library
+    id: react-library
+    name: React
+    url: https://react.dev
+    description: A JavaScript library for building user interfaces with component-based architecture. React makes it painless to create interactive UIs.
+    category: Frontend Framework
+    tags:
+      - javascript
+      - ui
+      - components
+      - frontend
+    topics:
+      - web-development
+      - frontend
+      - javascript
+    language: en
+    dateAdded: '2025-01-15T10:00:00.000Z'
+    lastVerified: '2025-12-08T10:00:00.000Z'
+    featured: true
+    trending: true
+    difficulty: intermediate
+    isFree: true
+    accessLevel: free
+    package:
+      registry: npm
+      name: react
+    repository: https://github.com/facebook/react
+    documentation: https://react.dev/learn
+    homepage: https://react.dev
+    license: MIT
+    stars: 230000
+    downloads: 20M/week
+    lastUpdated: '2025-12-01T00:00:00.000Z'
+    version: 19.2.0
+    status: active
+    maturity: mature
+    languages:
+      - JavaScript
+      - TypeScript
+    platforms:
+      - Web
+      - Mobile
+      - Desktop
+
+  # Example Repository - Astro
+  - type: repository
+    id: astro-repo
+    name: Astro
+    url: https://github.com/withastro/astro
+    description: The web framework for content-driven websites. Astro powers the world's fastest websites, client-side web apps, dynamic API endpoints, and everything in-between.
+    category: Web Framework
+    tags:
+      - web-framework
+      - static-site
+      - islands-architecture
+      - performance
+    topics:
+      - web-development
+      - jamstack
+      - static-site-generator
+    language: en
+    dateAdded: '2025-01-20T10:00:00.000Z'
+    lastVerified: '2025-12-08T10:00:00.000Z'
+    featured: true
+    difficulty: intermediate
+    isFree: true
+    accessLevel: free
+    owner: withastro
+    ownerUrl: https://github.com/withastro
+    repositoryUrl: https://github.com/withastro/astro
+    homepage: https://astro.build
+    license: MIT
+    stars: 48000
+    forks: 2500
+    watchers: 500
+    openIssues: 150
+    lastCommit: '2025-12-07T15:30:00.000Z'
+    created: '2021-03-15T00:00:00.000Z'
+    primaryLanguage: TypeScript
+    languages:
+      - TypeScript
+      - JavaScript
+    status: active
+    maturity: stable
+    hasWiki: true
+    hasDiscussions: true
+
+  # Example Course
+  - type: course
+    id: fullstack-course
+    title: Complete Full-Stack Web Development Bootcamp
+    url: https://www.udemy.com/course/fullstack-web-development
+    description: Learn modern web development from scratch with hands-on projects covering HTML, CSS, JavaScript, React, Node.js, MongoDB, and deployment strategies.
+    category: Web Development
+    tags:
+      - fullstack
+      - javascript
+      - react
+      - nodejs
+      - mongodb
+    topics:
+      - web-development
+      - fullstack-development
+      - programming
+    language: en
+    dateAdded: '2025-02-01T10:00:00.000Z'
+    lastVerified: '2025-12-08T10:00:00.000Z'
+    featured: true
+    difficulty: beginner
+    isPaid: true
+    accessLevel: paid
+    platform: Udemy
+    instructor: Jane Smith
+    instructorUrl: https://www.udemy.com/user/jane-smith
+    published: '2024-01-15T00:00:00.000Z'
+    updated: '2025-11-20T00:00:00.000Z'
+    duration: 42 hours
+    lessons: 250
+    hasSubtitles: true
+    price: $89.99
+    discountPrice: $12.99
+    rating: 4.7
+    students: 125000
+    certificate: true
+    prerequisites:
+      - Basic computer skills
+      - Willingness to learn
+
+  # Example Tool
+  - type: tool
+    id: vscode-tool
+    name: Visual Studio Code
+    url: https://code.visualstudio.com
+    description: A lightweight but powerful source code editor with built-in support for JavaScript, TypeScript, Node.js, and a rich ecosystem of extensions for other languages and runtimes.
+    category: Development Tools
+    tags:
+      - editor
+      - ide
+      - vscode
+      - development
+    topics:
+      - developer-tools
+      - code-editor
+      - productivity
+    language: en
+    dateAdded: '2025-01-10T10:00:00.000Z'
+    lastVerified: '2025-12-08T10:00:00.000Z'
+    featured: true
+    trending: true
+    difficulty: beginner
+    isFree: true
+    accessLevel: free
+    homepage: https://code.visualstudio.com
+    repository: https://github.com/microsoft/vscode
+    documentation: https://code.visualstudio.com/docs
+    license: MIT
+    platforms:
+      - Windows
+      - macOS
+      - Linux
+    features:
+      - IntelliSense
+      - Debugging
+      - Git integration
+      - Extensions marketplace
+      - Integrated terminal
+    isOpenSource: true
+    status: active
+    version: 1.95.0
+    lastUpdated: '2025-12-05T00:00:00.000Z'
+
+  # Example Documentation
+  - type: documentation
+    id: mdn-docs
+    title: MDN Web Docs
+    url: https://developer.mozilla.org
+    description: The MDN Web Docs site provides comprehensive documentation about open web technologies including HTML, CSS, and JavaScript, as well as extensive Web API reference material.
+    category: Web Documentation
+    tags:
+      - documentation
+      - web-standards
+      - reference
+      - html
+      - css
+      - javascript
+    topics:
+      - web-development
+      - documentation
+      - learning
+    language: en
+    dateAdded: '2025-01-05T10:00:00.000Z'
+    lastVerified: '2025-12-08T10:00:00.000Z'
+    featured: true
+    difficulty: beginner
+    isFree: true
+    accessLevel: free
+    maintainer: Mozilla
+    lastUpdated: '2025-12-08T00:00:00.000Z'
+    languages:
+      - English
+      - Spanish
+      - French
+      - Japanese
+      - Chinese
+    format: web
+    searchable: true
+    hasExamples: true
+    interactiveExamples: true
+
+  # Example Video
+  - type: video
+    id: js-fundamentals-video
+    title: JavaScript Fundamentals for Beginners
+    url: https://www.youtube.com/watch?v=example123
+    description: A comprehensive introduction to JavaScript covering variables, functions, objects, arrays, and modern ES6+ features with practical examples and exercises.
+    category: Programming Tutorial
+    tags:
+      - javascript
+      - tutorial
+      - beginners
+      - programming
+    topics:
+      - javascript
+      - programming
+      - web-development
+    language: en
+    dateAdded: '2025-02-10T10:00:00.000Z'
+    lastVerified: '2025-12-08T10:00:00.000Z'
+    difficulty: beginner
+    isFree: true
+    accessLevel: free
+    platform: YouTube
+    creator: Tech Education
+    creatorUrl: https://www.youtube.com/@techeducation
+    channel: Tech Education
+    published: '2024-06-15T00:00:00.000Z'
+    duration: PT3H45M
+    views: 1500000
+    hasSubtitles: true
+    quality: 1080p
+
+  # Example Podcast
+  - type: podcast
+    id: syntax-podcast
+    title: Syntax - Tasty Web Development Treats
+    url: https://syntax.fm
+    description: A podcast for web developers about the latest in web development, JavaScript, CSS, tooling, and more. Hosted by Wes Bos and Scott Tolinski.
+    category: Web Development Podcast
+    tags:
+      - podcast
+      - web-development
+      - javascript
+      - frontend
+    topics:
+      - web-development
+      - javascript
+      - programming
+    language: en
+    dateAdded: '2025-01-25T10:00:00.000Z'
+    lastVerified: '2025-12-08T10:00:00.000Z'
+    featured: true
+    difficulty: intermediate
+    isFree: true
+    accessLevel: free
+    host: Wes Bos and Scott Tolinski
+    hostUrl: https://syntax.fm/about
+    platform: Multiple
+    rssFeed: https://syntax.fm/rss
+    published: '2025-12-06T00:00:00.000Z'
+    duration: PT45M
+    explicit: false
