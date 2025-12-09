@@ -1,13 +1,25 @@
 ---
-import { ResourcesContainer } from "@/components/ResourcesContainer";
+import {ResourcesBrowser} from "@/components/ResourcesBrowser";
 import Layout from "@/layouts/main.astro";
-import { getAllResources, getProjectMetadata, getResourceName } from "@/lib/utils/data-access";
+import {
+    getAllCategories,
+    getAllLanguages,
+    getAllLicenses,
+    getAllResources,
+    getProjectMetadata,
+    getResourceName,
+    rankResources,
+} from "@/lib/utils/data-access";
 
 const allResources = getAllResources();
+const rankedResources = rankResources(allResources);
 const metadata = getProjectMetadata();
+const categories = getAllCategories();
+const licenses = getAllLicenses();
+const languages = getAllLanguages();
 
 // Transform resources for display
-const resourcesData = allResources.map((resource) => ({
+const resourcesData = rankedResources.map((resource) => ({
   id: resource.id,
   name: getResourceName(resource),
   description: resource.description,
@@ -57,7 +69,13 @@ const resourcesData = allResources.map((resource) => ({
     <!-- Resources Section -->
     <section class="py-12 md:py-16">
         <div class="container mx-auto px-4 sm:px-6 lg:px-8">
-            <ResourcesContainer client:load resources={resourcesData}/>
+            <ResourcesBrowser
+                    client:load
+                    resources={resourcesData}
+                    categories={categories}
+                    licenses={licenses}
+                    languages={languages}
+            />
         </div>
     </section>
 </Layout>

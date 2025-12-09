@@ -132,3 +132,55 @@ export function getSEOMetadata() {
     ogImage: "/og-image.png", // Can be extended to pull from metadata if added
   };
 }
+
+/**
+ * Get all unique licenses
+ */
+export function getAllLicenses(): string[] {
+  const resources = getAllResources();
+  const licenses = new Set(
+    resources
+      .map((r) => ("license" in r ? r.license : undefined))
+      .filter((license): license is string => typeof license === "string")
+  );
+  return Array.from(licenses).sort();
+}
+
+/**
+ * Get all unique languages
+ */
+export function getAllLanguages(): string[] {
+  const resources = getAllResources();
+  const languages = new Set<string>();
+
+  for (const resource of resources) {
+    if ("primaryLanguage" in resource && typeof resource.primaryLanguage === "string") {
+      languages.add(resource.primaryLanguage);
+    }
+    if ("languages" in resource && Array.isArray(resource.languages)) {
+      for (const lang of resource.languages) {
+        if (typeof lang === "string") {
+          languages.add(lang);
+        }
+      }
+    }
+  }
+
+  return Array.from(languages).sort();
+}
+
+/**
+ * Sort and rank resources according to Phase 4 requirements:
+ * 1. First group: featured and trending
+ * 2. Second group: resources with images
+ * 3. Third group: resources without images
+ */
+export function rankResources(resources: Resource[]): Resource[] {
+  const featured = resources.filter((r) => r.featured || r.trending);
+  const withImages = resources.filter((r) => !r.featured && !r.trending && "image" in r && r.image);
+  const withoutImages = resources.filter(
+    (r) => !r.featured && !r.trending && (!("image" in r) || !r.image)
+  );
+
+  return [...featured, ...withImages, ...withoutImages];
+}
