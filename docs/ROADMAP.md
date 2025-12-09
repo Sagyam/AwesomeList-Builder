@@ -22,7 +22,7 @@ Transform static "awesome" lists into modern, discoverable, and engaging resourc
 
 ---
 
-### Phase 1: Core Infrastructure
+### Phase 1: Core Infrastructure (Complete)
 **Goal:** Build the fundamental architecture and data layer
 
 #### 1.1 Data Layer
@@ -49,60 +49,62 @@ Transform static "awesome" lists into modern, discoverable, and engaging resourc
 
 ---
 
-### Phase 2: UI/UX Enhancement
+### Phase 2: UI/UX Enhancement (Complete)
 
 **Goal:** Rich, interactive user interface
 
-#### 3.1 Advanced Project Cards
+#### 2.1 Advanced Project Cards
 
-- [ ] Card layout with all metadata
-- [ ] List layout (compact view)
-- [ ] Toggle between layouts
-- [ ] Project health indicators
-- [ ]
-- [ ] License icons and badges
-- [ ] Package registry badges
+- [x] Add an optional image field for every type of resource
+- [x] Show image if available
+- [x] Card layout with all metadata
+- [x] List layout (compact view)
+- [x] Toggle between layouts
+- [x] Project health indicators (Only for Github, Gitlab etc.)
+- [x] Resource details page
+- [x] License icons and badges
+- [x] Package registry badges
 
 ---
 
-#### 3.2 Visual Elements
+#### 2.2 Visual Elements
 
-- [ ] Image optimization (AVIF + fallbacks)
-- [ ] Lazy loading images
-- [ ] Screenshot/preview support
-- [ ] Lucide icon integration
-- [ ] Loading states and skeletons
+- [x] Image optimization (AVIF + fallbacks)
+- [x] Lazy loading images
+- [x] Screenshot/preview support
+- [x] Lucide icon integration
+- [x] Loading states and skeletons
 
-#### 3.3 Theme System
+#### 2.3 Theme System
 
-- [ ] Site theme customization
-- [ ] Light/dark mode toggle
-- [ ] Theme persistence (localStorage)
-- [ ] CSS custom properties for themes
-- [ ] Smooth transitions
+- [x] Site theme customization
+- [x] Light/dark mode toggle
+- [x] Theme persistence (localStorage)
+- [x] CSS custom properties for themes
+- [x] Smooth transitions
 
-**Deliverable:** Beautiful, responsive UI with theme support
+**Deliverable:** Beautiful, responsive UI with theme support ✅
 
 ---
 
 ### Phase 3: API Integration & Data Fetching
 **Goal:** Implement dynamic data fetching from external APIs
 
-#### 2.1 GitHub Integration
+#### 3.1 GitHub Integration
 - [ ] GitHub API client setup
 - [ ] Fetch repository metadata (stars, forks, issues)
 - [ ] Fetch commit activity and last update
 - [ ] Rate limit handling
 - [ ] Response caching system
 
-#### 2.2 Package Registry Integration
+#### 3.2 Package Registry Integration
 - [ ] npm API integration
 - [ ] PyPI API integration
 - [ ] Cargo (crates.io) integration
 - [ ] Generic package registry abstraction
 - [ ] Parallel API request batching
 
-#### 2.3 Build Process
+#### 3.3 Build Process
 - [ ] Build-time data fetching scripts
 - [ ] Cache management (read/write/invalidate)
 - [ ] Error handling and fallbacks
@@ -337,6 +339,6 @@ See [CONTRIBUTING.md](CONTRIBUTING.md) for how to get involved!
 
 ---
 
-**Last Updated:** November 2024
+**Last Updated:** December 2024
 **Project Lead:** Sagyam Thapa
-**Status:** Phase 0 - Foundation
+**Status:** Phase 2 - UI/UX Enhancement Complete

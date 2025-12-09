@@ -1,0 +1,59 @@
+---
+import { ResourcesContainer } from "@/components/ResourcesContainer";
+import { getAllResources, getProjectMetadata, getResourceName } from "@/data/projects";
+import Layout from "@/layouts/main.astro";
+
+const allResources = getAllResources();
+const metadata = getProjectMetadata();
+
+// Transform resources for display
+const resourcesData = allResources.map((resource) => ({
+  id: resource.id,
+  name: getResourceName(resource),
+  description: resource.description,
+  url: resource.url,
+  category: resource.category,
+  language:
+    ("primaryLanguage" in resource ? resource.primaryLanguage : undefined) ||
+    ("languages" in resource && Array.isArray(resource.languages)
+      ? resource.languages[0]
+      : undefined),
+  stars: "stars" in resource ? resource.stars : undefined,
+  license: "license" in resource ? resource.license : undefined,
+  tags: resource.tags,
+  image: "image" in resource ? resource.image : undefined,
+  imageAlt: "imageAlt" in resource ? resource.imageAlt : undefined,
+  archived: resource.archived,
+  trending: resource.trending,
+  featured: resource.featured,
+}));
+---
+
+<Layout
+        title={`Resources - ${metadata.title}`}
+        description={`Browse our curated collection of ${resourcesData.length} awesome resources, libraries, tools, and guides.`}
+        keywords={[...metadata.keywords, "resources", "browse"]}
+        author={metadata.author.name}
+>
+    <!-- Page Header -->
+    <section class="border-b bg-gradient-to-b from-background to-secondary/20">
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8 py-12 md:py-16">
+            <div class="max-w-3xl">
+                <h1 class="text-4xl md:text-5xl font-bold tracking-tight mb-4">
+                    All Resources
+                </h1>
+                <p class="text-xl text-muted-foreground">
+                    Browse our curated collection of {resourcesData.length} awesome resources, libraries, tools, and
+                    guides.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Resources Section -->
+    <section class="py-12 md:py-16">
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+            <ResourcesContainer client:load resources={resourcesData}/>
+        </div>
+    </section>
+</Layout>

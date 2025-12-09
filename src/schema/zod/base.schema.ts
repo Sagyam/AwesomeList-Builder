@@ -1,4 +1,4 @@
-import { z } from "zod";
+import {z} from "zod";
 
 // Reusable enum schemas with helpful error messages
 export const TypesSchema = z.enum(
@@ -82,6 +82,10 @@ export const BaseResourceSchemaObject = z.object({
   isPaid: z.boolean().optional(),
   requiresSignup: z.boolean().optional(),
   accessLevel: AccessLevelSchema.optional(),
+
+  // Visual fields
+  image: z.string().url("Image must be a valid URL").optional().or(z.string().min(1).optional()),
+  imageAlt: z.string().optional(),
 });
 
 // Base resource schema with refinements

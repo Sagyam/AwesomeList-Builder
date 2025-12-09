@@ -1,4 +1,4 @@
-import type { AccessLevel, Difficulty, Types } from "./types.ts";
+import type {AccessLevel, Difficulty, Types} from "./types.ts";
 
 export interface BaseResource {
   // Required
@@ -29,4 +29,8 @@ export interface BaseResource {
   isPaid?: boolean;
   requiresSignup?: boolean;
   accessLevel?: AccessLevel;
+
+  // Visual
+  image?: string; // URL or path to image/screenshot
+  imageAlt?: string; // Alt text for accessibility
 }
