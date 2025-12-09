@@ -1,8 +1,7 @@
-import {create, insert, type Orama, search} from "@orama/orama";
 import {Highlight} from "@orama/highlight";
+import {create, insert, type Orama, search} from "@orama/orama";
 import {Search as SearchIcon, X} from "lucide-react";
-import {useEffect, useMemo, useRef, useState} from "react";
-import type {SearchConfig} from "@/schema/ts/project.interface";
+import {useEffect, useRef, useState} from "react";
 import type {Types} from "@/schema/ts/types";
 
 interface Resource {
@@ -35,16 +34,9 @@ interface SearchResult {
 
 interface SearchProps {
   resources: Resource[];
-  searchConfig?: SearchConfig;
 }
 
-// Default search configuration
-const defaultSearchConfig: SearchConfig = {
-  enableHighlighting: true,
-  enableEmbeddings: false,
-};
-
-export function Search({resources, searchConfig = defaultSearchConfig}: SearchProps) {
+export function Search({ resources }: SearchProps) {
   const [query, setQuery] = useState("");
   const [results, setResults] = useState<SearchResult[]>([]);
   const [isLoading, setIsLoading] = useState(false);
@@ -54,18 +46,11 @@ export function Search({resources, searchConfig = defaultSearchConfig}: SearchPr
   const inputRef = useRef<HTMLInputElement>(null);
   const dbRef = useRef<Orama<any> | null>(null);
 
-  // Merge with defaults
-  const config = {...defaultSearchConfig, ...searchConfig};
-
-  // Create highlighter instance if enabled
-  const highlighter = useMemo(
-      () =>
-          config.enableHighlighting
-              ? new Highlight({
-                CSSClass: "bg-primary/20 text-primary font-semibold rounded px-0.5",
-              })
-              : null,
-      [config.enableHighlighting]
+  // Create highlighter instance (always enabled)
+  const highlighter = useRef(
+    new Highlight({
+      CSSClass: "bg-primary/20 text-primary font-semibold rounded px-0.5",
+    })
   );
 
   // Initialize Orama database
@@ -74,49 +59,18 @@ export function Search({resources, searchConfig = defaultSearchConfig}: SearchPr
       if (dbRef.current) return;
 
       try {
-        // Define schema based on embeddings config
-        const schema = config.enableEmbeddings
-            ? {
-              id: "string",
-              name: "string",
-              description: "string",
-              url: "string",
-              category: "string",
-              tags: "string[]",
-              type: "string",
-              descriptionEmbedding: "vector[512]",
-            }
-            : {
-              id: "string",
-              name: "string",
-              description: "string",
-              url: "string",
-              category: "string",
-              tags: "string[]",
-              type: "string",
-            };
-
-        // Create database with conditional plugins
-        const plugins = [];
-
-        if (config.enableEmbeddings) {
-          const {pluginEmbeddings} = await import("@orama/plugin-embeddings");
-          plugins.push(
-              pluginEmbeddings({
-                embeddings: {
-                  defaultProperty: "descriptionEmbedding",
-                  onInsert: {
-                    generate: true,
-                    properties: ["description"],
-                  },
-                },
-              })
-          );
-        }
+        const schema = {
+          id: "string",
+          name: "string",
+          description: "string",
+          url: "string",
+          category: "string",
+          tags: "string[]",
+          type: "string",
+        };
 
         const db = create({
           schema: schema as any,
-          plugins: plugins.length > 0 ? plugins : undefined,
           components: {
             tokenizer: {
               stemming: true,
@@ -146,7 +100,7 @@ export function Search({resources, searchConfig = defaultSearchConfig}: SearchPr
     };
 
     void initializeDatabase();
-  }, [resources, config.enableEmbeddings]);
+  }, [resources]);
 
   // Handle search
   useEffect(() => {
@@ -165,11 +119,9 @@ export function Search({resources, searchConfig = defaultSearchConfig}: SearchPr
       setIsOpen(true);
 
       try {
-        const searchMode = config.enableEmbeddings ? "hybrid" : "fulltext";
-
         const searchResults = await search(dbRef.current, {
           term: query,
-          mode: searchMode as any,
+          mode: "fulltext",
           properties: ["name", "description", "category", "tags"],
           tolerance: 1,
           boost: {
@@ -183,20 +135,18 @@ export function Search({resources, searchConfig = defaultSearchConfig}: SearchPr
 
         const formattedResults: SearchResult[] = searchResults.hits.map((hit) => {
           const result: SearchResult = {
-            id: hit.document.id,
+            id: String(hit.document.id),
             name: hit.document.name,
             description: hit.document.description,
             url: hit.document.url,
           };
 
-          // Add highlighting if enabled
-          if (highlighter) {
-            result.nameHighlighted = highlighter.highlight(hit.document.name, query).HTML;
-            result.descriptionHighlighted = highlighter.highlight(
-                hit.document.description,
-                query
-            ).HTML;
-          }
+          // Add highlighting
+          result.nameHighlighted = highlighter.current.highlight(hit.document.name, query).HTML;
+          result.descriptionHighlighted = highlighter.current.highlight(
+            hit.document.description,
+            query
+          ).HTML;
 
           return result;
         });
@@ -213,7 +163,7 @@ export function Search({resources, searchConfig = defaultSearchConfig}: SearchPr
 
     const debounce = setTimeout(searchContent, 300);
     return () => clearTimeout(debounce);
-  }, [query, highlighter, config.enableEmbeddings]);
+  }, [query]);
 
   // Handle keyboard navigation
   useEffect(() => {
@@ -317,22 +267,22 @@ export function Search({resources, searchConfig = defaultSearchConfig}: SearchPr
                     aria-selected={selectedIndex === index}
                   >
                     {result.nameHighlighted ? (
-                        <div
-                            className="font-medium text-sm mb-1"
-                            dangerouslySetInnerHTML={{__html: result.nameHighlighted}}
-                        />
+                      <div
+                        className="font-medium text-sm mb-1"
+                        dangerouslySetInnerHTML={{ __html: result.nameHighlighted }}
+                      />
                     ) : (
-                        <div className="font-medium text-sm mb-1">{result.name}</div>
+                      <div className="font-medium text-sm mb-1">{result.name}</div>
                     )}
                     {result.descriptionHighlighted ? (
-                        <div
-                            className="text-xs text-muted-foreground line-clamp-2"
-                            dangerouslySetInnerHTML={{__html: result.descriptionHighlighted}}
-                        />
+                      <div
+                        className="text-xs text-muted-foreground line-clamp-2"
+                        dangerouslySetInnerHTML={{ __html: result.descriptionHighlighted }}
+                      />
                     ) : (
-                        <div className="text-xs text-muted-foreground line-clamp-2">
-                          {result.description}
-                        </div>
+                      <div className="text-xs text-muted-foreground line-clamp-2">
+                        {result.description}
+                      </div>
                     )}
                   </a>
                 </li>

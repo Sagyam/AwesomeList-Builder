@@ -2,14 +2,6 @@ import {z} from "zod";
 import {ResourceArraySchema} from "@/schema/zod/validation";
 
 /**
- * Search configuration schema
- */
-export const SearchConfigSchema = z.object({
-  enableHighlighting: z.boolean().default(true),
-  enableEmbeddings: z.boolean().default(false),
-});
-
-/**
  * Project metadata schema
  * Describes the overall awesome list project
  */
@@ -43,7 +35,6 @@ export const ProjectMetadataSchema = z.object({
     .optional(),
   created: z.iso.datetime({message: "Created date must be a valid ISO 8601 datetime"}),
   updated: z.iso.datetime({message: "Updated date must be a valid ISO 8601 datetime"}),
-  search: SearchConfigSchema.optional(),
 });
 
 /**
@@ -54,6 +45,5 @@ export const ProjectSchema = z.object({
   resources: ResourceArraySchema.optional(),
 });
 
-export type SearchConfigInput = z.infer<typeof SearchConfigSchema>;
 export type ProjectMetadataInput = z.infer<typeof ProjectMetadataSchema>;
 export type ProjectInput = z.infer<typeof ProjectSchema>;

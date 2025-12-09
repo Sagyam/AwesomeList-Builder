@@ -52,5 +52,5 @@ export {
 export type { ResourceArrayInput, ResourceInput } from "./validation.ts";
 export type { VideoInput } from "./video.schema.ts";
 export { VideoSchema } from "./video.schema.ts";
-export type {ProjectInput, ProjectMetadataInput, SearchConfigInput} from "./project.schema.ts";
-export {ProjectMetadataSchema, ProjectSchema, SearchConfigSchema} from "./project.schema.ts";
+export type {ProjectInput, ProjectMetadataInput} from "./project.schema.ts";
+export {ProjectMetadataSchema, ProjectSchema} from "./project.schema.ts";

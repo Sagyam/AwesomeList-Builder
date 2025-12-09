@@ -8,7 +8,6 @@ import {ResourceListItem} from "@/components/ResourceListItem";
 import {Search} from "@/components/Search";
 import {SortBar, type SortOption, type SortOrder} from "@/components/SortBar";
 
-import type {SearchConfig} from "@/schema/ts/project.interface";
 import type {Types} from "@/schema/ts/types";
 
 interface Resource {
@@ -35,7 +34,6 @@ interface ResourcesBrowserProps {
     categories: string[];
     licenses: string[];
     languages: string[];
-    searchConfig?: SearchConfig;
 }
 
 export function ResourcesBrowser({
@@ -43,7 +41,6 @@ export function ResourcesBrowser({
                                      categories,
                                      licenses,
                                      languages,
-                                     searchConfig,
                                  }: ResourcesBrowserProps) {
     const [viewMode, setViewMode] = React.useState<"grid" | "list">("grid");
     const [filters, setFilters] = React.useState<FilterState>({
@@ -187,7 +184,7 @@ export function ResourcesBrowser({
         <div className="space-y-6">
             {/* Search */}
             <div className="flex justify-center">
-                <Search resources={resources} searchConfig={searchConfig}/>
+                <Search resources={resources}/>
             </div>
 
             {/* Filters */}

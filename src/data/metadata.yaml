@@ -32,17 +32,3 @@ social:
   website: https://awesome-web-dev.com
 created: '2024-01-01T00:00:00.000Z'
 updated: '2025-12-09T00:00:00.000Z'
-
-# Full-Text Search Configuration
-# Configure Orama search features with different trade-offs
-search:
-  # Enable search result highlighting (Recommended: true)
-  # Highlights matching text in search results with minimal bundle overhead (~2KB)
-  # Trade-off: Minimal - adds highlighting visual feedback
-  enableHighlighting: true
-
-  # Enable semantic/vector search with AI embeddings (Default: false)
-  # Uses TensorFlow.js to understand conceptual similarity (e.g., "UI widgets" finds "React components")
-  # Trade-off: +111KB gzipped, 8x bundle size increase, slow initialization
-  # Warning: Massive bundle overhead. Only enable for 500+ resources or semantic search needs.
-  enableEmbeddings: false
