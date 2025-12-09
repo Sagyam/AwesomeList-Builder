@@ -8,7 +8,7 @@ Transform static "awesome" lists into modern, discoverable, and engaging resourc
 
 ## 📊 Development Phases
 
-### Phase 0: Foundation & Setup (Week 1)
+### Phase 0: Foundation & Setup
 **Goal:** Project scaffolding and basic infrastructure
 
 - [x] Project initialization
@@ -22,7 +22,7 @@ Transform static "awesome" lists into modern, discoverable, and engaging resourc
 
 ---
 
-### Phase 1: Core Infrastructure (Weeks 2-3)
+### Phase 1: Core Infrastructure
 **Goal:** Build the fundamental architecture and data layer
 
 #### 1.1 Data Layer
@@ -49,7 +49,43 @@ Transform static "awesome" lists into modern, discoverable, and engaging resourc
 
 ---
 
-### Phase 2: API Integration & Data Fetching (Weeks 4-5)
+### Phase 2: UI/UX Enhancement
+
+**Goal:** Rich, interactive user interface
+
+#### 3.1 Advanced Project Cards
+
+- [ ] Card layout with all metadata
+- [ ] List layout (compact view)
+- [ ] Toggle between layouts
+- [ ] Project health indicators
+- [ ]
+- [ ] License icons and badges
+- [ ] Package registry badges
+
+---
+
+#### 3.2 Visual Elements
+
+- [ ] Image optimization (AVIF + fallbacks)
+- [ ] Lazy loading images
+- [ ] Screenshot/preview support
+- [ ] Lucide icon integration
+- [ ] Loading states and skeletons
+
+#### 3.3 Theme System
+
+- [ ] Site theme customization
+- [ ] Light/dark mode toggle
+- [ ] Theme persistence (localStorage)
+- [ ] CSS custom properties for themes
+- [ ] Smooth transitions
+
+**Deliverable:** Beautiful, responsive UI with theme support
+
+---
+
+### Phase 3: API Integration & Data Fetching
 **Goal:** Implement dynamic data fetching from external APIs
 
 #### 2.1 GitHub Integration
@@ -76,36 +112,7 @@ Transform static "awesome" lists into modern, discoverable, and engaging resourc
 
 ---
 
-### Phase 3: UI/UX Enhancement (Weeks 6-7)
-**Goal:** Rich, interactive user interface
-
-#### 3.1 Advanced Project Cards
-- [ ] Card layout with all metadata
-- [ ] List layout (compact view)
-- [ ] Toggle between layouts
-- [ ] Project health indicators
-- [ ] License icons and badges
-- [ ] Package registry badges
-
-#### 3.2 Visual Elements
-- [ ] Image optimization (AVIF + fallbacks)
-- [ ] Lazy loading images
-- [ ] Screenshot/preview support
-- [ ] Lucide icon integration
-- [ ] Loading states and skeletons
-
-#### 3.3 Theme System
-- [ ] Site theme customization
-- [ ] Light/dark mode toggle
-- [ ] Theme persistence (localStorage)
-- [ ] CSS custom properties for themes
-- [ ] Smooth transitions
-
-**Deliverable:** Beautiful, responsive UI with theme support
-
----
-
-### Phase 4: Search & Discovery (Week 8)
+### Phase 4: Search & Discovery
 **Goal:** Implement powerful search and filtering
 
 #### 4.1 Pagefind Integration
@@ -134,7 +141,7 @@ Transform static "awesome" lists into modern, discoverable, and engaging resourc
 
 ---
 
-### Phase 5: Analytics & Insights (Week 9)
+### Phase 5: Analytics & Insights
 **Goal:** Add analytics dashboard and project health metrics
 
 #### 5.1 Stats Dashboard
@@ -163,7 +170,7 @@ Transform static "awesome" lists into modern, discoverable, and engaging resourc
 
 ---
 
-### Phase 6: Advanced Features (Weeks 10-11)
+### Phase 6: Advanced Features
 **Goal:** Add power-user features
 
 #### 6.1 Favorites System
@@ -190,7 +197,7 @@ Transform static "awesome" lists into modern, discoverable, and engaging resourc
 
 ---
 
-### Phase 7: Performance & Optimization (Week 12)
+### Phase 7: Performance & Optimization
 **Goal:** Optimize for speed and best practices
 
 #### 7.1 Performance
