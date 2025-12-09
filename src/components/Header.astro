@@ -1,6 +1,7 @@
 ---
 // Header component with navigation
 import { ThemeToggle } from "@/components/ThemeToggle";
+import {BookOpen, Search, Menu} from "lucide-react";
 ---
 
 <header class="border-b bg-background sticky top-0 z-50">
@@ -9,20 +10,7 @@ import { ThemeToggle } from "@/components/ThemeToggle";
       <!-- Logo and Title -->
       <div class="flex items-center gap-2">
         <a href="/" class="flex items-center gap-2 transition-opacity hover:opacity-80">
-          <svg
-            class="h-8 w-8 text-primary"
-            xmlns="http://www.w3.org/2000/svg"
-            viewBox="0 0 24 24"
-            fill="none"
-            stroke="currentColor"
-            stroke-width="2"
-            stroke-linecap="round"
-            stroke-linejoin="round"
-          >
-            <path d="M4 19.5v-15A2.5 2.5 0 0 1 6.5 2H20v20H6.5a2.5 2.5 0 0 1 0-5H20" />
-            <path d="M8 7h6" />
-            <path d="M8 11h8" />
-          </svg>
+          <BookOpen className="h-8 w-8 text-primary"/>
           <span class="text-xl font-bold">AwesomeKit</span>
         </a>
       </div>
@@ -56,19 +44,7 @@ import { ThemeToggle } from "@/components/ThemeToggle";
           class="inline-flex items-center justify-center rounded-md text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50 hover:bg-accent hover:text-accent-foreground h-9 w-9"
           aria-label="Search"
         >
-          <svg
-            class="h-5 w-5"
-            xmlns="http://www.w3.org/2000/svg"
-            viewBox="0 0 24 24"
-            fill="none"
-            stroke="currentColor"
-            stroke-width="2"
-            stroke-linecap="round"
-            stroke-linejoin="round"
-          >
-            <circle cx="11" cy="11" r="8" />
-            <path d="m21 21-4.3-4.3" />
-          </svg>
+          <Search className="h-5 w-5"/>
         </button>
 
           <!-- Theme Toggle -->
@@ -79,20 +55,7 @@ import { ThemeToggle } from "@/components/ThemeToggle";
           class="md:hidden inline-flex items-center justify-center rounded-md text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring hover:bg-accent hover:text-accent-foreground h-9 w-9"
           aria-label="Toggle menu"
         >
-          <svg
-            class="h-5 w-5"
-            xmlns="http://www.w3.org/2000/svg"
-            viewBox="0 0 24 24"
-            fill="none"
-            stroke="currentColor"
-            stroke-width="2"
-            stroke-linecap="round"
-            stroke-linejoin="round"
-          >
-            <line x1="4" x2="20" y1="12" y2="12" />
-            <line x1="4" x2="20" y1="6" y2="6" />
-            <line x1="4" x2="20" y1="18" y2="18" />
-          </svg>
+          <Menu className="h-5 w-5"/>
         </button>
       </div>
     </div>
