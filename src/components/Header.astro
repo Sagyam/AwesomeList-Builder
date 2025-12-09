@@ -1,7 +1,14 @@
 ---
-import {BookOpen, Menu} from "lucide-react";
+import { BookOpen } from "lucide-react";
+import { MobileNav } from "@/components/MobileNav";
 // Header component with navigation
 import { ThemeToggle } from "@/components/ThemeToggle";
+
+const navLinks = [
+  { href: "/", label: "Home" },
+  { href: "/resources", label: "Resources" },
+  { href: "/about", label: "About" },
+];
 ---
 
 <header class="border-b bg-background sticky top-0 z-50">
@@ -42,13 +49,8 @@ import { ThemeToggle } from "@/components/ThemeToggle";
           <!-- Theme Toggle -->
           <ThemeToggle client:load/>
 
-        <!-- Mobile Menu Button -->
-        <button
-          class="md:hidden inline-flex items-center justify-center rounded-md text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring hover:bg-accent hover:text-accent-foreground h-9 w-9"
-          aria-label="Toggle menu"
-        >
-          <Menu className="h-5 w-5"/>
-        </button>
+        <!-- Mobile Menu -->
+        <MobileNav client:load links={navLinks}/>
       </div>
     </div>
   </div>
