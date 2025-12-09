@@ -67,22 +67,8 @@ const resourcesData = rankedResources.map((resource) => ({
     </section>
 
     <!-- Resources Section -->
-    <section class="py-12 md:py-16" data-pagefind-body>
+    <section class="py-12 md:py-16">
         <div class="container mx-auto px-4 sm:px-6 lg:px-8">
-            <!-- Hidden metadata for Pagefind indexing -->
-            <div class="hidden">
-                {resourcesData.map((resource) => (
-                        <article data-pagefind-meta={`title:${resource.name}`}>
-                            <h2>{resource.name}</h2>
-                            <p>{resource.description}</p>
-                            <span data-pagefind-filter="category">{resource.category}</span>
-                            {resource.tags?.map((tag: string) => (
-                                    <span>{tag}</span>
-                            ))}
-                        </article>
-                ))}
-            </div>
-
             <ResourcesBrowser
                     client:load
                     resources={resourcesData}

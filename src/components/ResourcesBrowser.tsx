@@ -184,7 +184,7 @@ export function ResourcesBrowser({
         <div className="space-y-6">
             {/* Search */}
             <div className="flex justify-center">
-                <Search/>
+                <Search resources={resources}/>
             </div>
 
             {/* Filters */}
