@@ -30,7 +30,7 @@ export function ResourceCard({
   name,
   description,
   url,
-                               type,
+  type,
   category = "Uncategorized",
   language,
   languages = [],
@@ -46,11 +46,11 @@ export function ResourceCard({
   // Use languages array if available, otherwise fall back to single language
   const techList = languages.length > 0 ? languages : language ? [language] : [];
   const techIcons = getTechIconClasses(techList, 3);
-  const {icon: TypeIcon, label: typeLabel} = getTypeIcon(type);
+  const { icon: TypeIcon, label: typeLabel } = getTypeIcon(type);
 
   return (
     <a href={`/resources/${id}`} className="block group">
-      <Card className="transition-all hover:shadow-lg overflow-hidden h-full">
+      <Card className="transition-all duration-300 hover:shadow-xl hover:-translate-y-2 hover:border-primary/20 overflow-hidden h-full">
         {/* Image Section */}
         {image && (
           <div className="relative aspect-video w-full overflow-hidden bg-muted">
@@ -64,43 +64,40 @@ export function ResourceCard({
             <div className="absolute top-2 right-2 flex gap-2">
               <TooltipProvider>
                 {featured && (
-                    <Tooltip>
-                      <TooltipTrigger asChild>
-                      <span
-                          className="inline-flex items-center justify-center rounded-full bg-yellow-500 p-1.5 text-white shadow-sm cursor-help">
-                        <Star className="h-3.5 w-3.5 fill-current"/>
+                  <Tooltip>
+                    <TooltipTrigger asChild>
+                      <span className="inline-flex items-center justify-center rounded-full bg-yellow-500 p-1.5 text-white shadow-sm cursor-help">
+                        <Star className="h-3.5 w-3.5 fill-current" />
                       </span>
-                      </TooltipTrigger>
-                      <TooltipContent>
-                        <p>Featured</p>
-                      </TooltipContent>
-                    </Tooltip>
+                    </TooltipTrigger>
+                    <TooltipContent>
+                      <p>Featured</p>
+                    </TooltipContent>
+                  </Tooltip>
                 )}
                 {trending && (
-                    <Tooltip>
-                      <TooltipTrigger asChild>
-                      <span
-                          className="inline-flex items-center justify-center rounded-full bg-green-500 p-1.5 text-white shadow-sm cursor-help">
-                        <TrendingUp className="h-3.5 w-3.5"/>
+                  <Tooltip>
+                    <TooltipTrigger asChild>
+                      <span className="inline-flex items-center justify-center rounded-full bg-green-500 p-1.5 text-white shadow-sm cursor-help">
+                        <TrendingUp className="h-3.5 w-3.5" />
                       </span>
-                      </TooltipTrigger>
-                      <TooltipContent>
-                        <p>Trending</p>
-                      </TooltipContent>
-                    </Tooltip>
+                    </TooltipTrigger>
+                    <TooltipContent>
+                      <p>Trending</p>
+                    </TooltipContent>
+                  </Tooltip>
                 )}
                 {archived && (
-                    <Tooltip>
-                      <TooltipTrigger asChild>
-                      <span
-                          className="inline-flex items-center justify-center rounded-full bg-red-500 p-1.5 text-white shadow-sm cursor-help">
-                        <Archive className="h-3.5 w-3.5"/>
+                  <Tooltip>
+                    <TooltipTrigger asChild>
+                      <span className="inline-flex items-center justify-center rounded-full bg-red-500 p-1.5 text-white shadow-sm cursor-help">
+                        <Archive className="h-3.5 w-3.5" />
                       </span>
-                      </TooltipTrigger>
-                      <TooltipContent>
-                        <p>Archived</p>
-                      </TooltipContent>
-                    </Tooltip>
+                    </TooltipTrigger>
+                    <TooltipContent>
+                      <p>Archived</p>
+                    </TooltipContent>
+                  </Tooltip>
                 )}
               </TooltipProvider>
             </div>
@@ -117,43 +114,40 @@ export function ResourceCard({
                   <div className="flex gap-1">
                     <TooltipProvider>
                       {featured && (
-                          <Tooltip>
-                            <TooltipTrigger asChild>
-                            <span
-                                className="inline-flex items-center justify-center rounded-full bg-yellow-500/10 p-1 text-yellow-600 dark:text-yellow-400 cursor-help">
-                              <Star className="h-3 w-3 fill-current"/>
+                        <Tooltip>
+                          <TooltipTrigger asChild>
+                            <span className="inline-flex items-center justify-center rounded-full bg-yellow-500/10 p-1 text-yellow-600 dark:text-yellow-400 cursor-help">
+                              <Star className="h-3 w-3 fill-current" />
                             </span>
-                            </TooltipTrigger>
-                            <TooltipContent>
-                              <p>Featured</p>
-                            </TooltipContent>
-                          </Tooltip>
+                          </TooltipTrigger>
+                          <TooltipContent>
+                            <p>Featured</p>
+                          </TooltipContent>
+                        </Tooltip>
                       )}
                       {trending && (
-                          <Tooltip>
-                            <TooltipTrigger asChild>
-                            <span
-                                className="inline-flex items-center justify-center rounded-full bg-green-500/10 p-1 text-green-600 dark:text-green-400 cursor-help">
-                              <TrendingUp className="h-3 w-3"/>
+                        <Tooltip>
+                          <TooltipTrigger asChild>
+                            <span className="inline-flex items-center justify-center rounded-full bg-green-500/10 p-1 text-green-600 dark:text-green-400 cursor-help">
+                              <TrendingUp className="h-3 w-3" />
                             </span>
-                            </TooltipTrigger>
-                            <TooltipContent>
-                              <p>Trending</p>
-                            </TooltipContent>
-                          </Tooltip>
+                          </TooltipTrigger>
+                          <TooltipContent>
+                            <p>Trending</p>
+                          </TooltipContent>
+                        </Tooltip>
                       )}
                       {archived && (
-                          <Tooltip>
-                            <TooltipTrigger asChild>
-                            <span
-                                className="inline-flex items-center justify-center rounded-full bg-red-500/10 p-1 text-red-600 dark:text-red-400 cursor-help">
-                              <Archive className="h-3 w-3"/>
+                        <Tooltip>
+                          <TooltipTrigger asChild>
+                            <span className="inline-flex items-center justify-center rounded-full bg-red-500/10 p-1 text-red-600 dark:text-red-400 cursor-help">
+                              <Archive className="h-3 w-3" />
                             </span>
-                            </TooltipTrigger>
-                            <TooltipContent>
-                              <p>Archived</p>
-                            </TooltipContent>
-                          </Tooltip>
+                          </TooltipTrigger>
+                          <TooltipContent>
+                            <p>Archived</p>
+                          </TooltipContent>
+                        </Tooltip>
                       )}
                     </TooltipProvider>
                   </div>
@@ -165,9 +159,8 @@ export function ResourceCard({
               <TooltipProvider>
                 <Tooltip>
                   <TooltipTrigger asChild>
-                    <div
-                        className="inline-flex items-center justify-center rounded-full bg-primary/10 p-2 text-primary hover:bg-primary/20 transition-colors cursor-help">
-                      <TypeIcon className="h-4 w-4"/>
+                    <div className="inline-flex items-center justify-center rounded-full bg-primary/10 p-2 text-primary hover:bg-primary/20 transition-colors cursor-help">
+                      <TypeIcon className="h-4 w-4" />
                     </div>
                   </TooltipTrigger>
                   <TooltipContent>
@@ -209,7 +202,7 @@ export function ResourceCard({
             )}
             {license && (
               <div className="flex items-center gap-1">
-                <Scale className="h-4 w-4"/>
+                <Scale className="h-4 w-4" />
                 <span>{license}</span>
               </div>
             )}

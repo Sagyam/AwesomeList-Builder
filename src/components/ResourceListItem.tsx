@@ -1,5 +1,5 @@
-import * as React from "react";
 import {Archive, Scale, Star, TrendingUp} from "lucide-react";
+import * as React from "react";
 import {Tooltip, TooltipContent, TooltipProvider, TooltipTrigger} from "@/components/ui/tooltip";
 import {getTechIconClasses} from "@/lib/utils/tech-icons";
 import {getTypeIcon} from "@/lib/utils/type-icons";
@@ -27,10 +27,10 @@ export function ResourceListItem({
   name,
   description,
   url,
-                                   type,
+  type,
   category = "Uncategorized",
   language,
-                                   languages = [],
+  languages = [],
   stars,
   license,
   tags = [],
@@ -41,14 +41,11 @@ export function ResourceListItem({
   // Use languages array if available, otherwise fall back to single language
   const techList = languages.length > 0 ? languages : language ? [language] : [];
   const techIcons = getTechIconClasses(techList, 3);
-  const {icon: TypeIcon, label: typeLabel} = getTypeIcon(type);
+  const { icon: TypeIcon, label: typeLabel } = getTypeIcon(type);
 
   return (
-    <a
-      href={`/resources/${id}`}
-      className="block group border-b border-border last:border-0 py-4 px-2 hover:bg-accent/50 transition-colors"
-    >
-      <div className="flex items-start gap-4">
+    <a href={`/resources/${id}`} className="block group">
+      <div className="flex items-start gap-4 border border-border rounded-lg p-4 mb-3 transition-all duration-300 hover:shadow-md hover:-translate-y-1 hover:border-primary/30 hover:bg-accent/30">
         {/* Main Content */}
         <div className="flex-1 min-w-0">
           {/* Title Row */}
@@ -60,43 +57,40 @@ export function ResourceListItem({
             {/* Status Indicators */}
             <TooltipProvider>
               {featured && (
-                  <Tooltip>
-                    <TooltipTrigger asChild>
-                    <span
-                        className="inline-flex items-center justify-center rounded-full bg-yellow-500/10 p-0.5 text-yellow-600 dark:text-yellow-400 cursor-help">
-                      <Star className="h-3 w-3 fill-current"/>
+                <Tooltip>
+                  <TooltipTrigger asChild>
+                    <span className="inline-flex items-center justify-center rounded-full bg-yellow-500/10 p-0.5 text-yellow-600 dark:text-yellow-400 cursor-help">
+                      <Star className="h-3 w-3 fill-current" />
                     </span>
-                    </TooltipTrigger>
-                    <TooltipContent>
-                      <p>Featured</p>
-                    </TooltipContent>
-                  </Tooltip>
+                  </TooltipTrigger>
+                  <TooltipContent>
+                    <p>Featured</p>
+                  </TooltipContent>
+                </Tooltip>
               )}
               {trending && (
-                  <Tooltip>
-                    <TooltipTrigger asChild>
-                    <span
-                        className="inline-flex items-center justify-center rounded-full bg-green-500/10 p-0.5 text-green-600 dark:text-green-400 cursor-help">
-                      <TrendingUp className="h-3 w-3"/>
+                <Tooltip>
+                  <TooltipTrigger asChild>
+                    <span className="inline-flex items-center justify-center rounded-full bg-green-500/10 p-0.5 text-green-600 dark:text-green-400 cursor-help">
+                      <TrendingUp className="h-3 w-3" />
                     </span>
-                    </TooltipTrigger>
-                    <TooltipContent>
-                      <p>Trending</p>
-                    </TooltipContent>
-                  </Tooltip>
+                  </TooltipTrigger>
+                  <TooltipContent>
+                    <p>Trending</p>
+                  </TooltipContent>
+                </Tooltip>
               )}
               {archived && (
-                  <Tooltip>
-                    <TooltipTrigger asChild>
-                    <span
-                        className="inline-flex items-center justify-center rounded-full bg-red-500/10 p-0.5 text-red-600 dark:text-red-400 cursor-help">
-                      <Archive className="h-3 w-3"/>
+                <Tooltip>
+                  <TooltipTrigger asChild>
+                    <span className="inline-flex items-center justify-center rounded-full bg-red-500/10 p-0.5 text-red-600 dark:text-red-400 cursor-help">
+                      <Archive className="h-3 w-3" />
                     </span>
-                    </TooltipTrigger>
-                    <TooltipContent>
-                      <p>Archived</p>
-                    </TooltipContent>
-                  </Tooltip>
+                  </TooltipTrigger>
+                  <TooltipContent>
+                    <p>Archived</p>
+                  </TooltipContent>
+                </Tooltip>
               )}
             </TooltipProvider>
 
@@ -104,9 +98,8 @@ export function ResourceListItem({
             <TooltipProvider>
               <Tooltip>
                 <TooltipTrigger asChild>
-                  <span
-                      className="inline-flex items-center justify-center rounded-full bg-primary/10 p-1 text-primary cursor-help">
-                    <TypeIcon className="h-3.5 w-3.5"/>
+                  <span className="inline-flex items-center justify-center rounded-full bg-primary/10 p-1 text-primary cursor-help">
+                    <TypeIcon className="h-3.5 w-3.5" />
                   </span>
                 </TooltipTrigger>
                 <TooltipContent>
@@ -124,19 +117,19 @@ export function ResourceListItem({
             {techIcons.length > 0 && (
               <div className="flex items-center gap-1">
                 {techIcons.map((iconClass, index) => (
-                    <i key={index} className={`${iconClass} text-sm`} title={techList[index]}/>
+                  <i key={index} className={`${iconClass} text-sm`} title={techList[index]} />
                 ))}
               </div>
             )}
             {stars !== undefined && (
               <div className="flex items-center gap-1">
-                <Star className="h-3.5 w-3.5 fill-yellow-400 stroke-yellow-400"/>
+                <Star className="h-3.5 w-3.5 fill-yellow-400 stroke-yellow-400" />
                 <span>{stars.toLocaleString()}</span>
               </div>
             )}
             {license && (
               <div className="flex items-center gap-1">
-                <Scale className="h-3.5 w-3.5"/>
+                <Scale className="h-3.5 w-3.5" />
                 <span>{license}</span>
               </div>
             )}

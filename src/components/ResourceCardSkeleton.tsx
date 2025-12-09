@@ -3,7 +3,7 @@ import {Skeleton} from "@/components/ui/skeleton";
 
 export function ResourceCardSkeleton({ withImage = true }: { withImage?: boolean }) {
   return (
-    <Card className="overflow-hidden">
+    <Card className="overflow-hidden h-full">
       {/* Image Skeleton */}
       {withImage && <Skeleton className="aspect-video w-full" />}
 
