@@ -7,30 +7,10 @@ import {ResourceCard} from "@/components/ResourceCard";
 import {ResourceListItem} from "@/components/ResourceListItem";
 import {Search} from "@/components/Search";
 import {SortBar, type SortOption, type SortOrder} from "@/components/SortBar";
-
-import type {Types} from "@/schema/ts/types";
-
-interface Resource {
-    id: string;
-    name: string;
-    description: string;
-    url: string;
-    type: Types;
-    category?: string;
-    language?: string;
-    languages?: string[];
-    stars?: number;
-    license?: string;
-    tags?: string[];
-    image?: string;
-    imageAlt?: string;
-    archived?: boolean;
-    trending?: boolean;
-    featured?: boolean;
-}
+import type {DisplayResource} from "@/schema/ts/base.interface";
 
 interface ResourcesBrowserProps {
-    resources: Resource[];
+    resources: DisplayResource[];
     categories: string[];
     licenses: string[];
     languages: string[];

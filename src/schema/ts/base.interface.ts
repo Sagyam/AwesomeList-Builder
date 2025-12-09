@@ -34,3 +34,26 @@ export interface BaseResource {
   image?: string; // URL or path to image/screenshot
   imageAlt?: string; // Alt text for accessibility
 }
+
+/**
+ * DisplayResource is the shape of resource data used by UI components
+ * This is created by transforming BaseResource for display purposes
+ */
+export interface DisplayResource {
+  id: string;
+  name: string;
+  description: string;
+  url: string;
+  type: Types;
+  category?: string;
+  language?: string;
+  languages?: string[];
+  stars?: number;
+  license?: string;
+  tags?: string[];
+  image?: string;
+  imageAlt?: string;
+  archived?: boolean;
+  trending?: boolean;
+  featured?: boolean;
+}

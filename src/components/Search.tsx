@@ -2,26 +2,7 @@ import {Highlight} from "@orama/highlight";
 import {create, insert, type Orama, search} from "@orama/orama";
 import {Search as SearchIcon, X} from "lucide-react";
 import {useEffect, useRef, useState} from "react";
-import type {Types} from "@/schema/ts/types";
-
-interface Resource {
-  id: string;
-  name: string;
-  description: string;
-  url: string;
-  type: Types;
-  category?: string;
-  language?: string;
-  languages?: string[];
-  stars?: number;
-  license?: string;
-  tags?: string[];
-  image?: string;
-  imageAlt?: string;
-  archived?: boolean;
-  trending?: boolean;
-  featured?: boolean;
-}
+import type {DisplayResource} from "@/schema/ts/base.interface";
 
 interface SearchResult {
   id: string;
@@ -33,7 +14,7 @@ interface SearchResult {
 }
 
 interface SearchProps {
-  resources: Resource[];
+  resources: DisplayResource[];
 }
 
 export function Search({ resources }: SearchProps) {
