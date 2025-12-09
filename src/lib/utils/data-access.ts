@@ -1,4 +1,4 @@
-import {loadProjectData} from "@/lib/parsers/yaml";
+import {loadProjectData} from "@/lib/parsers/project-parser";
 import type {Project, ProjectMetadata} from "@/schema/ts/project.interface";
 import type {Resource} from "@/schema/ts/types";
 

@@ -1,0 +1,41 @@
+type: course
+id: fullstack-course
+title: Complete Full-Stack Web Development Bootcamp
+url: https://www.udemy.com/course/fullstack-web-development
+description: Learn modern web development from scratch with hands-on projects covering HTML, CSS, JavaScript, React, Node.js, MongoDB, and deployment strategies.
+category: Web Development
+tags:
+  - fullstack
+  - javascript
+  - react
+  - nodejs
+  - mongodb
+topics:
+  - web-development
+  - fullstack-development
+  - programming
+language: en
+dateAdded: '2025-02-01T10:00:00.000Z'
+lastVerified: '2025-12-08T10:00:00.000Z'
+featured: true
+image: https://images.unsplash.com/photo-1498050108023-c5249f4df085?w=800&auto=format&fit=crop
+imageAlt: Laptop with code on screen
+difficulty: beginner
+isPaid: true
+accessLevel: paid
+platform: Udemy
+instructor: Jane Smith
+instructorUrl: https://www.udemy.com/user/jane-smith
+published: '2024-01-15T00:00:00.000Z'
+updated: '2025-11-20T00:00:00.000Z'
+duration: 42 hours
+lessons: 250
+hasSubtitles: true
+price: $89.99
+discountPrice: $12.99
+rating: 4.7
+students: 125000
+certificate: true
+prerequisites:
+  - Basic computer skills
+  - Willingness to learn

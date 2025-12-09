@@ -1,0 +1,29 @@
+type: podcast
+id: syntax-podcast
+title: Syntax - Tasty Web Development Treats
+url: https://syntax.fm
+description: A podcast for web developers about the latest in web development, JavaScript, CSS, tooling, and more. Hosted by Wes Bos and Scott Tolinski.
+category: Web Development Podcast
+tags:
+  - podcast
+  - web-development
+  - javascript
+  - frontend
+topics:
+  - web-development
+  - javascript
+  - programming
+language: en
+dateAdded: '2025-01-25T10:00:00.000Z'
+lastVerified: '2025-12-08T10:00:00.000Z'
+featured: true
+difficulty: intermediate
+isFree: true
+accessLevel: free
+host: Wes Bos and Scott Tolinski
+hostUrl: https://syntax.fm/about
+platform: Multiple
+rssFeed: https://syntax.fm/rss
+published: '2025-12-06T00:00:00.000Z'
+duration: PT45M
+explicit: false

@@ -1,0 +1,41 @@
+type: tool
+id: vscode-tool
+name: Visual Studio Code
+url: https://code.visualstudio.com
+description: A lightweight but powerful source code editor with built-in support for JavaScript, TypeScript, Node.js, and a rich ecosystem of extensions for other languages and runtimes.
+category: Development Tools
+tags:
+  - editor
+  - ide
+  - vscode
+  - development
+topics:
+  - developer-tools
+  - code-editor
+  - productivity
+language: en
+dateAdded: '2025-01-10T10:00:00.000Z'
+lastVerified: '2025-12-08T10:00:00.000Z'
+featured: true
+trending: true
+difficulty: beginner
+isFree: true
+accessLevel: free
+homepage: https://code.visualstudio.com
+repository: https://github.com/microsoft/vscode
+documentation: https://code.visualstudio.com/docs
+license: MIT
+platforms:
+  - Windows
+  - macOS
+  - Linux
+features:
+  - IntelliSense
+  - Debugging
+  - Git integration
+  - Extensions marketplace
+  - Integrated terminal
+isOpenSource: true
+status: active
+version: 1.95.0
+lastUpdated: '2025-12-05T00:00:00.000Z'

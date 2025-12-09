@@ -1,0 +1,45 @@
+type: library
+id: react-library
+name: React
+url: https://react.dev
+description: A JavaScript library for building user interfaces with component-based architecture. React makes it painless to create interactive UIs.
+category: Frontend Framework
+tags:
+  - javascript
+  - ui
+  - components
+  - frontend
+topics:
+  - web-development
+  - frontend
+  - javascript
+language: en
+dateAdded: '2025-01-15T10:00:00.000Z'
+lastVerified: '2025-12-08T10:00:00.000Z'
+featured: true
+trending: true
+image: https://images.unsplash.com/photo-1633356122544-f134324a6cee?w=800&auto=format&fit=crop
+imageAlt: React library logo and code
+difficulty: intermediate
+isFree: true
+accessLevel: free
+package:
+  registry: npm
+  name: react
+repository: https://github.com/facebook/react
+documentation: https://react.dev/learn
+homepage: https://react.dev
+license: MIT
+stars: 230000
+downloads: 20M/week
+lastUpdated: '2025-12-01T00:00:00.000Z'
+version: 19.2.0
+status: active
+maturity: mature
+languages:
+  - JavaScript
+  - TypeScript
+platforms:
+  - Web
+  - Mobile
+  - Desktop
