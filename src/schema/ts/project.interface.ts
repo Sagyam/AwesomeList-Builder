@@ -1,4 +1,13 @@
-import type { Resource } from "@/schema/ts/types";
+import type {Resource} from "@/schema/ts/types";
+
+/**
+ * Search configuration options
+ */
+export interface SearchConfig {
+  enableHighlighting: boolean;
+  enablePersistence: boolean;
+  enableEmbeddings: boolean;
+}
 
 /**
  * Project metadata interface
@@ -30,6 +39,7 @@ export interface ProjectMetadata {
   };
   created: string;
   updated: string;
+  search?: SearchConfig;
 }
 
 /**

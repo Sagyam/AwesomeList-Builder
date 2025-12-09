@@ -1,6 +1,8 @@
 import {create, insert, type Orama, search} from "@orama/orama";
+import {Highlight} from "@orama/highlight";
 import {Search as SearchIcon, X} from "lucide-react";
-import {useEffect, useRef, useState} from "react";
+import {useEffect, useMemo, useRef, useState} from "react";
+import type {SearchConfig} from "@/schema/ts/project.interface";
 import type {Types} from "@/schema/ts/types";
 
 interface Resource {
@@ -25,26 +27,25 @@ interface Resource {
 interface SearchResult {
   id: string;
   name: string;
+  nameHighlighted?: string;
   description: string;
+  descriptionHighlighted?: string;
   url: string;
 }
 
 interface SearchProps {
   resources: Resource[];
+  searchConfig?: SearchConfig;
 }
 
-// Define schema for Orama (outside component to avoid re-creation)
-const schema = {
-  id: "string",
-  name: "string",
-  description: "string",
-  url: "string",
-  category: "string",
-  tags: "string[]",
-  type: "string",
-} as const;
+// Default search configuration
+const defaultSearchConfig: SearchConfig = {
+  enableHighlighting: true,
+  enablePersistence: false,
+  enableEmbeddings: false,
+};
 
-export function Search({ resources }: SearchProps) {
+export function Search({resources, searchConfig = defaultSearchConfig}: SearchProps) {
   const [query, setQuery] = useState("");
   const [results, setResults] = useState<SearchResult[]>([]);
   const [isLoading, setIsLoading] = useState(false);
@@ -52,17 +53,97 @@ export function Search({ resources }: SearchProps) {
   const [selectedIndex, setSelectedIndex] = useState(-1);
   const searchRef = useRef<HTMLDivElement>(null);
   const inputRef = useRef<HTMLInputElement>(null);
-  const dbRef = useRef<Orama<typeof schema> | null>(null);
+  const dbRef = useRef<Orama<any> | null>(null);
+
+  // Merge with defaults
+  const config = {...defaultSearchConfig, ...searchConfig};
+
+  // Create highlighter instance if enabled
+  const highlighter = useMemo(
+      () =>
+          config.enableHighlighting
+              ? new Highlight({
+                CSSClass: "bg-primary/20 text-primary font-semibold rounded px-0.5",
+              })
+              : null,
+      [config.enableHighlighting]
+  );
 
   // Initialize Orama database
   useEffect(() => {
     const initializeDatabase = async () => {
       if (dbRef.current) return;
 
+      const CACHE_KEY = "orama-search-db";
+      const CACHE_VERSION_KEY = "orama-search-version";
+      const currentVersion = JSON.stringify(resources.map((r) => r.id).sort());
+
       try {
-        // Create database with schema
-        const db = await create({
-          schema,
+        // Try to restore from localStorage if persistence is enabled
+        if (config.enablePersistence && typeof window !== "undefined") {
+          try {
+            const cachedVersion = localStorage.getItem(CACHE_VERSION_KEY);
+            const cachedData = localStorage.getItem(CACHE_KEY);
+
+            if (cachedVersion === currentVersion && cachedData) {
+              // Dynamically import persistence plugin only when needed
+              const {restore} = await import("@orama/plugin-data-persistence");
+              const restoredDb = await restore("json", JSON.parse(cachedData));
+
+              if (restoredDb) {
+                dbRef.current = restoredDb;
+                console.log("✓ Search database restored from cache");
+                return;
+              }
+            }
+          } catch (e) {
+            console.warn("Failed to restore cache, rebuilding:", e);
+          }
+        }
+
+        // Define schema based on embeddings config
+        const schema = config.enableEmbeddings
+            ? {
+              id: "string",
+              name: "string",
+              description: "string",
+              url: "string",
+              category: "string",
+              tags: "string[]",
+              type: "string",
+              descriptionEmbedding: "vector[512]",
+            }
+            : {
+              id: "string",
+              name: "string",
+              description: "string",
+              url: "string",
+              category: "string",
+              tags: "string[]",
+              type: "string",
+            };
+
+        // Create database with conditional plugins
+        const plugins = [];
+
+        if (config.enableEmbeddings) {
+          const {pluginEmbeddings} = await import("@orama/plugin-embeddings");
+          plugins.push(
+              pluginEmbeddings({
+                embeddings: {
+                  defaultProperty: "descriptionEmbedding",
+                  onInsert: {
+                    generate: true,
+                    properties: ["description"],
+                  },
+                },
+              })
+          );
+        }
+
+        const db = create({
+          schema: schema as any,
+          plugins: plugins.length > 0 ? plugins : undefined,
           components: {
             tokenizer: {
               stemming: true,
@@ -71,7 +152,7 @@ export function Search({ resources }: SearchProps) {
           },
         });
 
-        // Insert all resources into the database
+        // Insert all resources
         for (const resource of resources) {
           await insert(db, {
             id: resource.id,
@@ -85,13 +166,28 @@ export function Search({ resources }: SearchProps) {
         }
 
         dbRef.current = db;
+
+        // Persist to localStorage if enabled
+        if (config.enablePersistence && typeof window !== "undefined") {
+          try {
+            const {persist} = await import("@orama/plugin-data-persistence");
+            const serialized = await persist(db, "json");
+            localStorage.setItem(CACHE_KEY, JSON.stringify(serialized));
+            localStorage.setItem(CACHE_VERSION_KEY, currentVersion);
+            console.log("✓ Search database built and cached");
+          } catch (e) {
+            console.warn("Failed to persist cache:", e);
+          }
+        } else {
+          console.log("✓ Search database built");
+        }
       } catch (error) {
         console.error("Failed to initialize search database:", error);
       }
     };
 
     void initializeDatabase();
-  }, [resources]);
+  }, [resources, config.enablePersistence, config.enableEmbeddings]);
 
   // Handle search
   useEffect(() => {
@@ -110,12 +206,15 @@ export function Search({ resources }: SearchProps) {
       setIsOpen(true);
 
       try {
+        const searchMode = config.enableEmbeddings ? "hybrid" : "fulltext";
+
         const searchResults = await search(dbRef.current, {
           term: query,
+          mode: searchMode as any,
           properties: ["name", "description", "category", "tags"],
-          tolerance: 1, // Allow 1 character typo
+          tolerance: 1,
           boost: {
-            name: 3, // Prioritize matches in name
+            name: 3,
             description: 1,
             category: 2,
             tags: 2,
@@ -123,12 +222,25 @@ export function Search({ resources }: SearchProps) {
           limit: 5,
         });
 
-        const formattedResults: SearchResult[] = searchResults.hits.map((hit) => ({
-          id: hit.document.id,
-          name: hit.document.name,
-          description: hit.document.description,
-          url: hit.document.url,
-        }));
+        const formattedResults: SearchResult[] = searchResults.hits.map((hit) => {
+          const result: SearchResult = {
+            id: hit.document.id,
+            name: hit.document.name,
+            description: hit.document.description,
+            url: hit.document.url,
+          };
+
+          // Add highlighting if enabled
+          if (highlighter) {
+            result.nameHighlighted = highlighter.highlight(hit.document.name, query).HTML;
+            result.descriptionHighlighted = highlighter.highlight(
+                hit.document.description,
+                query
+            ).HTML;
+          }
+
+          return result;
+        });
 
         setResults(formattedResults);
         setSelectedIndex(-1);
@@ -142,7 +254,7 @@ export function Search({ resources }: SearchProps) {
 
     const debounce = setTimeout(searchContent, 300);
     return () => clearTimeout(debounce);
-  }, [query]);
+  }, [query, highlighter, config.enableEmbeddings]);
 
   // Handle keyboard navigation
   useEffect(() => {
@@ -245,10 +357,24 @@ export function Search({ resources }: SearchProps) {
                     role="option"
                     aria-selected={selectedIndex === index}
                   >
-                    <div className="font-medium text-sm mb-1">{result.name}</div>
-                    <div className="text-xs text-muted-foreground line-clamp-2">
-                      {result.description}
-                    </div>
+                    {result.nameHighlighted ? (
+                        <div
+                            className="font-medium text-sm mb-1"
+                            dangerouslySetInnerHTML={{__html: result.nameHighlighted}}
+                        />
+                    ) : (
+                        <div className="font-medium text-sm mb-1">{result.name}</div>
+                    )}
+                    {result.descriptionHighlighted ? (
+                        <div
+                            className="text-xs text-muted-foreground line-clamp-2"
+                            dangerouslySetInnerHTML={{__html: result.descriptionHighlighted}}
+                        />
+                    ) : (
+                        <div className="text-xs text-muted-foreground line-clamp-2">
+                          {result.description}
+                        </div>
+                    )}
                   </a>
                 </li>
               ))}
