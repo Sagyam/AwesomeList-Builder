@@ -5,7 +5,6 @@ import type {Resource} from "@/schema/ts/types";
  */
 export interface SearchConfig {
   enableHighlighting: boolean;
-  enablePersistence: boolean;
   enableEmbeddings: boolean;
 }
 

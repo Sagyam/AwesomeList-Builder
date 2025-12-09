@@ -41,7 +41,6 @@ interface SearchProps {
 // Default search configuration
 const defaultSearchConfig: SearchConfig = {
   enableHighlighting: true,
-  enablePersistence: false,
   enableEmbeddings: false,
 };
 
@@ -74,33 +73,7 @@ export function Search({resources, searchConfig = defaultSearchConfig}: SearchPr
     const initializeDatabase = async () => {
       if (dbRef.current) return;
 
-      const CACHE_KEY = "orama-search-db";
-      const CACHE_VERSION_KEY = "orama-search-version";
-      const currentVersion = JSON.stringify(resources.map((r) => r.id).sort());
-
       try {
-        // Try to restore from localStorage if persistence is enabled
-        if (config.enablePersistence && typeof window !== "undefined") {
-          try {
-            const cachedVersion = localStorage.getItem(CACHE_VERSION_KEY);
-            const cachedData = localStorage.getItem(CACHE_KEY);
-
-            if (cachedVersion === currentVersion && cachedData) {
-              // Dynamically import persistence plugin only when needed
-              const {restore} = await import("@orama/plugin-data-persistence");
-              const restoredDb = await restore("json", JSON.parse(cachedData));
-
-              if (restoredDb) {
-                dbRef.current = restoredDb;
-                console.log("✓ Search database restored from cache");
-                return;
-              }
-            }
-          } catch (e) {
-            console.warn("Failed to restore cache, rebuilding:", e);
-          }
-        }
-
         // Define schema based on embeddings config
         const schema = config.enableEmbeddings
             ? {
@@ -166,28 +139,14 @@ export function Search({resources, searchConfig = defaultSearchConfig}: SearchPr
         }
 
         dbRef.current = db;
-
-        // Persist to localStorage if enabled
-        if (config.enablePersistence && typeof window !== "undefined") {
-          try {
-            const {persist} = await import("@orama/plugin-data-persistence");
-            const serialized = await persist(db, "json");
-            localStorage.setItem(CACHE_KEY, JSON.stringify(serialized));
-            localStorage.setItem(CACHE_VERSION_KEY, currentVersion);
-            console.log("✓ Search database built and cached");
-          } catch (e) {
-            console.warn("Failed to persist cache:", e);
-          }
-        } else {
-          console.log("✓ Search database built");
-        }
+        console.log("✓ Search database built");
       } catch (error) {
         console.error("Failed to initialize search database:", error);
       }
     };
 
     void initializeDatabase();
-  }, [resources, config.enablePersistence, config.enableEmbeddings]);
+  }, [resources, config.enableEmbeddings]);
 
   // Handle search
   useEffect(() => {

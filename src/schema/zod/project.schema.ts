@@ -6,7 +6,6 @@ import {ResourceArraySchema} from "@/schema/zod/validation";
  */
 export const SearchConfigSchema = z.object({
   enableHighlighting: z.boolean().default(true),
-  enablePersistence: z.boolean().default(false),
   enableEmbeddings: z.boolean().default(false),
 });
 

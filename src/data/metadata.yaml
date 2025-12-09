@@ -41,14 +41,8 @@ search:
   # Trade-off: Minimal - adds highlighting visual feedback
   enableHighlighting: true
 
-  # Enable database persistence in localStorage (Default: false)
-  # Caches search database to speed up subsequent page loads
-  # Trade-off: +70KB gzipped bundle size, faster repeat visits
-  # Warning: Adds significant bundle size. Only enable if users frequently reload pages.
-  enablePersistence: true
-
   # Enable semantic/vector search with AI embeddings (Default: false)
   # Uses TensorFlow.js to understand conceptual similarity (e.g., "UI widgets" finds "React components")
   # Trade-off: +111KB gzipped, 8x bundle size increase, slow initialization
   # Warning: Massive bundle overhead. Only enable for 500+ resources or semantic search needs.
-  enableEmbeddings: true
+  enableEmbeddings: false
