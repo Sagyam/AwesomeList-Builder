@@ -12,6 +12,7 @@
     "build": "astro build && pagefind --site dist",
     "build:astro": "astro build",
     "build:pagefind": "pagefind --site dist",
+    "build:search": "bun run build && cp -r dist/pagefind public/",
     "preview": "astro preview --host",
     "astro": "astro",
     "lint": "biome lint .",

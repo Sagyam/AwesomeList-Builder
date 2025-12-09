@@ -10,6 +10,11 @@ export default defineConfig({
     plugins: [tailwindcss()],
     server: {
       allowedHosts: ['nixos.tailac2f54.ts.net']
+    },
+    build: {
+      rollupOptions: {
+        external: ['/pagefind/pagefind.js']
+      }
     }
   },
 

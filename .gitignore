@@ -46,3 +46,6 @@ dist/
 cache/
 *.log
 .astro/
+
+# Pagefind (generated during build, copied to public for dev)
+public/pagefind/

@@ -49,19 +49,18 @@ export function Search() {
             if (typeof window === "undefined") return;
 
             try {
-                // Load Pagefind script
-                const script = document.createElement("script");
-                script.src = "/pagefind/pagefind.js";
-                script.async = true;
-                script.onload = () => {
-                    if (window.pagefind) {
-                        window.pagefind.init();
-                        pagefindRef.current = window.pagefind as unknown as PagefindInstance;
-                    }
-                };
-                document.head.appendChild(script);
+                const response = await fetch("/pagefind/pagefind.js", {method: "HEAD"});
+                if (!response.ok) {
+                    return;
+                }
+
+                const pagefind = await import("/pagefind/pagefind.js");
+
+                if (pagefind.default || pagefind) {
+                    pagefindRef.current = (pagefind.default || pagefind) as unknown as PagefindInstance;
+                }
             } catch (error) {
-                console.error("Failed to load Pagefind:", error);
+                console.error("Failed to load search:", error);
             }
         };
 
@@ -71,9 +70,13 @@ export function Search() {
     // Handle search
     useEffect(() => {
         const searchContent = async () => {
-            if (!query.trim() || !pagefindRef.current) {
+            if (!query.trim()) {
                 setResults([]);
                 setIsOpen(false);
+                return;
+            }
+
+            if (!pagefindRef.current) {
                 return;
             }
 

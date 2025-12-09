@@ -1,5 +1,5 @@
 ---
-import { BookOpen, Menu, Search } from "lucide-react";
+import {BookOpen, Menu} from "lucide-react";
 // Header component with navigation
 import { ThemeToggle } from "@/components/ThemeToggle";
 ---
@@ -39,14 +39,6 @@ import { ThemeToggle } from "@/components/ThemeToggle";
 
       <!-- Action Buttons -->
       <div class="flex items-center gap-4">
-        <!-- Search Button (placeholder for Phase 4) -->
-        <button
-          class="inline-flex items-center justify-center rounded-md text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50 hover:bg-accent hover:text-accent-foreground h-9 w-9"
-          aria-label="Search"
-        >
-          <Search className="h-5 w-5"/>
-        </button>
-
           <!-- Theme Toggle -->
           <ThemeToggle client:load/>
 
