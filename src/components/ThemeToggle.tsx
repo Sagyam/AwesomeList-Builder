@@ -1,5 +1,5 @@
-import * as React from "react";
 import {Monitor, Moon, Sun} from "lucide-react";
+import * as React from "react";
 
 type Theme = "light" | "dark" | "system";
 
@@ -64,9 +64,7 @@ export function ThemeToggle() {
             {theme === "light" && <Sun className="h-5 w-5"/>}
             {theme === "dark" && <Moon className="h-5 w-5"/>}
             {theme === "system" && <Monitor className="h-5 w-5"/>}
-            <span className="ml-2 hidden sm:inline">
-        {theme === "light" ? "Light" : theme === "dark" ? "Dark" : "System"}
-      </span>
+            <span className="hidden sm:inline"></span>
         </button>
     );
 }
