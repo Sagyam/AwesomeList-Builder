@@ -1,6 +1,7 @@
 import {DollarSign, Star} from "lucide-react";
 import * as React from "react";
 import {Card, CardAction, CardContent, CardDescription, CardFooter, CardHeader, CardTitle,} from "@/components/ui/card";
+import {getTechIconClasses} from "@/lib/utils/tech-icons";
 
 interface ResourceCardProps {
   id: string;
@@ -9,6 +10,7 @@ interface ResourceCardProps {
   url: string;
   category?: string;
   language?: string;
+  languages?: string[];
   stars?: number;
   license?: string;
   tags?: string[];
@@ -26,6 +28,7 @@ export function ResourceCard({
   url,
   category = "Uncategorized",
   language,
+  languages = [],
   stars,
   license,
   tags = [],
@@ -35,6 +38,9 @@ export function ResourceCard({
   trending = false,
   featured = false,
 }: ResourceCardProps) {
+  // Use languages array if available, otherwise fall back to single language
+  const techList = languages.length > 0 ? languages : language ? [language] : [];
+  const techIcons = getTechIconClasses(techList, 3);
   return (
     <a href={`/resources/${id}`} className="block group">
       <Card className="transition-all hover:shadow-lg overflow-hidden h-full">
@@ -119,10 +125,11 @@ export function ResourceCard({
 
         <CardFooter className="justify-between">
           <div className="flex items-center gap-4 text-sm text-muted-foreground">
-            {language && (
-              <div className="flex items-center gap-1">
-                <div className="h-3 w-3 rounded-full bg-blue-500" />
-                <span>{language}</span>
+            {techIcons.length > 0 && (
+              <div className="flex items-center gap-1.5">
+                {techIcons.map((iconClass, index) => (
+                  <i key={index} className={`${iconClass} text-base`} title={techList[index]} />
+                ))}
               </div>
             )}
             {stars !== undefined && (

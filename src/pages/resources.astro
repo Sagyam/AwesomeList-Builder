@@ -18,6 +18,9 @@ const resourcesData = allResources.map((resource) => ({
     ("languages" in resource && Array.isArray(resource.languages)
       ? resource.languages[0]
       : undefined),
+    languages: "languages" in resource && Array.isArray(resource.languages)
+        ? resource.languages
+        : [],
   stars: "stars" in resource ? resource.stars : undefined,
   license: "license" in resource ? resource.license : undefined,
   tags: resource.tags,

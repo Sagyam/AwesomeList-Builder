@@ -1,5 +1,6 @@
 import * as React from "react";
 import {DollarSign, Star} from "lucide-react";
+import {getTechIconClasses} from "@/lib/utils/tech-icons";
 
 interface ResourceListItemProps {
   id: string;
@@ -8,6 +9,7 @@ interface ResourceListItemProps {
   url: string;
   category?: string;
   language?: string;
+  languages?: string[];
   stars?: number;
   license?: string;
   tags?: string[];
@@ -23,6 +25,7 @@ export function ResourceListItem({
   url,
   category = "Uncategorized",
   language,
+                                   languages = [],
   stars,
   license,
   tags = [],
@@ -30,6 +33,9 @@ export function ResourceListItem({
   trending = false,
   featured = false,
 }: ResourceListItemProps) {
+  // Use languages array if available, otherwise fall back to single language
+  const techList = languages.length > 0 ? languages : language ? [language] : [];
+  const techIcons = getTechIconClasses(techList, 3);
   return (
     <a
       href={`/resources/${id}`}
@@ -81,10 +87,11 @@ export function ResourceListItem({
 
           {/* Metadata Row */}
           <div className="flex flex-wrap items-center gap-3 text-xs text-muted-foreground">
-            {language && (
+            {techIcons.length > 0 && (
               <div className="flex items-center gap-1">
-                <div className="h-2.5 w-2.5 rounded-full bg-blue-500" />
-                <span>{language}</span>
+                {techIcons.map((iconClass, index) => (
+                    <i key={index} className={`${iconClass} text-sm`} title={techList[index]}/>
+                ))}
               </div>
             )}
             {stars !== undefined && (
