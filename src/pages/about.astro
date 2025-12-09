@@ -1,0 +1,264 @@
+---
+import {Github, Heart, Sparkles, Zap, Search, Filter, TrendingUp} from "lucide-react";
+import Layout from "@/layouts/main.astro";
+import {getProjectMetadata, getSEOMetadata} from "@/lib/utils/data-access";
+
+const metadata = getProjectMetadata();
+const seoMetadata = getSEOMetadata();
+---
+
+<Layout
+        title={`About - ${seoMetadata.title}`}
+        description="Learn more about this curated collection and how we're building a better way to discover awesome resources."
+>
+    <!-- Hero Section -->
+    <section class="border-b bg-gradient-to-b from-background to-secondary/20">
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8 py-16 md:py-24">
+            <div class="max-w-3xl mx-auto text-center space-y-6">
+                <h1 class="text-4xl md:text-6xl font-bold tracking-tight">
+                    About {metadata.title}
+                </h1>
+                <p class="text-xl text-muted-foreground">
+                    A modern approach to curating and discovering high-quality resources
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Mission Section -->
+    <section class="py-16 md:py-24">
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="max-w-3xl mx-auto space-y-8">
+                <div>
+                    <h2 class="text-3xl font-bold tracking-tight mb-4">Our Mission</h2>
+                    <p class="text-lg text-muted-foreground leading-relaxed">
+                        {metadata.description}
+                    </p>
+                </div>
+
+                <div class="space-y-4">
+                    <p class="text-muted-foreground leading-relaxed">
+                        Traditional awesome lists are great, but they often suffer from poor discoverability
+                        and limited user experience. We're building something better—a modern, visually appealing,
+                        and performant way to showcase the best resources in {metadata.name}.
+                    </p>
+                    <p class="text-muted-foreground leading-relaxed">
+                        Every resource in this collection is carefully selected, regularly updated, and presented
+                        with rich metadata to help you make informed decisions.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="border-t bg-secondary/30 py-16 md:py-24">
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="max-w-5xl mx-auto">
+                <h2 class="text-3xl font-bold tracking-tight mb-12 text-center">What Makes Us Different</h2>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <!-- Feature 1 -->
+                    <div class="space-y-3">
+                        <div class="flex items-center gap-3">
+                            <div class="flex h-10 w-10 items-center justify-center rounded-lg bg-primary/10">
+                                <Zap className="h-5 w-5 text-primary"/>
+                            </div>
+                            <h3 class="font-semibold">Lightning Fast</h3>
+                        </div>
+                        <p class="text-sm text-muted-foreground">
+                            Built with performance in mind. Static site generation ensures instant load times
+                            and minimal JavaScript overhead.
+                        </p>
+                    </div>
+
+                    <!-- Feature 2 -->
+                    <div class="space-y-3">
+                        <div class="flex items-center gap-3">
+                            <div class="flex h-10 w-10 items-center justify-center rounded-lg bg-primary/10">
+                                <Search className="h-5 w-5 text-primary"/>
+                            </div>
+                            <h3 class="font-semibold">Powerful Search</h3>
+                        </div>
+                        <p class="text-sm text-muted-foreground">
+                            Find exactly what you need with full-text search, fuzzy matching, and instant results.
+                            No backend required.
+                        </p>
+                    </div>
+
+                    <!-- Feature 3 -->
+                    <div class="space-y-3">
+                        <div class="flex items-center gap-3">
+                            <div class="flex h-10 w-10 items-center justify-center rounded-lg bg-primary/10">
+                                <Filter className="h-5 w-5 text-primary"/>
+                            </div>
+                            <h3 class="font-semibold">Smart Filtering</h3>
+                        </div>
+                        <p class="text-sm text-muted-foreground">
+                            Filter by category, language, license, or maintenance status.
+                            Sort by popularity, recency, or alphabetically.
+                        </p>
+                    </div>
+
+                    <!-- Feature 4 -->
+                    <div class="space-y-3">
+                        <div class="flex items-center gap-3">
+                            <div class="flex h-10 w-10 items-center justify-center rounded-lg bg-primary/10">
+                                <TrendingUp className="h-5 w-5 text-primary"/>
+                            </div>
+                            <h3 class="font-semibold">Live Metrics</h3>
+                        </div>
+                        <p class="text-sm text-muted-foreground">
+                            Auto-fetched data from GitHub, npm, and other registries.
+                            See stars, downloads, and activity at a glance.
+                        </p>
+                    </div>
+
+                    <!-- Feature 5 -->
+                    <div class="space-y-3">
+                        <div class="flex items-center gap-3">
+                            <div class="flex h-10 w-10 items-center justify-center rounded-lg bg-primary/10">
+                                <Sparkles className="h-5 w-5 text-primary"/>
+                            </div>
+                            <h3 class="font-semibold">Beautiful Design</h3>
+                        </div>
+                        <p class="text-sm text-muted-foreground">
+                            Rich project cards with screenshots, badges, and health indicators.
+                            Dark mode included.
+                        </p>
+                    </div>
+
+                    <!-- Feature 6 -->
+                    <div class="space-y-3">
+                        <div class="flex items-center gap-3">
+                            <div class="flex h-10 w-10 items-center justify-center rounded-lg bg-primary/10">
+                                <Heart className="h-5 w-5 text-primary"/>
+                            </div>
+                            <h3 class="font-semibold">Community Driven</h3>
+                        </div>
+                        <p class="text-sm text-muted-foreground">
+                            Open source and community maintained. Contributions are welcome from everyone.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Tech Stack Section -->
+    <section class="border-t py-16 md:py-24">
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="max-w-3xl mx-auto space-y-8">
+                <div>
+                    <h2 class="text-3xl font-bold tracking-tight mb-4">Built with Modern Tech</h2>
+                    <p class="text-muted-foreground mb-6">
+                        This project is built using cutting-edge web technologies to ensure
+                        the best performance and developer experience.
+                    </p>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div class="border rounded-lg p-6 space-y-2">
+                        <h3 class="font-semibold">Astro</h3>
+                        <p class="text-sm text-muted-foreground">
+                            Static site generator with zero JavaScript by default and component islands for
+                            interactivity.
+                        </p>
+                    </div>
+
+                    <div class="border rounded-lg p-6 space-y-2">
+                        <h3 class="font-semibold">React</h3>
+                        <p class="text-sm text-muted-foreground">
+                            Interactive components loaded only where needed using Astro's islands architecture.
+                        </p>
+                    </div>
+
+                    <div class="border rounded-lg p-6 space-y-2">
+                        <h3 class="font-semibold">Tailwind CSS</h3>
+                        <p class="text-sm text-muted-foreground">
+                            Utility-first styling with custom theme support and dark mode built-in.
+                        </p>
+                    </div>
+
+                    <div class="border rounded-lg p-6 space-y-2">
+                        <h3 class="font-semibold">shadcn/ui</h3>
+                        <p class="text-sm text-muted-foreground">
+                            Beautiful, accessible components built on Radix UI primitives and fully customizable.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contributing Section -->
+    <section class="border-t bg-secondary/30 py-16 md:py-24">
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="max-w-3xl mx-auto text-center space-y-6">
+                <h2 class="text-3xl font-bold tracking-tight">Get Involved</h2>
+                <p class="text-lg text-muted-foreground">
+                    This is an open-source project and we welcome contributions from the community.
+                </p>
+
+                <div class="bg-background border rounded-lg p-8 space-y-4 text-left">
+                    <h3 class="font-semibold text-lg">How to Contribute</h3>
+                    <ul class="space-y-3 text-muted-foreground">
+                        <li class="flex gap-3">
+                            <span class="text-primary">•</span>
+                            <span>Submit new resources that are high-quality and actively maintained</span>
+                        </li>
+                        <li class="flex gap-3">
+                            <span class="text-primary">•</span>
+                            <span>Report outdated or archived projects</span>
+                        </li>
+                        <li class="flex gap-3">
+                            <span class="text-primary">•</span>
+                            <span>Suggest improvements to the site or data structure</span>
+                        </li>
+                        <li class="flex gap-3">
+                            <span class="text-primary">•</span>
+                            <span>Fix typos, broken links, or inaccurate descriptions</span>
+                        </li>
+                        <li class="flex gap-3">
+                            <span class="text-primary">•</span>
+                            <span>Help improve documentation and guides</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="pt-4">
+                    {metadata.repository?.url && (
+                            <a
+                                    href={metadata.repository.url}
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    class="inline-flex items-center justify-center rounded-lg text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring bg-primary text-primary-foreground hover:bg-primary/90 h-11 px-8 gap-2"
+                            >
+                                <Github className="h-5 w-5"/>
+                                View on GitHub
+                            </a>
+                    )}
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- License Section -->
+    <section class="border-t py-12">
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="max-w-3xl mx-auto text-center text-sm text-muted-foreground">
+                <p>
+                    This project is licensed under the {metadata.license} License.
+                    {metadata.author?.name && ` Maintained by ${metadata.author.name}.`}
+                </p>
+                <p class="mt-2">
+                    Last updated: {new Date(metadata.updated).toLocaleDateString('en-US', {
+                    year: 'numeric',
+                    month: 'long',
+                    day: 'numeric'
+                })}
+                </p>
+            </div>
+        </div>
+    </section>
+</Layout>
