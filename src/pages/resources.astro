@@ -12,6 +12,7 @@ const resourcesData = allResources.map((resource) => ({
   name: getResourceName(resource),
   description: resource.description,
   url: resource.url,
+    type: resource.type,
   category: resource.category,
   language:
     ("primaryLanguage" in resource ? resource.primaryLanguage : undefined) ||

@@ -139,6 +139,12 @@ Transform static "awesome" lists into modern, discoverable, and engaging resourc
 - [ ] URL-based pagination
 - [ ] Scroll position restoration
 
+#### 4.4 Ranking
+
+- [ ] First group for featured and trending
+- [ ] Second group for resources with images
+- [ ] Finally, resources without images
+
 **Deliverable:** Full search, filter, and sort functionality
 
 ---

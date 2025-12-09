@@ -1,12 +1,16 @@
 import * as React from "react";
-import {DollarSign, Star} from "lucide-react";
+import {Archive, Scale, Star, TrendingUp} from "lucide-react";
+import {Tooltip, TooltipContent, TooltipProvider, TooltipTrigger} from "@/components/ui/tooltip";
 import {getTechIconClasses} from "@/lib/utils/tech-icons";
+import {getTypeIcon} from "@/lib/utils/type-icons";
+import type {Types} from "@/schema/ts/types";
 
 interface ResourceListItemProps {
   id: string;
   name: string;
   description: string;
   url: string;
+  type: Types;
   category?: string;
   language?: string;
   languages?: string[];
@@ -23,6 +27,7 @@ export function ResourceListItem({
   name,
   description,
   url,
+                                   type,
   category = "Uncategorized",
   language,
                                    languages = [],
@@ -36,6 +41,8 @@ export function ResourceListItem({
   // Use languages array if available, otherwise fall back to single language
   const techList = languages.length > 0 ? languages : language ? [language] : [];
   const techIcons = getTechIconClasses(techList, 3);
+  const {icon: TypeIcon, label: typeLabel} = getTypeIcon(type);
+
   return (
     <a
       href={`/resources/${id}`}
@@ -51,35 +58,62 @@ export function ResourceListItem({
             </span>
 
             {/* Status Indicators */}
-            {featured && (
-              <span
-                className="inline-flex items-center text-yellow-600 dark:text-yellow-400"
-                title="Featured"
-              >
-                ⭐
-              </span>
-            )}
-            {trending && (
-              <span
-                className="inline-flex items-center text-green-600 dark:text-green-400"
-                title="Trending"
-              >
-                📈
-              </span>
-            )}
-            {archived && (
-              <span
-                className="inline-flex items-center text-red-600 dark:text-red-400"
-                title="Archived"
-              >
-                📦
-              </span>
-            )}
+            <TooltipProvider>
+              {featured && (
+                  <Tooltip>
+                    <TooltipTrigger asChild>
+                    <span
+                        className="inline-flex items-center justify-center rounded-full bg-yellow-500/10 p-0.5 text-yellow-600 dark:text-yellow-400 cursor-help">
+                      <Star className="h-3 w-3 fill-current"/>
+                    </span>
+                    </TooltipTrigger>
+                    <TooltipContent>
+                      <p>Featured</p>
+                    </TooltipContent>
+                  </Tooltip>
+              )}
+              {trending && (
+                  <Tooltip>
+                    <TooltipTrigger asChild>
+                    <span
+                        className="inline-flex items-center justify-center rounded-full bg-green-500/10 p-0.5 text-green-600 dark:text-green-400 cursor-help">
+                      <TrendingUp className="h-3 w-3"/>
+                    </span>
+                    </TooltipTrigger>
+                    <TooltipContent>
+                      <p>Trending</p>
+                    </TooltipContent>
+                  </Tooltip>
+              )}
+              {archived && (
+                  <Tooltip>
+                    <TooltipTrigger asChild>
+                    <span
+                        className="inline-flex items-center justify-center rounded-full bg-red-500/10 p-0.5 text-red-600 dark:text-red-400 cursor-help">
+                      <Archive className="h-3 w-3"/>
+                    </span>
+                    </TooltipTrigger>
+                    <TooltipContent>
+                      <p>Archived</p>
+                    </TooltipContent>
+                  </Tooltip>
+              )}
+            </TooltipProvider>
 
-            {/* Category Badge */}
-            <span className="inline-flex items-center rounded-full bg-primary/10 px-2 py-0.5 text-xs font-semibold text-primary">
-              {category}
-            </span>
+            {/* Type Icon with Tooltip */}
+            <TooltipProvider>
+              <Tooltip>
+                <TooltipTrigger asChild>
+                  <span
+                      className="inline-flex items-center justify-center rounded-full bg-primary/10 p-1 text-primary cursor-help">
+                    <TypeIcon className="h-3.5 w-3.5"/>
+                  </span>
+                </TooltipTrigger>
+                <TooltipContent>
+                  <p>{typeLabel}</p>
+                </TooltipContent>
+              </Tooltip>
+            </TooltipProvider>
           </div>
 
           {/* Description */}
@@ -102,7 +136,7 @@ export function ResourceListItem({
             )}
             {license && (
               <div className="flex items-center gap-1">
-                <DollarSign className="h-3.5 w-3.5"/>
+                <Scale className="h-3.5 w-3.5"/>
                 <span>{license}</span>
               </div>
             )}

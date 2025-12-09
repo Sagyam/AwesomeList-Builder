@@ -1,6 +1,6 @@
 ---
+import { BookOpen, ExternalLink, Github, Twitter } from "lucide-react";
 import { getProjectMetadata } from "@/lib/utils/data-access";
-import {BookOpen, ExternalLink, Github, Twitter} from "lucide-react";
 
 const currentYear = new Date().getFullYear();
 const metadata = getProjectMetadata();
@@ -34,18 +34,10 @@ const metadata = getProjectMetadata();
           </li>
           <li>
             <a
-              href="/projects"
+                href="/resources"
               class="text-sm text-muted-foreground transition-colors hover:text-foreground"
             >
-              Projects
-            </a>
-          </li>
-          <li>
-            <a
-              href="/categories"
-              class="text-sm text-muted-foreground transition-colors hover:text-foreground"
-            >
-              Categories
+              Resources
             </a>
           </li>
           <li>

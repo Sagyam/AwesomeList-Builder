@@ -4,11 +4,14 @@ import {ResourceCard} from "@/components/ResourceCard";
 import {ResourceListItem} from "@/components/ResourceListItem";
 import {ArrowDown} from "lucide-react";
 
+import type {Types} from "@/schema/ts/types";
+
 interface Resource {
   id: string;
   name: string;
   description: string;
   url: string;
+  type: Types;
   category?: string;
   language?: string;
   stars?: number;
