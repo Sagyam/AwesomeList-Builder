@@ -2,6 +2,7 @@ import * as React from "react";
 import {LayoutToggle} from "@/components/LayoutToggle";
 import {ResourceCard} from "@/components/ResourceCard";
 import {ResourceListItem} from "@/components/ResourceListItem";
+import {ArrowDown} from "lucide-react";
 
 interface Resource {
   id: string;
@@ -55,19 +56,7 @@ export function ResourcesContainer({ resources }: ResourcesContainerProps) {
       {resources.length === 0 && (
         <div className="text-center py-12">
           <div className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-secondary mb-4">
-            <svg
-              className="h-8 w-8 text-muted-foreground"
-              xmlns="http://www.w3.org/2000/svg"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              strokeWidth="2"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-            >
-              <path d="M12 2v20" />
-              <path d="m19 9-7 7-7-7" />
-            </svg>
+            <ArrowDown className="h-8 w-8 text-muted-foreground"/>
           </div>
           <h3 className="text-lg font-semibold mb-2">No resources found</h3>
           <p className="text-muted-foreground">
