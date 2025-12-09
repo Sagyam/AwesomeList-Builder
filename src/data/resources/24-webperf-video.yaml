@@ -1,0 +1,26 @@
+type: video
+id: webperf-video
+title: Web Performance Fundamentals
+url: https://www.youtube.com/watch?v=0fONene3OIA
+description: Learn the fundamentals of web performance optimization. Understand how browsers work measuring performance metrics and techniques to make your websites faster for better user experience.
+category: Learning Resource
+tags:
+  - performance
+  - optimization
+  - tutorial
+topics:
+  - web-development
+  - performance
+language: en
+dateAdded: '2024-10-05T10:00:00Z'
+lastVerified: '2025-12-09T10:00:00Z'
+image: https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800&auto=format&fit=crop
+imageAlt: Web performance
+difficulty: intermediate
+isFree: true
+accessLevel: free
+platform: YouTube
+creator: Web Dev Simplified
+published: '2024-08-15T10:00:00Z'
+duration: PT45M
+views: 850000

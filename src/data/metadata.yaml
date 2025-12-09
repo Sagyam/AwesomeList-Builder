@@ -1,30 +1,34 @@
-name: awesome-list-builder
-title: AwesomeKit - Modern Awesome List Template
-description: A modern, feature-rich template for creating beautiful awesome curated lists that go beyond basic markdown links. Built with Astro, React, and Tailwind CSS.
-version: 0.1.0
+name: awesome-modern-web-dev
+title: Awesome Modern Web Development
+description: A curated collection of the best resources, tools, frameworks, and learning materials for modern web development. From cutting-edge frameworks to essential developer tools, discover everything you need to build amazing web experiences.
+version: 1.0.0
 author:
-  name: AwesomeKit Team
-  email: team@awesomekit.dev
-  url: https://github.com/awesomekit
+  name: Web Dev Community
+  email: community@webdev.awesome
+  url: https://github.com/awesome-web-dev
 repository:
   type: git
-  url: https://github.com/awesomekit/awesome-list-builder
-homepage: https://awesomekit.dev
+  url: https://github.com/awesome-web-dev/awesome-modern-web-dev
+homepage: https://awesome-web-dev.com
 license: MIT
 keywords:
-  - awesome-list
-  - curated-list
-  - astro
-  - react
-  - tailwind
+  - web-development
+  - javascript
   - typescript
+  - frontend
+  - backend
+  - fullstack
+  - frameworks
+  - tools
 topics:
   - web-development
-  - static-site-generator
+  - javascript
+  - frontend-development
+  - backend-development
   - developer-tools
 social:
-  twitter: awesomekit
-  github: awesomekit
-  website: https://awesomekit.dev
-created: '2025-01-01T00:00:00.000Z'
-updated: '2025-12-08T00:00:00.000Z'
+  twitter: awesomewebdev
+  github: awesome-web-dev
+  website: https://awesome-web-dev.com
+created: '2024-01-01T00:00:00.000Z'
+updated: '2025-12-09T00:00:00.000Z'

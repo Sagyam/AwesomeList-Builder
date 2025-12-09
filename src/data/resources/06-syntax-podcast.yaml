@@ -1,0 +1,27 @@
+type: podcast
+id: syntax-podcast
+title: Syntax - Tasty Web Development Treats
+url: https://syntax.fm
+description: Full Stack Developers Wes Bos and Scott Tolinski dive deep into web development topics, explaining how they work and talking about their own experiences. From React to CSS to serverless.
+category: Learning Resource
+tags:
+  - podcast
+  - web-development
+  - javascript
+topics:
+  - web-development
+  - education
+language: en
+dateAdded: '2024-07-01T10:00:00Z'
+lastVerified: '2025-12-09T10:00:00Z'
+trending: true
+image: https://images.unsplash.com/photo-1590602847861-f357a9332bbc?w=800&auto=format&fit=crop
+imageAlt: Podcast recording
+difficulty: intermediate
+isFree: true
+accessLevel: free
+host: Wes Bos and Scott Tolinski
+platform: Multiple platforms
+published: '2024-01-01T10:00:00Z'
+duration: PT45M
+rssFeed: https://syntax.fm/rss

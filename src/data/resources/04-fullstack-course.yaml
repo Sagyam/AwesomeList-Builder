@@ -1,0 +1,30 @@
+type: course
+id: fullstack-course
+title: The Complete 2024 Web Development Bootcamp
+url: https://www.udemy.com/course/the-complete-web-development-bootcamp/
+description: Become a Full-Stack Web Developer with just ONE course. HTML, CSS, Javascript, Node, React, PostgreSQL, Web3 and DApps. Master web development with this comprehensive bootcamp.
+category: Learning Resource
+tags:
+  - fullstack
+  - bootcamp
+  - beginner-friendly
+topics:
+  - web-development
+  - education
+language: en
+dateAdded: '2024-05-15T10:00:00Z'
+lastVerified: '2025-12-09T10:00:00Z'
+image: https://images.unsplash.com/photo-1516321318423-f06f85e504b3?w=800&auto=format&fit=crop
+imageAlt: Online learning and education
+difficulty: beginner
+isFree: false
+accessLevel: paid
+platform: Udemy
+instructor: Dr. Angela Yu
+published: '2024-01-01T10:00:00Z'
+duration: 65 hours
+rating: 4.7
+students: 1200000
+prerequisites:
+  - Basic computer literacy
+  - No programming experience required

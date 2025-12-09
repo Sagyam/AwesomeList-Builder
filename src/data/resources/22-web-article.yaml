@@ -1,0 +1,26 @@
+type: article
+id: web-article
+title: The State of JavaScript 2024
+url: https://stateofjs.com
+description: Annual survey results covering JavaScript ecosystem trends frameworks libraries and tools. Discover what technologies JavaScript developers are using learning and want to explore.
+category: Learning Resource
+tags:
+  - javascript
+  - survey
+  - trends
+topics:
+  - web-development
+  - javascript
+language: en
+dateAdded: '2024-09-15T10:00:00Z'
+lastVerified: '2025-12-09T10:00:00Z'
+trending: true
+image: https://images.unsplash.com/photo-1579468118864-1b9ea3c0db4a?w=800&auto=format&fit=crop
+imageAlt: JavaScript survey
+difficulty: beginner
+isFree: true
+accessLevel: free
+author: Sacha Greif
+authorUrl: https://stateofjs.com
+published: '2024-09-01T10:00:00Z'
+readTime: 15 min

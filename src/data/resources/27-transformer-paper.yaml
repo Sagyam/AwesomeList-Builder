@@ -1,0 +1,36 @@
+type: paper
+id: transformer-paper
+title: BERT Pre-training of Deep Bidirectional Transformers
+url: https://arxiv.org/abs/1810.04805
+description: Introducing BERT a method for pre-training language representations improving state-of-the-art results on eleven natural language processing tasks including question answering and language inference.
+category: Research Paper
+tags:
+  - ai
+  - nlp
+  - transformers
+topics:
+  - ai
+  - research
+language: en
+dateAdded: '2024-09-20T10:00:00Z'
+lastVerified: '2025-12-09T10:00:00Z'
+image: https://images.unsplash.com/photo-1677442136019-21780ecad995?w=800&auto=format&fit=crop
+imageAlt: AI research
+difficulty: expert
+isFree: true
+accessLevel: free
+authors:
+  - Jacob Devlin
+  - Ming-Wei Chang
+  - Kenton Lee
+  - Kristina Toutanova
+published: '2018-10-11T10:00:00Z'
+venue: NAACL 2019
+arxivId: '1810.04805'
+pdfUrl: https://arxiv.org/pdf/1810.04805.pdf
+citations: 65000
+field: Natural Language Processing
+keywords:
+  - bert
+  - nlp
+  - pre-training

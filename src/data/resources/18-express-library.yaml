@@ -1,0 +1,34 @@
+type: library
+id: express-library
+name: Express.js
+url: https://expressjs.com
+description: Fast, unopinionated, minimalist web framework for Node.js providing a robust set of features for web and mobile applications with numerous HTTP utility methods and middleware.
+category: Backend Framework
+tags:
+  - nodejs
+  - framework
+  - backend
+topics:
+  - backend
+  - nodejs
+language: en
+dateAdded: '2024-03-10T10:00:00Z'
+lastVerified: '2025-12-09T10:00:00Z'
+image: https://images.unsplash.com/photo-1627398242454-45a1465c2479?w=800&auto=format&fit=crop
+imageAlt: Backend framework
+difficulty: beginner
+isFree: true
+accessLevel: free
+package:
+  registry: npm
+  name: express
+repository: https://github.com/expressjs/express
+homepage: https://expressjs.com
+documentation: https://expressjs.com/en/api.html
+license: MIT
+downloads: "35000000"
+version: 4.18.0
+status: active
+maturity: stable
+languages:
+  - JavaScript

@@ -1,0 +1,28 @@
+type: community
+id: webdev-community
+name: The Odin Project Community
+url: https://discord.gg/theodinproject
+description: Supportive community of learners and developers following The Odin Project curriculum. Get help with web development learning connect with other students and share your progress.
+category: Community
+tags:
+  - discord
+  - learning
+  - beginner-friendly
+topics:
+  - web-development
+  - community
+language: en
+dateAdded: '2024-07-12T10:00:00Z'
+lastVerified: '2025-12-09T10:00:00Z'
+image: https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=800&auto=format&fit=crop
+imageAlt: Learning community
+difficulty: beginner
+isFree: true
+accessLevel: free
+platform: Discord
+members: 75000
+created: '2016-01-01T10:00:00Z'
+activity: high
+verified: false
+languages:
+  - English

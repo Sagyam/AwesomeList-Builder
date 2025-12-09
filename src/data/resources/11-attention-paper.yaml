@@ -1,0 +1,38 @@
+type: paper
+id: attention-paper
+title: Attention Is All You Need
+url: https://arxiv.org/abs/1706.03762
+description: Introducing the Transformer architecture that revolutionized natural language processing and became the foundation for modern AI models like GPT and BERT. A groundbreaking paper in deep learning.
+category: Research Paper
+tags:
+  - ai
+  - machine-learning
+  - transformers
+topics:
+  - ai
+  - research
+language: en
+dateAdded: '2024-07-15T10:00:00Z'
+lastVerified: '2025-12-09T10:00:00Z'
+featured: true
+image: https://images.unsplash.com/photo-1677442136019-21780ecad995?w=800&auto=format&fit=crop
+imageAlt: AI research paper
+difficulty: expert
+isFree: true
+accessLevel: free
+authors:
+  - Ashish Vaswani
+  - Noam Shazeer
+  - Niki Parmar
+  - Jakob Uszkoreit
+  - Llion Jones
+published: '2017-06-12T10:00:00Z'
+venue: NeurIPS 2017
+arxivId: '1706.03762'
+pdfUrl: https://arxiv.org/pdf/1706.03762.pdf
+citations: 85000
+field: Machine Learning
+keywords:
+  - transformers
+  - attention-mechanism
+  - neural-networks

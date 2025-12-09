@@ -1,0 +1,37 @@
+type: library
+id: tailwind-library
+name: Tailwind CSS
+url: https://tailwindcss.com
+description: A utility-first CSS framework for rapidly building modern websites without ever leaving your HTML. Packed with classes like flex, pt-4, text-center that can be composed to build any design.
+category: CSS Framework
+tags:
+  - css
+  - utility-first
+  - styling
+topics:
+  - web-development
+  - css
+language: en
+dateAdded: '2024-02-20T10:00:00Z'
+lastVerified: '2025-12-09T10:00:00Z'
+featured: true
+trending: true
+image: https://images.unsplash.com/photo-1507238691740-187a5b1d37b8?w=800&auto=format&fit=crop
+imageAlt: CSS framework
+difficulty: beginner
+isFree: true
+accessLevel: free
+package:
+  registry: npm
+  name: tailwindcss
+repository: https://github.com/tailwindlabs/tailwindcss
+homepage: https://tailwindcss.com
+documentation: https://tailwindcss.com/docs
+license: MIT
+downloads: "15000000"
+version: 4.0.0
+status: active
+maturity: stable
+languages:
+  - JavaScript
+  - CSS

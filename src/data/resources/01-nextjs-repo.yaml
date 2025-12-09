@@ -1,0 +1,44 @@
+type: repository
+id: nextjs-repo
+name: Next.js
+url: https://github.com/vercel/next.js
+description: The React Framework for the Web. Used by some of the world's largest companies, Next.js enables you to create high-quality web applications with the power of React components.
+category: Frontend Framework
+tags:
+  - react
+  - framework
+  - ssr
+  - static-site
+topics:
+  - web-development
+  - react
+  - frontend
+language: en
+dateAdded: '2024-03-15T10:00:00Z'
+lastVerified: '2025-12-09T10:00:00Z'
+featured: true
+trending: true
+image: https://images.unsplash.com/photo-1633356122544-f134324a6cee?w=800&auto=format&fit=crop
+imageAlt: Next.js web development
+difficulty: intermediate
+isFree: true
+accessLevel: free
+owner: vercel
+ownerUrl: https://github.com/vercel
+repositoryUrl: https://github.com/vercel/next.js
+homepage: https://nextjs.org
+license: MIT
+stars: 125000
+forks: 26800
+watchers: 2100
+openIssues: 2500
+lastCommit: '2025-12-08T20:30:00Z'
+created: '2016-10-25T00:00:00Z'
+primaryLanguage: TypeScript
+languages:
+  - TypeScript
+  - JavaScript
+status: active
+maturity: stable
+hasWiki: false
+hasDiscussions: true

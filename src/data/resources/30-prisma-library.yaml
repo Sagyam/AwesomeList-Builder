@@ -1,0 +1,36 @@
+type: library
+id: prisma-library
+name: Prisma
+url: https://www.prisma.io
+description: Next-generation ORM for Node.js and TypeScript unlocking a new level of developer experience when working with databases thanks to intuitive data model automated migrations and type-safety.
+category: Database Tool
+tags:
+  - orm
+  - database
+  - typescript
+topics:
+  - backend
+  - database
+language: en
+dateAdded: '2024-06-10T10:00:00Z'
+lastVerified: '2025-12-09T10:00:00Z'
+trending: true
+image: https://images.unsplash.com/photo-1544383835-bda2bc66a55d?w=800&auto=format&fit=crop
+imageAlt: Database ORM
+difficulty: intermediate
+isFree: true
+accessLevel: free
+package:
+  registry: npm
+  name: prisma
+repository: https://github.com/prisma/prisma
+homepage: https://www.prisma.io
+documentation: https://www.prisma.io/docs
+license: Apache-2.0
+downloads: "3500000"
+version: 5.7.0
+status: active
+maturity: stable
+languages:
+  - TypeScript
+  - Rust

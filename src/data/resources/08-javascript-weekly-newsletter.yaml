@@ -1,0 +1,28 @@
+type: newsletter
+id: javascript-weekly-newsletter
+name: JavaScript Weekly
+url: https://javascriptweekly.com
+description: A free, once–weekly email roundup of JavaScript news and articles. Stay up to date with the latest in JavaScript development, frameworks, and tools with curated content delivered to your inbox.
+category: Learning Resource
+tags:
+  - newsletter
+  - javascript
+  - weekly
+topics:
+  - web-development
+  - javascript
+language: en
+dateAdded: '2024-04-01T10:00:00Z'
+lastVerified: '2025-12-09T10:00:00Z'
+image: https://images.unsplash.com/photo-1579275542618-a1dfed5f54ba?w=800&auto=format&fit=crop
+imageAlt: Email newsletter
+difficulty: beginner
+isFree: true
+accessLevel: free
+frequency: weekly
+subscribeUrl: https://javascriptweekly.com
+archiveUrl: https://javascriptweekly.com/issues
+subscribers: 175000
+format: email
+hasRss: true
+platform: Cooperpress

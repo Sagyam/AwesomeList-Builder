@@ -1,0 +1,27 @@
+type: video
+id: fireship-video
+title: 100+ Web Development Things you Should Know
+url: https://www.youtube.com/watch?v=erEgovG9WBs
+description: Are you a full-stack web developer? Test your knowledge with 100 web development things that every software engineer should know. From HTML and CSS to React and Node.js.
+category: Learning Resource
+tags:
+  - youtube
+  - web-development
+  - concepts
+topics:
+  - web-development
+  - education
+language: en
+dateAdded: '2024-08-10T10:00:00Z'
+lastVerified: '2025-12-09T10:00:00Z'
+trending: true
+image: https://images.unsplash.com/photo-1611162617474-5b21e879e113?w=800&auto=format&fit=crop
+imageAlt: YouTube video content
+difficulty: intermediate
+isFree: true
+accessLevel: free
+platform: YouTube
+creator: Fireship
+published: '2024-06-15T10:00:00Z'
+duration: PT15M
+views: 2500000
