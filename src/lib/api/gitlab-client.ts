@@ -78,6 +78,7 @@ export interface GitLabRepositoryMetadata {
   visibility: string;
   hasWiki: boolean;
   hasDiscussions: boolean;
+  image?: string; // Project avatar URL
 }
 
 export class GitLabClient extends BaseApiClient {
@@ -184,6 +185,7 @@ export class GitLabClient extends BaseApiClient {
         visibility: project.visibility,
         hasWiki: false, // GitLab project interface doesn't show this in the provided code
         hasDiscussions: false,
+        image: project.avatar_url, // Project avatar
       };
 
       return metadata;

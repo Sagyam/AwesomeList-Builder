@@ -11,9 +11,6 @@ tags:
   - serialization
   - parsing
 topics:
-  - java
-  - json
-  - data-processing
   - hacktoberfest
   - jackson
   - java-json
@@ -41,3 +38,5 @@ languages: [ ]
 archived: false
 hasWiki: true
 hasDiscussions: true
+image: https://avatars.githubusercontent.com/u/382692?v=4
+imageAlt: FasterXML's avatar

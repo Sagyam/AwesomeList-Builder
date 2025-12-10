@@ -11,14 +11,12 @@ tags:
   - api
   - rest
 topics:
-  - python
-  - networking
-  - api
   - client
   - cookies
   - forhumans
   - http
   - humans
+  - python
   - python-requests
   - requests
 language: en
@@ -37,7 +35,7 @@ documentation: https://requests.readthedocs.io
 homepage: https://requests.readthedocs.io/en/latest/
 license: Apache-2.0
 stars: 53557
-forks: 9641
+forks: 9640
 watchers: 53557
 openIssues: 322
 openPullRequests: 118
@@ -51,3 +49,5 @@ languages:
 archived: false
 hasWiki: true
 hasDiscussions: false
+image: https://avatars.githubusercontent.com/u/50630501?v=4
+imageAlt: psf's avatar

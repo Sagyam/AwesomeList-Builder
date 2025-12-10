@@ -11,10 +11,8 @@ tags:
   - symfony
   - web
 topics:
-  - php
-  - web-development
-  - http
   - component
+  - php
   - symfony
   - symfony-component
 language: en
@@ -22,8 +20,6 @@ dateAdded: 2024-01-15T10:00:00Z
 lastVerified: 2025-12-10T10:00:00Z
 featured: true
 trending: false
-image: https://images.unsplash.com/photo-1599507593499-a3f7d7d97667?w=800&auto=format&fit=crop
-imageAlt: Symfony PHP development
 difficulty: intermediate
 isFree: true
 accessLevel: free
@@ -48,3 +44,5 @@ languages:
 archived: false
 hasWiki: false
 hasDiscussions: false
+image: https://avatars.githubusercontent.com/u/143937?v=4
+imageAlt: symfony's avatar

@@ -11,18 +11,14 @@ tags:
   - framework
   - mvc
 topics:
-  - php
-  - web-development
-  - backend
   - framework
   - laravel
+  - php
 language: en
 dateAdded: 2024-01-15T10:00:00Z
 lastVerified: 2025-12-10T10:00:00Z
 featured: true
 trending: true
-image: https://images.unsplash.com/photo-1555066931-4365d14bab8c?w=800&auto=format&fit=crop
-imageAlt: Laravel PHP development
 difficulty: intermediate
 isFree: true
 accessLevel: free
@@ -33,11 +29,11 @@ repository: https://github.com/laravel/framework
 documentation: https://laravel.com/docs
 homepage: https://laravel.com
 license: MIT
-stars: 34347
+stars: 34348
 forks: 11723
-watchers: 34347
-openIssues: 110
-openPullRequests: 28
+watchers: 34348
+openIssues: 112
+openPullRequests: 30
 lastCommit: 2025-12-10T15:31:07Z
 lastReleaseVersion: v12.42.0
 lastReleaseDate: 2025-12-09T15:52:26Z
@@ -52,3 +48,5 @@ languages:
 archived: false
 hasWiki: false
 hasDiscussions: true
+image: https://avatars.githubusercontent.com/u/958072?v=4
+imageAlt: laravel's avatar

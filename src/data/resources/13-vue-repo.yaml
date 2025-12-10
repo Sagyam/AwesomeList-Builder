@@ -10,15 +10,11 @@ tags:
   - vue
   - framework
   - progressive
-topics:
-  - web-development
-  - frontend
+topics: [ ]
 language: en
 dateAdded: 2024-02-10T10:00:00Z
 lastVerified: 2025-12-09T10:00:00Z
 featured: true
-image: https://images.unsplash.com/photo-1498050108023-c5249f4df085?w=800&auto=format&fit=crop
-imageAlt: Vue.js development
 difficulty: beginner
 isFree: true
 accessLevel: free
@@ -27,9 +23,9 @@ ownerUrl: https://github.com/vuejs
 repositoryUrl: https://github.com/vuejs/core
 homepage: https://vuejs.org/
 license: MIT
-stars: 52365
+stars: 52367
 forks: 8976
-watchers: 52365
+watchers: 52367
 openIssues: 1034
 lastCommit: 2025-12-10T08:30:43Z
 created: 2018-06-12T13:49:36Z
@@ -46,3 +42,5 @@ hasWiki: false
 hasDiscussions: true
 openPullRequests: 370
 archived: false
+image: https://avatars.githubusercontent.com/u/6128107?v=4
+imageAlt: vuejs's avatar

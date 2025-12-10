@@ -11,9 +11,8 @@ tags:
   - database
   - typescript
 topics:
-  - backend
-  - database
   - cockroachdb
+  - database
   - javascript
   - mariadb
   - mongo
@@ -36,8 +35,6 @@ language: en
 dateAdded: 2024-06-10T10:00:00Z
 lastVerified: 2025-12-09T10:00:00Z
 trending: true
-image: https://images.unsplash.com/photo-1544383835-bda2bc66a55d?w=800&auto=format&fit=crop
-imageAlt: Database ORM
 difficulty: intermediate
 isFree: true
 accessLevel: free
@@ -63,12 +60,14 @@ languages:
 stars: 44735
 forks: 1999
 watchers: 44735
-openIssues: 2467
+openIssues: 2458
 openPullRequests: 91
-lastCommit: 2025-12-10T16:30:39Z
+lastCommit: 2025-12-10T16:44:57Z
 lastReleaseVersion: 7.1.0
 lastReleaseDate: 2025-12-03T13:43:25Z
 created: 2019-06-20T13:33:47Z
 archived: false
 hasWiki: false
 hasDiscussions: true
+image: https://avatars.githubusercontent.com/u/17219288?v=4
+imageAlt: prisma's avatar

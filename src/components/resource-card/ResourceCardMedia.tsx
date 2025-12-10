@@ -33,21 +33,12 @@ export function ResourceCardMedia({
 
   return (
     <div className="relative aspect-video w-full overflow-hidden bg-gradient-to-br from-muted to-muted/50">
-      {image ? (
-        <img
+      <img
           src={image}
           alt={imageAlt || name}
           loading="lazy"
-          className="h-full w-full object-cover transition-transform duration-500 brightness-95 group-hover:brightness-110"
-        />
-      ) : techIcon ? (
-        <div className="h-full w-full flex items-center justify-center">
-          <i
-            className={`${techIcon} text-[6rem] opacity-30 group-hover:opacity-40 transition-opacity duration-500`}
-            title={techName}
-          />
-        </div>
-      ) : null}
+          className="h-full w-full object-contain transition-transform duration-500 brightness-95 group-hover:brightness-110"
+      />
 
       {/* Status Badges Overlay */}
       <div className="absolute top-2 right-2">

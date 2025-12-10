@@ -11,16 +11,13 @@ tags:
   - framework
   - backend
 topics:
-  - backend
-  - nodejs
   - express
   - javascript
+  - nodejs
   - server
 language: en
 dateAdded: 2024-03-10T10:00:00Z
 lastVerified: 2025-12-09T10:00:00Z
-image: https://images.unsplash.com/photo-1627398242454-45a1465c2479?w=800&auto=format&fit=crop
-imageAlt: Backend framework
 difficulty: beginner
 isFree: true
 accessLevel: free
@@ -39,9 +36,9 @@ languages:
   - JavaScript
   - Makefile
   - Shell
-stars: 68332
-forks: 21742
-watchers: 68332
+stars: 68334
+forks: 21741
+watchers: 68334
 openIssues: 218
 openPullRequests: 107
 lastCommit: 2025-12-09T15:32:14Z
@@ -51,3 +48,5 @@ created: 2009-06-26T18:56:01Z
 archived: false
 hasWiki: true
 hasDiscussions: true
+image: https://avatars.githubusercontent.com/u/5658226?v=4
+imageAlt: expressjs's avatar

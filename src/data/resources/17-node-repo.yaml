@@ -11,7 +11,6 @@ tags:
   - javascript
   - runtime
 topics:
-  - backend
   - javascript
   - js
   - linux
@@ -25,8 +24,6 @@ language: en
 dateAdded: 2024-01-20T10:00:00Z
 lastVerified: 2025-12-09T10:00:00Z
 featured: true
-image: https://nodejs.org/static/logos/jsIconGreen.svg
-imageAlt: Node.js runtime
 difficulty: intermediate
 isFree: true
 accessLevel: free
@@ -35,11 +32,11 @@ ownerUrl: https://github.com/nodejs
 repositoryUrl: https://github.com/nodejs/node
 homepage: https://nodejs.org
 license: NOASSERTION
-stars: 114678
+stars: 114679
 forks: 33984
-watchers: 114678
-openIssues: 2397
-lastCommit: 2025-12-10T16:32:27Z
+watchers: 114679
+openIssues: 2393
+lastCommit: 2025-12-10T17:20:50Z
 created: 2014-11-26T19:57:11Z
 primaryLanguage: JavaScript
 languages:
@@ -61,7 +58,9 @@ status: active
 maturity: stable
 hasWiki: false
 hasDiscussions: false
-openPullRequests: 664
-lastReleaseVersion: v20.19.6
-lastReleaseDate: 2025-11-25T12:31:27Z
+openPullRequests: 661
+lastReleaseVersion: v24.12.0
+lastReleaseDate: 2025-12-10T16:50:44Z
 archived: false
+image: https://avatars.githubusercontent.com/u/9950313?v=4
+imageAlt: nodejs's avatar

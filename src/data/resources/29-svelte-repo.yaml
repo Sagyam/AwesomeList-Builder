@@ -11,8 +11,6 @@ tags:
   - compiler
   - reactive
 topics:
-  - web-development
-  - frontend
   - compiler
   - template
   - ui
@@ -20,8 +18,6 @@ language: en
 dateAdded: 2024-04-25T10:00:00Z
 lastVerified: 2025-12-09T10:00:00Z
 featured: true
-image: https://images.unsplash.com/photo-1555949963-ff9fe0c870eb?w=800&auto=format&fit=crop
-imageAlt: Modern framework
 difficulty: intermediate
 isFree: true
 accessLevel: free
@@ -30,11 +26,11 @@ ownerUrl: https://github.com/sveltejs
 repositoryUrl: https://github.com/sveltejs/svelte
 homepage: https://svelte.dev
 license: MIT
-stars: 85091
+stars: 85092
 forks: 4706
-watchers: 85091
+watchers: 85092
 openIssues: 963
-lastCommit: 2025-12-09T23:09:40Z
+lastCommit: 2025-12-10T18:11:29Z
 created: 2016-11-20T18:13:05Z
 primaryLanguage: JavaScript
 languages:
@@ -51,3 +47,5 @@ openPullRequests: 68
 lastReleaseVersion: svelte@5.45.8
 lastReleaseDate: 2025-12-08T22:33:09Z
 archived: false
+image: https://avatars.githubusercontent.com/u/23617963?v=4
+imageAlt: sveltejs's avatar

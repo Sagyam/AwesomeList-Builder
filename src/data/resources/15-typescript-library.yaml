@@ -11,8 +11,6 @@ tags:
   - typed
   - language
 topics:
-  - web-development
-  - programming
   - javascript
   - language
   - typechecker
@@ -21,8 +19,6 @@ language: en
 dateAdded: 2024-02-15T10:00:00Z
 lastVerified: 2025-12-09T10:00:00Z
 featured: true
-image: https://images.unsplash.com/photo-1555952494-efd681c7e3f9?w=800&auto=format&fit=crop
-imageAlt: TypeScript
 difficulty: intermediate
 isFree: true
 accessLevel: free
@@ -41,9 +37,9 @@ languages:
   - TypeScript
   - JavaScript
   - Shell
-stars: 107039
+stars: 107041
 forks: 13155
-watchers: 107039
+watchers: 107041
 openIssues: 5463
 openPullRequests: 507
 lastCommit: 2025-12-09T20:41:28Z
@@ -53,3 +49,5 @@ created: 2014-06-17T15:28:39Z
 archived: false
 hasWiki: true
 hasDiscussions: false
+image: https://avatars.githubusercontent.com/u/6154722?v=4
+imageAlt: microsoft's avatar

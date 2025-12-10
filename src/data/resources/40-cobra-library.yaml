@@ -11,9 +11,7 @@ tags:
   - command-line
   - tools
 topics:
-  - go
   - cli
-  - developer-tools
   - cli-app
   - cobra
   - cobra-generator
@@ -22,6 +20,7 @@ topics:
   - command-cobra
   - command-line
   - commandline
+  - go
   - golang
   - golang-application
   - golang-library
@@ -43,9 +42,9 @@ repository: https://github.com/spf13/cobra
 documentation: https://cobra.dev
 homepage: https://cobra.dev
 license: Apache-2.0
-stars: 42593
-forks: 3030
-watchers: 42593
+stars: 42594
+forks: 3029
+watchers: 42594
 openIssues: 333
 openPullRequests: 99
 lastCommit: 2025-12-10T02:18:50Z
@@ -58,3 +57,5 @@ languages:
 archived: false
 hasWiki: true
 hasDiscussions: false
+image: https://avatars.githubusercontent.com/u/173412?v=4
+imageAlt: spf13's avatar

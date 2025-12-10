@@ -9,6 +9,7 @@ export interface GitHubRepository {
   owner: {
     login: string;
     html_url: string;
+    avatar_url: string;
   };
   html_url: string;
   homepage: string | null;
@@ -71,6 +72,7 @@ export interface RepositoryMetadata {
   hasWiki: boolean;
   hasDiscussions: boolean;
   topics: string[];
+  image?: string; // Owner avatar URL
 }
 
 export class GitHubClient extends BaseApiClient {
@@ -171,6 +173,7 @@ export class GitHubClient extends BaseApiClient {
         hasWiki: repo.has_wiki,
         hasDiscussions: repo.has_discussions,
         topics: repo.topics || [],
+        image: repo.owner.avatar_url, // Owner's avatar
       };
 
       return metadata;

@@ -263,8 +263,9 @@ export class MetadataFetcher {
           resource.archived = metadata.archived;
           resource.hasWiki = metadata.hasWiki;
           resource.hasDiscussions = metadata.hasDiscussions;
-          // Merge topics from GitHub with existing tags
-          resource.topics = [...new Set([...(resource.topics || []), ...metadata.topics])];
+          resource.topics = [...metadata.topics];
+          resource.image = metadata.image;
+          resource.imageAlt = `${metadata.owner}'s avatar`;
 
           return true;
         }
@@ -291,8 +292,9 @@ export class MetadataFetcher {
           resource.archived = metadata.archived;
           resource.hasWiki = metadata.hasWiki;
           resource.hasDiscussions = metadata.hasDiscussions;
-          // Merge topics from GitLab with existing tags
-          resource.topics = [...new Set([...(resource.topics || []), ...metadata.topics])];
+          resource.topics = [...metadata.topics];
+          resource.image = metadata.image;
+          resource.imageAlt = `${metadata.name} project avatar`;
 
           return true;
         }
@@ -343,8 +345,9 @@ export class MetadataFetcher {
           resource.archived = metadata.archived;
           resource.hasWiki = metadata.hasWiki;
           resource.hasDiscussions = metadata.hasDiscussions;
-          // Merge topics
-          resource.topics = [...new Set([...(resource.topics || []), ...metadata.topics])];
+          resource.topics = [...metadata.topics];
+          resource.image = metadata.image;
+          resource.imageAlt = `${metadata.owner}'s avatar`;
 
           return true;
         }
@@ -368,8 +371,9 @@ export class MetadataFetcher {
           resource.archived = metadata.archived;
           resource.hasWiki = metadata.hasWiki;
           resource.hasDiscussions = metadata.hasDiscussions;
-          // Merge topics
-          resource.topics = [...new Set([...(resource.topics || []), ...metadata.topics])];
+          resource.topics = [...metadata.topics];
+          resource.image = metadata.image;
+          resource.imageAlt = `${metadata.name} project avatar`;
 
           return true;
         }

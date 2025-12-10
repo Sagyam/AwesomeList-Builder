@@ -11,10 +11,9 @@ tags:
   - ui-library
   - components
 topics:
-  - web-development
+  - declarative
   - frontend
   - javascript
-  - declarative
   - library
   - react
   - ui
@@ -23,8 +22,6 @@ dateAdded: 2024-01-15T10:00:00Z
 lastVerified: 2025-12-09T10:00:00Z
 featured: true
 trending: true
-image: https://images.unsplash.com/photo-1633356122544-f134324a6cee?w=800&auto=format&fit=crop
-imageAlt: React development
 difficulty: intermediate
 isFree: true
 accessLevel: free
@@ -46,11 +43,11 @@ languages:
   - CSS
   - CoffeeScript
   - Shell
-stars: 241483
+stars: 241485
 forks: 50037
-watchers: 241483
-openIssues: 1091
-openPullRequests: 241
+watchers: 241485
+openIssues: 1092
+openPullRequests: 242
 lastCommit: 2025-12-10T13:07:35Z
 lastReleaseVersion: v19.2.1
 lastReleaseDate: 2025-12-03T15:46:02Z
@@ -58,3 +55,5 @@ created: 2013-05-24T16:15:54Z
 archived: false
 hasWiki: false
 hasDiscussions: false
+image: https://avatars.githubusercontent.com/u/69631?v=4
+imageAlt: facebook's avatar
