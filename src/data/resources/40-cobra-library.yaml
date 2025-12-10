@@ -43,9 +43,9 @@ repository: https://github.com/spf13/cobra
 documentation: https://cobra.dev
 homepage: https://cobra.dev
 license: Apache-2.0
-stars: 42586
+stars: 42588
 forks: 3030
-watchers: 42586
+watchers: 42588
 openIssues: 333
 openPullRequests: 99
 lastCommit: 2025-12-10T02:18:50Z

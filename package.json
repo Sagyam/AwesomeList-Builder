@@ -27,6 +27,7 @@
   "dependencies": {
     "@astrojs/mdx": "^4.3.12",
     "@astrojs/react": "^4.4.2",
+    "@napi-rs/canvas": "^0.1.84",
     "@orama/highlight": "^0.1.9",
     "@orama/orama": "^3.1.16",
     "@orama/plugin-astro": "^3.1.16",
@@ -44,6 +45,7 @@
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
     "lucide-react": "^0.555.0",
+    "pdfjs-dist": "^5.4.449",
     "react": "^19.2.0",
     "react-dom": "^19.2.0",
     "tailwind-merge": "^3.4.0",

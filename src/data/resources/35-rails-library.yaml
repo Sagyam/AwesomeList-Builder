@@ -38,12 +38,12 @@ repository: https://github.com/rails/rails
 documentation: https://guides.rubyonrails.org
 homepage: https://rubyonrails.org
 license: MIT
-stars: 57956
+stars: 57957
 forks: 22056
-watchers: 57956
-openIssues: 1391
-openPullRequests: 881
-lastCommit: 2025-12-10T06:48:50Z
+watchers: 57957
+openIssues: 1389
+openPullRequests: 879
+lastCommit: 2025-12-10T07:56:56Z
 lastReleaseVersion: v8.1.1
 lastReleaseDate: 2025-10-28T23:46:29Z
 created: 2008-04-11T02:19:47Z

@@ -7,8 +7,10 @@ import fs from "node:fs";
 import path from "node:path";
 import yaml from "yaml";
 import type {Library} from "@/schema/ts/library.interface.ts";
+import type {Paper} from "@/schema/ts/paper.interface.ts";
 import type {Repository} from "@/schema/ts/repository.interface.ts";
 import type {Resource} from "@/schema/ts/types.ts";
+import {arxivClient} from "./arxiv-client.ts";
 import {githubClient} from "./github-client.ts";
 import {gitlabClient} from "./gitlab-client.ts";
 
@@ -201,6 +203,9 @@ export class MetadataFetcher {
         case "library":
           updated = await this.enrichAndUpdateLibrary(resource as Library);
           break;
+        case "paper":
+          updated = await this.enrichAndUpdatePaper(resource as Paper);
+          break;
         default:
           // Other resource types don't need enrichment
           this.stats.skipped++;
@@ -376,6 +381,51 @@ export class MetadataFetcher {
       }
     } catch (error) {
       console.warn(`Failed to enrich library ${resource.id}:`, error);
+      this.stats.failed++;
+    }
+
+    return false;
+  }
+
+  /**
+   * Enrich a paper resource with arXiv metadata
+   */
+  private async enrichAndUpdatePaper(resource: Paper): Promise<boolean> {
+    try {
+      // Papers should have an arxivId
+      if (!resource.arxivId) {
+        console.warn(`Paper ${resource.id} has no arxivId, skipping`);
+        this.stats.skipped++;
+        return false;
+      }
+
+      const metadata = await arxivClient.fetchPaperMetadata(resource.arxivId);
+
+      if (metadata) {
+        // Update the paper with fresh data from arXiv
+        resource.title = metadata.title;
+        resource.authors = metadata.authors;
+        resource.abstract = metadata.abstract;
+        resource.published = metadata.published;
+        resource.doi = metadata.doi || resource.doi;
+        resource.venue = metadata.venue || resource.venue;
+        resource.pdfUrl = metadata.pdfUrl;
+        resource.field = metadata.field || resource.field;
+        resource.keywords = resource.keywords || metadata.categories;
+
+        // Update the image if cover was generated
+        if (metadata.coverImagePath) {
+          resource.image = metadata.coverImagePath;
+          resource.imageAlt = `${metadata.title} - Research Paper`;
+          console.log(
+            `✅ Cover image generated and set for paper ${resource.id}: ${metadata.coverImagePath}`
+          );
+        }
+
+        return true;
+      }
+    } catch (error) {
+      console.warn(`Failed to enrich paper ${resource.id}:`, error);
       this.stats.failed++;
     }
 

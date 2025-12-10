@@ -2,7 +2,9 @@ type: paper
 id: attention-paper
 title: Attention Is All You Need
 url: https://arxiv.org/abs/1706.03762
-description: Introducing the Transformer architecture that revolutionized natural language processing and became the foundation for modern AI models like GPT and BERT. A groundbreaking paper in deep learning.
+description: Introducing the Transformer architecture that revolutionized
+  natural language processing and became the foundation for modern AI models
+  like GPT and BERT. A groundbreaking paper in deep learning.
 category: Research Paper
 tags:
   - ai
@@ -12,11 +14,11 @@ topics:
   - ai
   - research
 language: en
-dateAdded: '2024-07-15T10:00:00Z'
-lastVerified: '2025-12-09T10:00:00Z'
+dateAdded: 2024-07-15T10:00:00Z
+lastVerified: 2025-12-09T10:00:00Z
 featured: true
-image: https://images.unsplash.com/photo-1677442136019-21780ecad995?w=800&auto=format&fit=crop
-imageAlt: AI research paper
+image: /images/papers/1706.03762-cover.png
+imageAlt: Attention Is All You Need - Research Paper
 difficulty: expert
 isFree: true
 accessLevel: free
@@ -26,13 +28,32 @@ authors:
   - Niki Parmar
   - Jakob Uszkoreit
   - Llion Jones
-published: '2017-06-12T10:00:00Z'
+  - Aidan N. Gomez
+  - Lukasz Kaiser
+  - Illia Polosukhin
+published: 2017-06-12T17:57:34Z
 venue: NeurIPS 2017
-arxivId: '1706.03762'
-pdfUrl: https://arxiv.org/pdf/1706.03762.pdf
+arxivId: "1706.03762"
+pdfUrl: https://arxiv.org/pdf/1706.03762v7
 citations: 85000
-field: Machine Learning
+field: Natural Language Processing
 keywords:
   - transformers
   - attention-mechanism
   - neural-networks
+abstract: The dominant sequence transduction models are based on complex
+  recurrent or convolutional neural networks in an encoder-decoder
+  configuration. The best performing models also connect the encoder and decoder
+  through an attention mechanism. We propose a new simple network architecture,
+  the Transformer, based solely on attention mechanisms, dispensing with
+  recurrence and convolutions entirely. Experiments on two machine translation
+  tasks show these models to be superior in quality while being more
+  parallelizable and requiring significantly less time to train. Our model
+  achieves 28.4 BLEU on the WMT 2014 English-to-German translation task,
+  improving over the existing best results, including ensembles by over 2 BLEU.
+  On the WMT 2014 English-to-French translation task, our model establishes a
+  new single-model state-of-the-art BLEU score of 41.8 after training for 3.5
+  days on eight GPUs, a small fraction of the training costs of the best models
+  from the literature. We show that the Transformer generalizes well to other
+  tasks by applying it successfully to English constituency parsing both with
+  large and limited training data.
