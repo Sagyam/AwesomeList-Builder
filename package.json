@@ -9,6 +9,7 @@
   "version": "0.0.5",
   "scripts": {
     "dev": "astro dev --host",
+    "prebuild": "bun run fetch --force",
     "build": "astro build",
     "preview": "astro preview --host",
     "astro": "astro",
@@ -19,7 +20,7 @@
     "check": "biome check .",
     "check:fix": "biome check --write .",
     "validate": "bun run src/lib/validators/project-validator.ts",
-    "fetch": "bun run src/lib/api/fetch-metadata.ts",
+    "fetch": "bun run src/lib/api/fetch-metadata.ts"
   },
   "dependencies": {
     "@astrojs/mdx": "^4.3.12",
