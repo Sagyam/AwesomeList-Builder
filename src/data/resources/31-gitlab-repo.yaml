@@ -1,0 +1,26 @@
+type: repository
+id: gitlab-repo
+name: GitLab CE
+url: https://gitlab.com/gitlab-org/gitlab-foss
+description: GitLab Community Edition - Open source end-to-end software development platform
+category: DevOps
+tags:
+  - git
+  - gitlab
+  - devops
+  - ci-cd
+topics:
+  - version-control
+  - devops
+  - continuous-integration
+language: en
+dateAdded: '2024-03-15T10:00:00Z'
+lastVerified: '2025-12-10T10:00:00Z'
+featured: false
+trending: false
+difficulty: advanced
+isFree: true
+accessLevel: free
+owner: gitlab-org
+repositoryUrl: https://gitlab.com/gitlab-org/gitlab-foss
+homepage: https://about.gitlab.com

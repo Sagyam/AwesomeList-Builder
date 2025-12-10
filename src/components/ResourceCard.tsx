@@ -1,10 +1,13 @@
 import {Archive, Scale, Star, TrendingUp} from "lucide-react";
 import * as React from "react";
+import {RegistryBadge} from "@/components/RegistryBadge";
 import {Card, CardAction, CardContent, CardDescription, CardFooter, CardHeader, CardTitle,} from "@/components/ui/card";
 import {Tooltip, TooltipContent, TooltipProvider, TooltipTrigger} from "@/components/ui/tooltip";
 import {getTechIconClasses} from "@/lib/utils/tech-icons";
 import {getTypeIcon} from "@/lib/utils/type-icons";
 import type {Types} from "@/schema/ts/types";
+
+type Registry = "npm" | "pypi" | "cargo" | "rubygems" | "maven" | "nuget" | "go" | "packagist";
 
 interface ResourceCardProps {
   id: string;
@@ -23,6 +26,10 @@ interface ResourceCardProps {
   archived?: boolean;
   trending?: boolean;
   featured?: boolean;
+  registry?: Registry;
+  packageName?: string;
+  version?: string;
+  downloads?: string;
 }
 
 export function ResourceCard({
@@ -42,6 +49,10 @@ export function ResourceCard({
   archived = false,
   trending = false,
   featured = false,
+  registry,
+  packageName,
+  version,
+  downloads,
 }: ResourceCardProps) {
   // Use languages array if available, otherwise fall back to single language
   const techList = languages.length > 0 ? languages : language ? [language] : [];
@@ -186,7 +197,10 @@ export function ResourceCard({
         </CardContent>
 
         <CardFooter className="justify-between">
-          <div className="flex items-center gap-4 text-sm text-muted-foreground">
+          <div className="flex items-center gap-4 text-sm text-muted-foreground flex-wrap">
+            {registry && (
+              <RegistryBadge registry={registry} packageName={packageName} version={version} />
+            )}
             {techIcons.length > 0 && (
               <div className="flex items-center gap-1.5">
                 {techIcons.map((iconClass, index) => (

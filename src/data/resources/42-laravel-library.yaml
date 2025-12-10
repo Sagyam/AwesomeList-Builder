@@ -1,0 +1,31 @@
+type: library
+id: laravel-library
+name: Laravel Framework
+url: https://laravel.com
+description: The PHP Framework for Web Artisans. Laravel is a web application framework with expressive, elegant syntax.
+category: Web Framework
+tags:
+  - php
+  - web
+  - framework
+  - mvc
+topics:
+  - php
+  - web-development
+  - backend
+language: en
+dateAdded: '2024-01-15T10:00:00Z'
+lastVerified: '2025-12-10T10:00:00Z'
+featured: true
+trending: true
+image: https://images.unsplash.com/photo-1555066931-4365d14bab8c?w=800&auto=format&fit=crop
+imageAlt: Laravel PHP development
+difficulty: intermediate
+isFree: true
+accessLevel: free
+package:
+  registry: packagist
+  name: laravel/framework
+repository: https://github.com/laravel/framework
+documentation: https://laravel.com/docs
+homepage: https://laravel.com

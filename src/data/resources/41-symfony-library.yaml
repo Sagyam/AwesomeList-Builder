@@ -1,0 +1,31 @@
+type: library
+id: symfony-library
+name: Symfony HTTP Foundation
+url: https://symfony.com
+description: The HttpFoundation component defines an object-oriented layer for the HTTP specification.
+category: PHP Library
+tags:
+  - php
+  - http
+  - symfony
+  - web
+topics:
+  - php
+  - web-development
+  - http
+language: en
+dateAdded: '2024-01-15T10:00:00Z'
+lastVerified: '2025-12-10T10:00:00Z'
+featured: true
+trending: false
+image: https://images.unsplash.com/photo-1599507593499-a3f7d7d97667?w=800&auto=format&fit=crop
+imageAlt: Symfony PHP development
+difficulty: intermediate
+isFree: true
+accessLevel: free
+package:
+  registry: packagist
+  name: symfony/http-foundation
+repository: https://github.com/symfony/http-foundation
+documentation: https://symfony.com/doc/current/components/http_foundation.html
+homepage: https://symfony.com

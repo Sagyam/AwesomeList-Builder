@@ -1,0 +1,27 @@
+type: library
+id: jackson-library
+name: Jackson
+url: https://github.com/FasterXML/jackson
+description: Jackson is a suite of data-processing tools for Java, including the flagship streaming JSON parser/generator library.
+category: JSON Library
+tags:
+  - java
+  - json
+  - serialization
+  - parsing
+topics:
+  - java
+  - json
+  - data-processing
+language: en
+dateAdded: '2024-01-15T10:00:00Z'
+lastVerified: '2025-12-10T10:00:00Z'
+featured: false
+trending: false
+difficulty: beginner
+isFree: true
+accessLevel: free
+package:
+  registry: maven
+  name: com.fasterxml.jackson.core:jackson-databind
+repository: https://github.com/FasterXML/jackson

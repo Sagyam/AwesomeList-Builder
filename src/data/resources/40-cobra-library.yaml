@@ -1,0 +1,29 @@
+type: library
+id: cobra-library
+name: Cobra
+url: https://cobra.dev
+description: Cobra is both a library for creating powerful modern CLI applications as well as a program to generate applications and command files.
+category: CLI Framework
+tags:
+  - go
+  - cli
+  - command-line
+  - tools
+topics:
+  - go
+  - cli
+  - developer-tools
+language: en
+dateAdded: '2024-01-15T10:00:00Z'
+lastVerified: '2025-12-10T10:00:00Z'
+featured: false
+trending: false
+difficulty: beginner
+isFree: true
+accessLevel: free
+package:
+  registry: go
+  name: github.com/spf13/cobra
+repository: https://github.com/spf13/cobra
+documentation: https://cobra.dev
+homepage: https://cobra.dev

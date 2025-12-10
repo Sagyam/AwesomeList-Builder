@@ -1,0 +1,27 @@
+type: library
+id: devise-library
+name: Devise
+url: https://github.com/heartcombo/devise
+description: Flexible authentication solution for Rails with Warden. Devise is a flexible authentication solution for Rails based on Warden.
+category: Authentication
+tags:
+  - ruby
+  - rails
+  - authentication
+  - security
+topics:
+  - ruby
+  - security
+  - authentication
+language: en
+dateAdded: '2024-01-15T10:00:00Z'
+lastVerified: '2025-12-10T10:00:00Z'
+featured: false
+trending: false
+difficulty: intermediate
+isFree: true
+accessLevel: free
+package:
+  registry: rubygems
+  name: devise
+repository: https://github.com/heartcombo/devise

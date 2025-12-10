@@ -1,0 +1,29 @@
+type: library
+id: requests-library
+name: Requests
+url: https://requests.readthedocs.io
+description: Requests is an elegant and simple HTTP library for Python, built for human beings.
+category: HTTP Library
+tags:
+  - python
+  - http
+  - api
+  - rest
+topics:
+  - python
+  - networking
+  - api
+language: en
+dateAdded: '2024-01-15T10:00:00Z'
+lastVerified: '2025-12-10T10:00:00Z'
+featured: false
+trending: false
+difficulty: beginner
+isFree: true
+accessLevel: free
+package:
+  registry: pypi
+  name: requests
+repository: https://github.com/psf/requests
+documentation: https://requests.readthedocs.io
+homepage: https://requests.readthedocs.io

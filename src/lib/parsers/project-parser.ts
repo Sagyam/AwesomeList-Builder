@@ -31,9 +31,29 @@ function loadMetadata(): ProjectMetadata {
 
 /**
  * Load all resources from the resources directory
+ * Checks for enriched data first, then falls back to YAML files
  * @returns Array of parsed and validated resources
  */
 function loadResources(): Resource[] {
+  const enrichedDataPath = path.join(process.cwd(), "cache", "enriched-resources.json");
+
+  // Check if enriched data exists and is recent (within 1 hour)
+  if (fs.existsSync(enrichedDataPath)) {
+    try {
+      const stats = fs.statSync(enrichedDataPath);
+      const fileAge = Date.now() - stats.mtimeMs;
+      const oneHour = 3600000;
+
+      if (fileAge < oneHour) {
+        const enrichedData = JSON.parse(fs.readFileSync(enrichedDataPath, "utf-8"));
+        console.log(`Using enriched data from cache (${Math.round(fileAge / 1000 / 60)} minutes old)`);
+        return enrichedData;
+      }
+    } catch (error) {
+      console.warn("Failed to load enriched data, falling back to YAML:", error);
+    }
+  }
+
   const resourcesDir = path.join(process.cwd(), "src", "data", "resources");
 
   // Check if resources directory exists
