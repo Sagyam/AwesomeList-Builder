@@ -41,11 +41,11 @@ languages:
   - TypeScript
   - JavaScript
   - Shell
-stars: 107036
-forks: 13153
-watchers: 107036
-openIssues: 5462
-openPullRequests: 506
+stars: 107039
+forks: 13155
+watchers: 107039
+openIssues: 5463
+openPullRequests: 507
 lastCommit: 2025-12-09T20:41:28Z
 lastReleaseVersion: v5.9.3
 lastReleaseDate: 2025-10-01T19:06:07Z

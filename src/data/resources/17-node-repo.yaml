@@ -25,7 +25,7 @@ language: en
 dateAdded: 2024-01-20T10:00:00Z
 lastVerified: 2025-12-09T10:00:00Z
 featured: true
-image: https://images.unsplash.com/photo-1558494949-ef010cbdcc31?w=800&auto=format&fit=crop
+image: https://nodejs.org/static/logos/jsIconGreen.svg
 imageAlt: Node.js runtime
 difficulty: intermediate
 isFree: true
@@ -35,11 +35,11 @@ ownerUrl: https://github.com/nodejs
 repositoryUrl: https://github.com/nodejs/node
 homepage: https://nodejs.org
 license: NOASSERTION
-stars: 114671
-forks: 33986
-watchers: 114671
-openIssues: 2399
-lastCommit: 2025-12-09T14:38:02Z
+stars: 114678
+forks: 33984
+watchers: 114678
+openIssues: 2397
+lastCommit: 2025-12-10T16:32:27Z
 created: 2014-11-26T19:57:11Z
 primaryLanguage: JavaScript
 languages:
@@ -61,7 +61,7 @@ status: active
 maturity: stable
 hasWiki: false
 hasDiscussions: false
-openPullRequests: 668
+openPullRequests: 664
 lastReleaseVersion: v20.19.6
 lastReleaseDate: 2025-11-25T12:31:27Z
 archived: false

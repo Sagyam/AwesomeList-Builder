@@ -54,3 +54,4 @@ dist/
 cache/
 *.log
 .astro/
+/public/images/papers/*.*

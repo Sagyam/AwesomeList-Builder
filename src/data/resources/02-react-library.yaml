@@ -46,12 +46,12 @@ languages:
   - CSS
   - CoffeeScript
   - Shell
-stars: 241474
+stars: 241483
 forks: 50037
-watchers: 241474
-openIssues: 1092
-openPullRequests: 242
-lastCommit: 2025-12-09T19:27:06Z
+watchers: 241483
+openIssues: 1091
+openPullRequests: 241
+lastCommit: 2025-12-10T13:07:35Z
 lastReleaseVersion: v19.2.1
 lastReleaseDate: 2025-12-03T15:46:02Z
 created: 2013-05-24T16:15:54Z

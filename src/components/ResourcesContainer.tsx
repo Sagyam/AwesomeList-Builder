@@ -1,6 +1,6 @@
 import * as React from "react";
 import {LayoutToggle} from "@/components/LayoutToggle";
-import {ResourceCard} from "@/components/ResourceCard";
+import {ResourceCard} from "@/components/resource-card";
 import {ResourceListItem} from "@/components/ResourceListItem";
 import {ArrowDown} from "lucide-react";
 

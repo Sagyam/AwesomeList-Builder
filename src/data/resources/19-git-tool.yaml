@@ -15,7 +15,7 @@ language: en
 dateAdded: '2024-01-08T10:00:00Z'
 lastVerified: '2025-12-09T10:00:00Z'
 featured: true
-image: https://images.unsplash.com/photo-1556075798-4825dfaaf498?w=800&auto=format&fit=crop
+image: https://git-scm.com/images/logos/downloads/Git-Icon-1788C.svg
 imageAlt: Version control
 difficulty: beginner
 isFree: true

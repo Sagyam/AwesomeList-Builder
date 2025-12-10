@@ -3,7 +3,7 @@ import * as React from "react";
 import {FilterBar, type FilterState} from "@/components/FilterBar";
 import {LayoutToggle} from "@/components/LayoutToggle";
 import {Pagination} from "@/components/Pagination";
-import {ResourceCard} from "@/components/ResourceCard";
+import {ResourceCard} from "@/components/resource-card";
 import {ResourceListItem} from "@/components/ResourceListItem";
 import {Search} from "@/components/Search";
 import {SortBar, type SortOption, type SortOrder} from "@/components/SortBar";

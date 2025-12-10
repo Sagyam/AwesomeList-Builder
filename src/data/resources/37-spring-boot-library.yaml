@@ -34,12 +34,12 @@ repository: https://github.com/spring-projects/spring-boot
 documentation: https://docs.spring.io/spring-boot/docs/current/reference/html/
 homepage: https://spring.io/projects/spring-boot
 license: Apache-2.0
-stars: 79317
+stars: 79319
 forks: 41704
-watchers: 79317
-openIssues: 547
+watchers: 79319
+openIssues: 526
 openPullRequests: 18
-lastCommit: 2025-12-10T09:24:21Z
+lastCommit: 2025-12-10T11:43:15Z
 lastReleaseVersion: v4.0.0
 lastReleaseDate: 2025-11-20T18:18:13Z
 created: 2012-10-19T15:02:57Z
