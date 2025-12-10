@@ -59,9 +59,29 @@ export function ResourceCard({
   const techIcons = getTechIconClasses(techList, 3);
   const { icon: TypeIcon, label: typeLabel } = getTypeIcon(type);
 
+  // Unique hover colors for each type
+  const typeHoverColors: Record<Types, string> = {
+    library: "group-hover:bg-blue-500 group-hover:text-white",
+    article: "group-hover:bg-purple-500 group-hover:text-white",
+    video: "group-hover:bg-red-500 group-hover:text-white",
+    book: "group-hover:bg-amber-500 group-hover:text-white",
+    course: "group-hover:bg-green-500 group-hover:text-white",
+    tool: "group-hover:bg-orange-500 group-hover:text-white",
+    paper: "group-hover:bg-cyan-500 group-hover:text-white",
+    podcast: "group-hover:bg-pink-500 group-hover:text-white",
+    documentation: "group-hover:bg-indigo-500 group-hover:text-white",
+    repository: "group-hover:bg-emerald-500 group-hover:text-white",
+    community: "group-hover:bg-rose-500 group-hover:text-white",
+    newsletter: "group-hover:bg-sky-500 group-hover:text-white",
+    cheatsheet: "group-hover:bg-lime-500 group-hover:text-white",
+    conference: "group-hover:bg-violet-500 group-hover:text-white",
+    certification: "group-hover:bg-yellow-500 group-hover:text-white",
+  };
+
   return (
     <a href={`/resources/${id}`} className="block group">
-      <Card className="transition-all duration-300 hover:shadow-xl hover:-translate-y-2 hover:border-primary/20 overflow-hidden h-full">
+      <Card
+          className="transition-all duration-500 hover:shadow-xl hover:-translate-y-2 hover:border-primary/20 overflow-hidden h-full">
         {/* Image Section */}
         {image && (
           <div className="relative aspect-video w-full overflow-hidden bg-muted">
@@ -69,7 +89,7 @@ export function ResourceCard({
               src={image}
               alt={imageAlt || name}
               loading="lazy"
-              className="h-full w-full object-cover transition-transform duration-300 group-hover:scale-105"
+              className="h-full w-full object-cover transition-transform duration-500 brightness-95 group-hover:brightness-110"
             />
             {/* Status Badges Overlay */}
             <div className="absolute top-2 right-2 flex gap-2">
@@ -164,13 +184,14 @@ export function ResourceCard({
                   </div>
                 )}
               </div>
-              <CardDescription className="line-clamp-2">{description}</CardDescription>
+              <CardDescription className="line-clamp-3">{description}</CardDescription>
             </div>
             <CardAction>
               <TooltipProvider>
                 <Tooltip>
                   <TooltipTrigger asChild>
-                    <div className="inline-flex items-center justify-center rounded-full bg-primary/10 p-2 text-primary hover:bg-primary/20 transition-colors cursor-help">
+                    <div
+                        className={`inline-flex items-center justify-center rounded-full bg-primary/10 p-2 text-primary transition-all duration-300 cursor-help ${typeHoverColors[type]}`}>
                       <TypeIcon className="h-4 w-4" />
                     </div>
                   </TooltipTrigger>
