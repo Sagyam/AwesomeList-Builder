@@ -8,9 +8,6 @@ import {defineConfig} from "astro/config";
 export default defineConfig({
   vite: {
     plugins: [tailwindcss()],
-    server: {
-      allowedHosts: ['nixos.tailac2f54.ts.net']
-    }
   },
 
   integrations: [react()],
