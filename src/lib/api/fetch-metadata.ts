@@ -1,6 +1,6 @@
 /**
- * Build-time data fetching script
- * Fetches metadata for all resources and enriches them with external data
+ * Build-time data fetching script (Refactored)
+ * Fetches metadata from GitHub/GitLab and updates YAML files directly
  */
 
 import fs from "node:fs";
@@ -9,57 +9,66 @@ import yaml from "yaml";
 import type {Library} from "@/schema/ts/library.interface.ts";
 import type {Repository} from "@/schema/ts/repository.interface.ts";
 import type {Resource} from "@/schema/ts/types.ts";
-import {cacheManager} from "./cache-manager.ts";
-import {cargoClient} from "./cargo-client.ts";
 import {githubClient} from "./github-client.ts";
 import {gitlabClient} from "./gitlab-client.ts";
-import {goClient} from "./go-client.ts";
-import {mavenClient} from "./maven-client.ts";
-import {npmClient} from "./npm-client.ts";
-import {packagistClient} from "./packagist-client.ts";
-import {pypiClient} from "./pypi-client.ts";
-import {rubygemsClient} from "./rubygems-client.ts";
 
 export interface FetchStats {
   total: number;
-  fetched: number;
-  cached: number;
+  updated: number;
   failed: number;
   skipped: number;
+}
+
+interface MetadataConfig {
+  dataRefresh?: {
+    enabled: boolean;
+    intervalDays: number;
+    lastRefresh: string | null;
+  };
 }
 
 export class MetadataFetcher {
   private stats: FetchStats = {
     total: 0,
-    fetched: 0,
-    cached: 0,
+    updated: 0,
     failed: 0,
     skipped: 0,
   };
 
   /**
-   * Fetch and enrich all resources
+   * Fetch and update all resources
    */
-  async fetchAll(resourcesDir: string, outputDir?: string): Promise<Resource[]> {
+  async fetchAll(resourcesDir: string, force = false): Promise<void> {
+    console.log("Loading metadata configuration...");
+    const metadataPath = path.join(path.dirname(resourcesDir), "metadata.yaml");
+    const metadata = this.loadMetadata(metadataPath);
+
+    // Check if refresh is needed based on ISR logic
+    if (!force && !this.shouldRefresh(metadata)) {
+      console.log("Data refresh not needed. Use --force to override.");
+      return;
+    }
+
     console.log("Loading resources...");
     const resources = this.loadResources(resourcesDir);
     this.stats.total = resources.length;
 
     console.log(`Found ${resources.length} resources`);
-    console.log("Fetching metadata...");
-
-    const enrichedResources: Resource[] = [];
+    console.log("Fetching metadata from GitHub/GitLab...");
 
     // Process in batches to avoid overwhelming APIs
     const batchSize = 5;
     for (let i = 0; i < resources.length; i += batchSize) {
       const batch = resources.slice(i, i + batchSize);
 
-      const enrichedBatch = await Promise.all(
-        batch.map((resource) => this.enrichResource(resource))
+      await Promise.all(
+        batch.map(async (resource) => {
+          const updated = await this.enrichAndUpdateResource(resource, resourcesDir);
+          if (updated) {
+            this.stats.updated++;
+          }
+        })
       );
-
-      enrichedResources.push(...enrichedBatch);
 
       // Progress indicator
       console.log(
@@ -72,17 +81,76 @@ export class MetadataFetcher {
       }
     }
 
-    // Always save enriched resources to cache for build process
-    this.saveEnrichedDataCache(enrichedResources);
-
-    // Optionally save enriched resources to YAML files
-    if (outputDir) {
-      this.saveEnrichedResources(enrichedResources, outputDir);
-    }
+    // Update lastRefresh timestamp in metadata
+    this.updateMetadataTimestamp(metadataPath);
 
     this.printStats();
+  }
 
-    return enrichedResources;
+  /**
+   * Load metadata configuration
+   */
+  private loadMetadata(metadataPath: string): MetadataConfig {
+    try {
+      if (!fs.existsSync(metadataPath)) {
+        return {};
+      }
+      const content = fs.readFileSync(metadataPath, "utf-8");
+      return yaml.parse(content) as MetadataConfig;
+    } catch (error) {
+      console.warn("Failed to load metadata.yaml:", error);
+      return {};
+    }
+  }
+
+  /**
+   * Check if data refresh is needed based on ISR configuration
+   */
+  private shouldRefresh(metadata: MetadataConfig): boolean {
+    const config = metadata.dataRefresh;
+
+    if (!config || !config.enabled) {
+      return true; // Refresh if not configured
+    }
+
+    if (!config.lastRefresh) {
+      return true; // Never refreshed before
+    }
+
+    const lastRefresh = new Date(config.lastRefresh);
+    const now = new Date();
+    const daysSinceRefresh = (now.getTime() - lastRefresh.getTime()) / (1000 * 60 * 60 * 24);
+
+    return daysSinceRefresh >= config.intervalDays;
+  }
+
+  /**
+   * Update lastRefresh timestamp in metadata.yaml
+   */
+  private updateMetadataTimestamp(metadataPath: string): void {
+    try {
+      if (!fs.existsSync(metadataPath)) {
+        return;
+      }
+
+      const content = fs.readFileSync(metadataPath, "utf-8");
+      const metadata = yaml.parse(content);
+
+      if (!metadata.dataRefresh) {
+        metadata.dataRefresh = {
+          enabled: true,
+          intervalDays: 7,
+          lastRefresh: null,
+        };
+      }
+
+      metadata.dataRefresh.lastRefresh = new Date().toISOString();
+
+      fs.writeFileSync(metadataPath, yaml.stringify(metadata), "utf-8");
+      console.log("Updated lastRefresh timestamp in metadata.yaml");
+    } catch (error) {
+      console.warn("Failed to update metadata timestamp:", error);
+    }
   }
 
   /**
@@ -100,12 +168,13 @@ export class MetadataFetcher {
 
     for (const file of files) {
       if (!file.endsWith(".yaml") && !file.endsWith(".yml")) continue;
-      if (file === "metadata.yaml") continue;
 
       try {
         const filePath = path.join(resourcesDir, file);
         const content = fs.readFileSync(filePath, "utf-8");
         const resource = yaml.parse(content) as Resource;
+        // Store the file path for later updates
+        (resource as any).__filePath = filePath;
         resources.push(resource);
       } catch (error) {
         console.warn(`Failed to load resource from ${file}:`, error);
@@ -116,9 +185,51 @@ export class MetadataFetcher {
   }
 
   /**
+   * Enrich and update a resource based on its type
+   */
+  private async enrichAndUpdateResource(
+    resource: Resource,
+    resourcesDir: string
+  ): Promise<boolean> {
+    try {
+      let updated = false;
+
+      switch (resource.type) {
+        case "repository":
+          updated = await this.enrichAndUpdateRepository(resource as Repository);
+          break;
+        case "library":
+          updated = await this.enrichAndUpdateLibrary(resource as Library);
+          break;
+        default:
+          // Other resource types don't need enrichment
+          this.stats.skipped++;
+          return false;
+      }
+
+      if (updated) {
+        // Write the updated resource back to its YAML file
+        const filePath = (resource as any).__filePath;
+        if (filePath) {
+          // Remove the temporary __filePath property before saving
+          delete (resource as any).__filePath;
+          const content = yaml.stringify(resource);
+          fs.writeFileSync(filePath, content, "utf-8");
+        }
+      }
+
+      return updated;
+    } catch (error) {
+      console.warn(`Failed to enrich resource ${resource.id}:`, error);
+      this.stats.failed++;
+      return false;
+    }
+  }
+
+  /**
    * Enrich a repository resource with GitHub or GitLab data
    */
-  private async enrichRepository(resource: Repository): Promise<Repository> {
+  private async enrichAndUpdateRepository(resource: Repository): Promise<boolean> {
     try {
       // Determine if it's GitHub or GitLab
       const isGitHub = resource.repositoryUrl.includes("github.com");
@@ -128,50 +239,57 @@ export class MetadataFetcher {
         const metadata = await githubClient.fetchRepositoryMetadata(resource.repositoryUrl);
 
         if (metadata) {
-          this.stats.fetched++;
-          return {
-            ...resource,
-            owner: metadata.owner,
-            ownerUrl: metadata.ownerUrl,
-            homepage: metadata.homepage || resource.homepage,
-            license: metadata.license || resource.license,
-            stars: metadata.stars,
-            forks: metadata.forks,
-            watchers: metadata.watchers,
-            openIssues: metadata.openIssues,
-            lastCommit: metadata.lastCommit,
-            created: metadata.created,
-            primaryLanguage: metadata.primaryLanguage || resource.primaryLanguage,
-            languages: metadata.languages,
-            archived: metadata.archived,
-            hasWiki: metadata.hasWiki,
-            hasDiscussions: metadata.hasDiscussions,
-            // Merge topics from GitHub with existing tags
-            topics: [...new Set([...(resource.topics || []), ...metadata.topics])],
-          };
+          // Update the resource with fresh data
+          resource.owner = metadata.owner;
+          resource.ownerUrl = metadata.ownerUrl;
+          resource.homepage = metadata.homepage || resource.homepage;
+          resource.license = metadata.license || resource.license;
+          resource.stars = metadata.stars;
+          resource.forks = metadata.forks;
+          resource.watchers = metadata.watchers;
+          resource.openIssues = metadata.openIssues;
+          resource.openPullRequests = metadata.openPullRequests;
+          resource.lastCommit = metadata.lastCommit;
+          resource.lastReleaseVersion = metadata.lastReleaseVersion;
+          resource.lastReleaseDate = metadata.lastReleaseDate;
+          resource.created = metadata.created;
+          resource.primaryLanguage = metadata.primaryLanguage || resource.primaryLanguage;
+          resource.languages = metadata.languages;
+          resource.archived = metadata.archived;
+          resource.hasWiki = metadata.hasWiki;
+          resource.hasDiscussions = metadata.hasDiscussions;
+          // Merge topics from GitHub with existing tags
+          resource.topics = [...new Set([...(resource.topics || []), ...metadata.topics])];
+
+          return true;
         }
       } else if (isGitLab) {
         const metadata = await gitlabClient.fetchRepositoryMetadata(resource.repositoryUrl);
 
         if (metadata) {
-          this.stats.fetched++;
-          return {
-            ...resource,
-            owner: metadata.owner,
-            ownerUrl: metadata.ownerUrl,
-            homepage: metadata.homepage || resource.homepage,
-            license: metadata.license || resource.license,
-            stars: metadata.stars,
-            forks: metadata.forks,
-            openIssues: metadata.openIssues,
-            lastCommit: metadata.lastActivity,
-            created: metadata.created,
-            primaryLanguage: metadata.primaryLanguage || resource.primaryLanguage,
-            languages: metadata.languages,
-            archived: metadata.archived,
-            // Merge topics from GitLab with existing tags
-            topics: [...new Set([...(resource.topics || []), ...metadata.topics])],
-          };
+          // Update the resource with fresh data
+          resource.owner = metadata.owner;
+          resource.ownerUrl = metadata.ownerUrl;
+          resource.homepage = metadata.homepage || resource.homepage;
+          resource.license = metadata.license || resource.license;
+          resource.stars = metadata.stars;
+          resource.forks = metadata.forks;
+          resource.watchers = metadata.watchers;
+          resource.openIssues = metadata.openIssues;
+          resource.openPullRequests = metadata.openPullRequests;
+          resource.lastCommit = metadata.lastCommit;
+          resource.lastReleaseVersion = metadata.lastReleaseVersion;
+          resource.lastReleaseDate = metadata.lastReleaseDate;
+          resource.created = metadata.created;
+          resource.primaryLanguage = metadata.primaryLanguage || resource.primaryLanguage;
+          resource.languages = metadata.languages;
+          resource.archived = metadata.archived;
+          resource.hasWiki = metadata.hasWiki;
+          resource.hasDiscussions = metadata.hasDiscussions;
+          // Merge topics from GitLab with existing tags
+          resource.topics = [...new Set([...(resource.topics || []), ...metadata.topics])];
+
+          return true;
         }
       } else {
         console.warn(`Unsupported repository host: ${resource.repositoryUrl}`);
@@ -182,142 +300,86 @@ export class MetadataFetcher {
       this.stats.failed++;
     }
 
-    return resource;
+    return false;
   }
 
   /**
-   * Enrich a library resource with package registry data
+   * Enrich a library resource with GitHub/GitLab data from its repository
    */
-  private async enrichLibrary(resource: Library): Promise<Library> {
+  private async enrichAndUpdateLibrary(resource: Library): Promise<boolean> {
     try {
-      const registry = resource.package.registry;
-      const packageName = resource.package.name;
-
-      let metadata:
-        | Awaited<ReturnType<typeof npmClient.fetchPackageMetadata>>
-        | Awaited<ReturnType<typeof pypiClient.fetchPackageMetadata>>
-        | Awaited<ReturnType<typeof cargoClient.fetchPackageMetadata>>
-        | Awaited<ReturnType<typeof rubygemsClient.fetchPackageMetadata>>
-        | Awaited<ReturnType<typeof mavenClient.fetchPackageMetadata>>
-        | Awaited<ReturnType<typeof goClient.fetchPackageMetadata>>
-        | Awaited<ReturnType<typeof packagistClient.fetchPackageMetadata>>
-        | null = null;
-
-      switch (registry) {
-        case "npm":
-          metadata = await npmClient.fetchPackageMetadata(packageName);
-          break;
-        case "pypi":
-          metadata = await pypiClient.fetchPackageMetadata(packageName);
-          break;
-        case "cargo":
-          metadata = await cargoClient.fetchPackageMetadata(packageName);
-          break;
-        case "rubygems":
-          metadata = await rubygemsClient.fetchPackageMetadata(packageName);
-          break;
-        case "maven":
-          metadata = await mavenClient.fetchPackageMetadata(packageName);
-          break;
-        case "go":
-          metadata = await goClient.fetchPackageMetadata(packageName);
-          break;
-        case "packagist":
-          metadata = await packagistClient.fetchPackageMetadata(packageName);
-          break;
-        default:
-          console.warn(`Unsupported registry: ${registry}`);
-          this.stats.skipped++;
-          return resource;
+      // Libraries should have a repository URL
+      if (!resource.repository) {
+        console.warn(`Library ${resource.id} has no repository URL, skipping`);
+        this.stats.skipped++;
+        return false;
       }
 
-      if (metadata) {
-        this.stats.fetched++;
+      const isGitHub = resource.repository.includes("github.com");
+      const isGitLab = resource.repository.includes("gitlab.com");
 
-        const enriched: Library = {
-          ...resource,
-          repository: metadata.repository || resource.repository,
-          homepage: metadata.homepage || resource.homepage,
-          license: metadata.license || resource.license,
-          version: metadata.version,
-          lastUpdated: metadata.lastUpdated,
-        };
+      if (isGitHub) {
+        const metadata = await githubClient.fetchRepositoryMetadata(resource.repository);
 
-        // Add downloads if available (npm, cargo, rubygems, packagist)
-        if ("downloads" in metadata) {
-          enriched.downloads = metadata.downloads;
+        if (metadata) {
+          // Update the library with fresh data from its repository
+          resource.homepage = metadata.homepage || resource.homepage;
+          resource.license = metadata.license || resource.license;
+          resource.stars = metadata.stars;
+          resource.forks = metadata.forks;
+          resource.watchers = metadata.watchers;
+          resource.openIssues = metadata.openIssues;
+          resource.openPullRequests = metadata.openPullRequests;
+          resource.lastCommit = metadata.lastCommit;
+          resource.lastReleaseVersion = metadata.lastReleaseVersion;
+          resource.lastReleaseDate = metadata.lastReleaseDate;
+          resource.created = metadata.created;
+          resource.languages = metadata.languages;
+          resource.archived = metadata.archived;
+          resource.hasWiki = metadata.hasWiki;
+          resource.hasDiscussions = metadata.hasDiscussions;
+          // Merge topics
+          resource.topics = [...new Set([...(resource.topics || []), ...metadata.topics])];
+
+          return true;
         }
+      } else if (isGitLab) {
+        const metadata = await gitlabClient.fetchRepositoryMetadata(resource.repository);
 
-        // Add documentation if available
-        if ("documentation" in metadata && metadata.documentation) {
-          enriched.documentation = metadata.documentation;
+        if (metadata) {
+          // Update the library with fresh data from its repository
+          resource.homepage = metadata.homepage || resource.homepage;
+          resource.license = metadata.license || resource.license;
+          resource.stars = metadata.stars;
+          resource.forks = metadata.forks;
+          resource.watchers = metadata.watchers;
+          resource.openIssues = metadata.openIssues;
+          resource.openPullRequests = metadata.openPullRequests;
+          resource.lastCommit = metadata.lastCommit;
+          resource.lastReleaseVersion = metadata.lastReleaseVersion;
+          resource.lastReleaseDate = metadata.lastReleaseDate;
+          resource.created = metadata.created;
+          resource.languages = metadata.languages;
+          resource.archived = metadata.archived;
+          resource.hasWiki = metadata.hasWiki;
+          resource.hasDiscussions = metadata.hasDiscussions;
+          // Merge topics
+          resource.topics = [...new Set([...(resource.topics || []), ...metadata.topics])];
+
+          return true;
         }
-
-        return enriched;
+      } else {
+        console.warn(
+          `Unsupported repository host for library ${resource.id}: ${resource.repository}`
+        );
+        this.stats.skipped++;
       }
     } catch (error) {
-      console.warn(`Failed to enrich library ${resource.package.name}:`, error);
+      console.warn(`Failed to enrich library ${resource.id}:`, error);
       this.stats.failed++;
     }
 
-    return resource;
-  }
-
-  /**
-   * Enrich a single resource based on its type
-   */
-  private async enrichResource(resource: Resource): Promise<Resource> {
-    switch (resource.type) {
-      case "repository":
-        return await this.enrichRepository(resource as Repository);
-      case "library":
-        return await this.enrichLibrary(resource as Library);
-      default:
-        // Other resource types don't need enrichment yet
-        this.stats.skipped++;
-        return resource;
-    }
-  }
-
-  /**
-   * Save enriched resources to JSON cache for build process
-   */
-  private saveEnrichedDataCache(resources: Resource[]): void {
-    const cacheDir = path.join(process.cwd(), "cache");
-    const cachePath = path.join(cacheDir, "enriched-resources.json");
-
-    if (!fs.existsSync(cacheDir)) {
-      fs.mkdirSync(cacheDir, { recursive: true });
-    }
-
-    try {
-      fs.writeFileSync(cachePath, JSON.stringify(resources, null, 2), "utf-8");
-      console.log(`Saved enriched data cache to ${cachePath}`);
-    } catch (error) {
-      console.error("Failed to save enriched data cache:", error);
-    }
-  }
-
-  /**
-   * Save enriched resources back to YAML files
-   */
-  private saveEnrichedResources(resources: Resource[], outputDir: string): void {
-    if (!fs.existsSync(outputDir)) {
-      fs.mkdirSync(outputDir, { recursive: true });
-    }
-
-    for (const resource of resources) {
-      try {
-        const fileName = `${resource.id}.yaml`;
-        const filePath = path.join(outputDir, fileName);
-        const content = yaml.stringify(resource);
-        fs.writeFileSync(filePath, content, "utf-8");
-      } catch (error) {
-        console.warn(`Failed to save resource ${resource.id}:`, error);
-      }
-    }
-
-    console.log(`Saved ${resources.length} enriched resources to ${outputDir}`);
+    return false;
   }
 
   /**
@@ -326,13 +388,9 @@ export class MetadataFetcher {
   private printStats(): void {
     console.log("\n=== Fetch Statistics ===");
     console.log(`Total resources: ${this.stats.total}`);
-    console.log(`Fetched: ${this.stats.fetched}`);
-    console.log(`Cached: ${this.stats.cached}`);
+    console.log(`Updated: ${this.stats.updated}`);
     console.log(`Failed: ${this.stats.failed}`);
     console.log(`Skipped: ${this.stats.skipped}`);
-
-    const cacheStats = cacheManager.getStats();
-    console.log(`\nCache: ${cacheStats.total} entries, ${(cacheStats.size / 1024).toFixed(2)} KB`);
   }
 
   /**
@@ -346,10 +404,11 @@ export class MetadataFetcher {
 // CLI script
 if (import.meta.url === `file://${process.argv[1]}`) {
   const resourcesDir = path.resolve(process.cwd(), "src/data/resources");
+  const force = process.argv.includes("--force");
 
   const fetcher = new MetadataFetcher();
   fetcher
-    .fetchAll(resourcesDir)
+    .fetchAll(resourcesDir, force)
     .then(() => {
       console.log("\nMetadata fetching completed!");
       process.exit(0);

@@ -2,7 +2,9 @@ type: repository
 id: vue-repo
 name: Vue.js
 url: https://github.com/vuejs/core
-description: The Progressive JavaScript Framework for building user interfaces. Easy to learn, performant and versatile framework with an approachable core library focused on the view layer.
+description: The Progressive JavaScript Framework for building user interfaces.
+  Easy to learn, performant and versatile framework with an approachable core
+  library focused on the view layer.
 category: Frontend Framework
 tags:
   - vue
@@ -12,8 +14,8 @@ topics:
   - web-development
   - frontend
 language: en
-dateAdded: '2024-02-10T10:00:00Z'
-lastVerified: '2025-12-09T10:00:00Z'
+dateAdded: 2024-02-10T10:00:00Z
+lastVerified: 2025-12-09T10:00:00Z
 featured: true
 image: https://images.unsplash.com/photo-1498050108023-c5249f4df085?w=800&auto=format&fit=crop
 imageAlt: Vue.js development
@@ -23,19 +25,24 @@ accessLevel: free
 owner: vuejs
 ownerUrl: https://github.com/vuejs
 repositoryUrl: https://github.com/vuejs/core
-homepage: https://vuejs.org
+homepage: https://vuejs.org/
 license: MIT
-stars: 46000
-forks: 8100
-watchers: 1200
-openIssues: 600
-lastCommit: '2025-12-08T22:10:00Z'
-created: '2013-07-29T00:00:00Z'
+stars: 52360
+forks: 8976
+watchers: 52360
+openIssues: 1031
+lastCommit: 2025-12-10T02:25:35Z
+created: 2018-06-12T13:49:36Z
 primaryLanguage: TypeScript
 languages:
   - TypeScript
   - JavaScript
+  - HTML
+  - Vue
+  - CSS
 status: active
 maturity: stable
 hasWiki: false
 hasDiscussions: true
+openPullRequests: 368
+archived: false

@@ -2,7 +2,9 @@ type: repository
 id: node-repo
 name: Node.js
 url: https://github.com/nodejs/node
-description: Node.js JavaScript runtime built on Chrome's V8 JavaScript engine for building scalable network applications using an event-driven, non-blocking I/O model.
+description: Node.js JavaScript runtime built on Chrome's V8 JavaScript engine
+  for building scalable network applications using an event-driven, non-blocking
+  I/O model.
 category: Backend Framework
 tags:
   - nodejs
@@ -11,9 +13,17 @@ tags:
 topics:
   - backend
   - javascript
+  - js
+  - linux
+  - macos
+  - mit
+  - node
+  - nodejs
+  - runtime
+  - windows
 language: en
-dateAdded: '2024-01-20T10:00:00Z'
-lastVerified: '2025-12-09T10:00:00Z'
+dateAdded: 2024-01-20T10:00:00Z
+lastVerified: 2025-12-09T10:00:00Z
 featured: true
 image: https://images.unsplash.com/photo-1558494949-ef010cbdcc31?w=800&auto=format&fit=crop
 imageAlt: Node.js runtime
@@ -24,18 +34,34 @@ owner: nodejs
 ownerUrl: https://github.com/nodejs
 repositoryUrl: https://github.com/nodejs/node
 homepage: https://nodejs.org
-license: MIT
-stars: 106000
-forks: 28900
-watchers: 3200
-openIssues: 1800
-lastCommit: '2025-12-09T08:15:00Z'
-created: '2009-05-27T00:00:00Z'
+license: NOASSERTION
+stars: 114664
+forks: 33987
+watchers: 114664
+openIssues: 2398
+lastCommit: 2025-12-09T14:38:02Z
+created: 2014-11-26T19:57:11Z
 primaryLanguage: JavaScript
 languages:
   - JavaScript
   - C++
+  - Python
+  - C
+  - HTML
+  - Shell
+  - Makefile
+  - Batchfile
+  - Emacs Lisp
+  - Perl
+  - R
+  - Nix
+  - TypeScript
+  - Assembly
 status: active
 maturity: stable
-hasWiki: true
-hasDiscussions: true
+hasWiki: false
+hasDiscussions: false
+openPullRequests: 668
+lastReleaseVersion: v20.19.6
+lastReleaseDate: 2025-11-25T12:31:27Z
+archived: false

@@ -44,7 +44,7 @@ const resourcesData = rankedResources.map((resource) => ({
   featured: resource.featured,
     registry: "package" in resource && resource.package ? resource.package.registry : undefined,
     packageName: "package" in resource && resource.package ? resource.package.name : undefined,
-    version: "version" in resource ? resource.version : undefined,
+    lastReleaseVersion: "lastReleaseVersion" in resource ? resource.lastReleaseVersion : undefined,
     downloads: "downloads" in resource ? resource.downloads : undefined,
 }));
 ---

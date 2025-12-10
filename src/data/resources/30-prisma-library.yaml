@@ -2,7 +2,9 @@ type: library
 id: prisma-library
 name: Prisma
 url: https://www.prisma.io
-description: Next-generation ORM for Node.js and TypeScript unlocking a new level of developer experience when working with databases thanks to intuitive data model automated migrations and type-safety.
+description: Next-generation ORM for Node.js and TypeScript unlocking a new
+  level of developer experience when working with databases thanks to intuitive
+  data model automated migrations and type-safety.
 category: Database Tool
 tags:
   - orm
@@ -11,9 +13,28 @@ tags:
 topics:
   - backend
   - database
+  - cockroachdb
+  - javascript
+  - mariadb
+  - mongo
+  - mongodb
+  - mongodb-orm
+  - mssql
+  - mysql
+  - nodejs
+  - orm
+  - postgres
+  - postgresql
+  - prisma
+  - prisma-client
+  - query-builder
+  - sql-server
+  - sqlite
+  - sqlserver
+  - typescript
 language: en
-dateAdded: '2024-06-10T10:00:00Z'
-lastVerified: '2025-12-09T10:00:00Z'
+dateAdded: 2024-06-10T10:00:00Z
+lastVerified: 2025-12-09T10:00:00Z
 trending: true
 image: https://images.unsplash.com/photo-1544383835-bda2bc66a55d?w=800&auto=format&fit=crop
 imageAlt: Database ORM
@@ -33,4 +54,21 @@ status: active
 maturity: stable
 languages:
   - TypeScript
-  - Rust
+  - JavaScript
+  - Shell
+  - Dockerfile
+  - PLpgSQL
+  - Batchfile
+  - TSQL
+stars: 44727
+forks: 1998
+watchers: 44727
+openIssues: 2466
+openPullRequests: 92
+lastCommit: 2025-12-09T18:48:14Z
+lastReleaseVersion: 7.1.0
+lastReleaseDate: 2025-12-03T13:43:25Z
+created: 2019-06-20T13:33:47Z
+archived: false
+hasWiki: false
+hasDiscussions: true

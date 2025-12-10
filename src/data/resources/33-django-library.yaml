@@ -2,7 +2,8 @@ type: library
 id: django-library
 name: Django
 url: https://www.djangoproject.com
-description: The web framework for perfectionists with deadlines. Django makes it easier to build better web apps more quickly and with less code.
+description: The web framework for perfectionists with deadlines. Django makes
+  it easier to build better web apps more quickly and with less code.
 category: Web Framework
 tags:
   - python
@@ -13,9 +14,17 @@ topics:
   - web-development
   - python
   - backend
+  - apps
+  - django
+  - framework
+  - models
+  - orm
+  - templates
+  - views
+  - web
 language: en
-dateAdded: '2024-01-15T10:00:00Z'
-lastVerified: '2025-12-10T10:00:00Z'
+dateAdded: 2024-01-15T10:00:00Z
+lastVerified: 2025-12-10T10:00:00Z
 featured: true
 trending: false
 image: https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?w=800&auto=format&fit=crop
@@ -28,4 +37,23 @@ package:
   name: django
 repository: https://github.com/django/django
 documentation: https://docs.djangoproject.com
-homepage: https://www.djangoproject.com
+homepage: https://www.djangoproject.com/
+license: BSD-3-Clause
+stars: 86113
+forks: 33301
+watchers: 86113
+openIssues: 367
+openPullRequests: 361
+lastCommit: 2025-12-10T01:07:20Z
+created: 2012-04-28T02:47:18Z
+languages:
+  - Python
+  - Jinja
+  - JavaScript
+  - CSS
+  - Shell
+  - Smarty
+  - Procfile
+archived: false
+hasWiki: false
+hasDiscussions: false

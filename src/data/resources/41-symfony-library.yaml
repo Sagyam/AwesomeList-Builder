@@ -2,7 +2,8 @@ type: library
 id: symfony-library
 name: Symfony HTTP Foundation
 url: https://symfony.com
-description: The HttpFoundation component defines an object-oriented layer for the HTTP specification.
+description: The HttpFoundation component defines an object-oriented layer for
+  the HTTP specification.
 category: PHP Library
 tags:
   - php
@@ -13,9 +14,12 @@ topics:
   - php
   - web-development
   - http
+  - component
+  - symfony
+  - symfony-component
 language: en
-dateAdded: '2024-01-15T10:00:00Z'
-lastVerified: '2025-12-10T10:00:00Z'
+dateAdded: 2024-01-15T10:00:00Z
+lastVerified: 2025-12-10T10:00:00Z
 featured: true
 trending: false
 image: https://images.unsplash.com/photo-1599507593499-a3f7d7d97667?w=800&auto=format&fit=crop
@@ -28,4 +32,19 @@ package:
   name: symfony/http-foundation
 repository: https://github.com/symfony/http-foundation
 documentation: https://symfony.com/doc/current/components/http_foundation.html
-homepage: https://symfony.com
+homepage: https://symfony.com/http-foundation
+license: MIT
+stars: 8659
+forks: 303
+watchers: 8659
+openIssues: 0
+openPullRequests: 0
+lastCommit: 2025-12-07T16:56:30Z
+lastReleaseVersion: v8.0.1
+lastReleaseDate: 2025-12-07T17:02:35Z
+created: 2011-02-22T18:03:45Z
+languages:
+  - PHP
+archived: false
+hasWiki: false
+hasDiscussions: false

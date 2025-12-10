@@ -3,7 +3,6 @@
  */
 
 import {BaseApiClient} from "./base-client.ts";
-import {cacheManager} from "./cache-manager.ts";
 
 export interface GitLabProject {
   id: number;
@@ -45,6 +44,16 @@ export interface GitLabLanguages {
   [language: string]: number;
 }
 
+export interface GitLabMergeRequestStats {
+  opened: number;
+}
+
+export interface GitLabRelease {
+  tag_name: string;
+  name: string;
+  released_at: string;
+}
+
 export interface GitLabRepositoryMetadata {
   name: string;
   owner: string;
@@ -55,14 +64,20 @@ export interface GitLabRepositoryMetadata {
   license?: string;
   stars: number;
   forks: number;
+  watchers: number;
   openIssues: number;
-  lastActivity: string;
+  openPullRequests: number;
+  lastCommit: string;
+  lastReleaseVersion?: string;
+  lastReleaseDate?: string;
   created: string;
   primaryLanguage?: string;
   languages: string[];
   archived: boolean;
   topics: string[];
   visibility: string;
+  hasWiki: boolean;
+  hasDiscussions: boolean;
 }
 
 export class GitLabClient extends BaseApiClient {
@@ -93,15 +108,6 @@ export class GitLabClient extends BaseApiClient {
       return null;
     }
 
-    const cacheKey = `gitlab_project_${projectPath.replace(/\//g, "_")}`;
-
-    // Check cache first
-    const cached = cacheManager.get<GitLabRepositoryMetadata>(cacheKey);
-    if (cached) {
-      console.log(`Using cached data for GitLab project ${projectPath}`);
-      return cached;
-    }
-
     try {
       // Fetch project data
       const project = await this.retryWithBackoff(() =>
@@ -119,6 +125,43 @@ export class GitLabClient extends BaseApiClient {
         console.warn(`Failed to fetch languages for GitLab project ${projectPath}:`, error);
       }
 
+      // Fetch open merge requests count
+      let openPullRequests = 0;
+      try {
+        const mrStats = await this.retryWithBackoff(() =>
+          this.request<GitLabMergeRequestStats>(
+            `/projects/${encodeURIComponent(projectPath)}/merge_requests?state=opened&per_page=1`
+          )
+        );
+        // GitLab API returns array, we need to use headers for total count
+        // For simplicity, we'll make another call to get the count
+        const mrs = await this.retryWithBackoff(() =>
+          this.request<unknown[]>(
+            `/projects/${encodeURIComponent(projectPath)}/merge_requests?state=opened&per_page=100`
+          )
+        );
+        openPullRequests = mrs.length;
+      } catch (error) {
+        console.warn(`Failed to fetch MR count for GitLab project ${projectPath}:`, error);
+      }
+
+      // Fetch latest release
+      let lastReleaseVersion: string | undefined;
+      let lastReleaseDate: string | undefined;
+      try {
+        const releases = await this.retryWithBackoff(() =>
+          this.request<GitLabRelease[]>(
+            `/projects/${encodeURIComponent(projectPath)}/releases?per_page=1`
+          )
+        );
+        if (releases.length > 0) {
+          lastReleaseVersion = releases[0].tag_name;
+          lastReleaseDate = releases[0].released_at;
+        }
+      } catch (error) {
+        console.warn(`Failed to fetch releases for GitLab project ${projectPath}:`, error);
+      }
+
       const metadata: GitLabRepositoryMetadata = {
         name: project.name,
         owner: project.namespace.name,
@@ -127,18 +170,21 @@ export class GitLabClient extends BaseApiClient {
         description: project.description || "",
         stars: project.star_count,
         forks: project.forks_count,
+        watchers: project.star_count, // GitLab doesn't have separate watchers
         openIssues: project.open_issues_count,
-        lastActivity: project.last_activity_at,
+        openPullRequests,
+        lastCommit: project.last_activity_at,
+        lastReleaseVersion,
+        lastReleaseDate,
         created: project.created_at,
         primaryLanguage: languages[0],
         languages,
         archived: project.archived,
         topics: project.topics || [],
         visibility: project.visibility,
+        hasWiki: false, // GitLab project interface doesn't show this in the provided code
+        hasDiscussions: false,
       };
-
-      // Cache the result
-      cacheManager.set(cacheKey, metadata);
 
       return metadata;
     } catch (error) {

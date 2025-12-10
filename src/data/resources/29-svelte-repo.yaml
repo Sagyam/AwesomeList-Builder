@@ -2,7 +2,9 @@ type: repository
 id: svelte-repo
 name: Svelte
 url: https://github.com/sveltejs/svelte
-description: Cybernetically enhanced web apps with a radical new approach to building user interfaces that shifts work into a compile step producing highly optimized vanilla JavaScript.
+description: Cybernetically enhanced web apps with a radical new approach to
+  building user interfaces that shifts work into a compile step producing highly
+  optimized vanilla JavaScript.
 category: Frontend Framework
 tags:
   - framework
@@ -11,9 +13,12 @@ tags:
 topics:
   - web-development
   - frontend
+  - compiler
+  - template
+  - ui
 language: en
-dateAdded: '2024-04-25T10:00:00Z'
-lastVerified: '2025-12-09T10:00:00Z'
+dateAdded: 2024-04-25T10:00:00Z
+lastVerified: 2025-12-09T10:00:00Z
 featured: true
 image: https://images.unsplash.com/photo-1555949963-ff9fe0c870eb?w=800&auto=format&fit=crop
 imageAlt: Modern framework
@@ -25,17 +30,24 @@ ownerUrl: https://github.com/sveltejs
 repositoryUrl: https://github.com/sveltejs/svelte
 homepage: https://svelte.dev
 license: MIT
-stars: 78000
-forks: 4100
-watchers: 980
-openIssues: 800
-lastCommit: '2025-12-08T16:20:00Z'
-created: '2016-11-20T00:00:00Z'
-primaryLanguage: TypeScript
+stars: 85085
+forks: 4704
+watchers: 85085
+openIssues: 962
+lastCommit: 2025-12-09T23:09:40Z
+created: 2016-11-20T18:13:05Z
+primaryLanguage: JavaScript
 languages:
-  - TypeScript
   - JavaScript
+  - Svelte
+  - TypeScript
+  - CSS
+  - HTML
 status: active
 maturity: stable
-hasWiki: false
+hasWiki: true
 hasDiscussions: true
+openPullRequests: 67
+lastReleaseVersion: svelte@5.45.8
+lastReleaseDate: 2025-12-08T22:33:09Z
+archived: false

@@ -2,7 +2,9 @@ type: library
 id: react-library
 name: React
 url: https://react.dev
-description: The library for web and native user interfaces. React lets you build user interfaces out of individual pieces called components and combine them into entire screens, apps, and sites.
+description: The library for web and native user interfaces. React lets you
+  build user interfaces out of individual pieces called components and combine
+  them into entire screens, apps, and sites.
 category: Frontend Framework
 tags:
   - react
@@ -12,9 +14,13 @@ topics:
   - web-development
   - frontend
   - javascript
+  - declarative
+  - library
+  - react
+  - ui
 language: en
-dateAdded: '2024-01-15T10:00:00Z'
-lastVerified: '2025-12-09T10:00:00Z'
+dateAdded: 2024-01-15T10:00:00Z
+lastVerified: 2025-12-09T10:00:00Z
 featured: true
 trending: true
 image: https://images.unsplash.com/photo-1633356122544-f134324a6cee?w=800&auto=format&fit=crop
@@ -36,3 +42,19 @@ maturity: stable
 languages:
   - JavaScript
   - TypeScript
+  - HTML
+  - CSS
+  - CoffeeScript
+  - Shell
+stars: 241467
+forks: 50036
+watchers: 241467
+openIssues: 1092
+openPullRequests: 242
+lastCommit: 2025-12-09T19:27:06Z
+lastReleaseVersion: v19.2.1
+lastReleaseDate: 2025-12-03T15:46:02Z
+created: 2013-05-24T16:15:54Z
+archived: false
+hasWiki: false
+hasDiscussions: false

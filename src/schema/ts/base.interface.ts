@@ -56,4 +56,8 @@ export interface DisplayResource {
   archived?: boolean;
   trending?: boolean;
   featured?: boolean;
+  registry?: "npm" | "pypi" | "cargo" | "rubygems" | "maven" | "nuget" | "go" | "packagist";
+  packageName?: string;
+  lastReleaseVersion?: string;
+  downloads?: string;
 }

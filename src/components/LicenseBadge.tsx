@@ -1,5 +1,5 @@
-import * as React from "react";
 import {DollarSign} from "lucide-react";
+import * as React from "react";
 
 interface LicenseBadgeProps {
   license: string;
@@ -16,6 +16,7 @@ const licenseColors: Record<string, string> = {
   "BSD-3-Clause": "bg-orange-100 text-orange-800 dark:bg-orange-900/30 dark:text-orange-300",
   ISC: "bg-cyan-100 text-cyan-800 dark:bg-cyan-900/30 dark:text-cyan-300",
   CC0: "bg-pink-100 text-pink-800 dark:bg-pink-900/30 dark:text-pink-300",
+  Custom: "bg-lime-100 text-lime-800 dark:bg-lime-900/30 dark:text-lime-300",
   Unlicense: "bg-gray-100 text-gray-800 dark:bg-gray-900/30 dark:text-gray-300",
 };
 
@@ -27,7 +28,7 @@ export function LicenseBadge({ license, showIcon = true }: LicenseBadgeProps) {
     <span
       className={`inline-flex items-center gap-1 rounded-md px-2 py-1 text-xs font-medium ${colorClass}`}
     >
-      {showIcon && <DollarSign className="h-3.5 w-3.5"/>}
+      {showIcon && <DollarSign className="h-3.5 w-3.5" />}
       {license}
     </span>
   );

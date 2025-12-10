@@ -2,7 +2,8 @@ type: library
 id: gin-library
 name: Gin Web Framework
 url: https://gin-gonic.com
-description: Gin is a HTTP web framework written in Go. It features a Martini-like API with much better performance.
+description: Gin is a HTTP web framework written in Go. It features a
+  Martini-like API with much better performance.
 category: Go Framework
 tags:
   - go
@@ -13,9 +14,15 @@ topics:
   - go
   - web-development
   - backend
+  - framework
+  - gin
+  - middleware
+  - performance
+  - router
+  - server
 language: en
-dateAdded: '2024-01-15T10:00:00Z'
-lastVerified: '2025-12-10T10:00:00Z'
+dateAdded: 2024-01-15T10:00:00Z
+lastVerified: 2025-12-10T10:00:00Z
 featured: true
 trending: false
 image: https://images.unsplash.com/photo-1515879218367-8466d910aaa4?w=800&auto=format&fit=crop
@@ -28,4 +35,20 @@ package:
   name: github.com/gin-gonic/gin
 repository: https://github.com/gin-gonic/gin
 documentation: https://gin-gonic.com/docs/
-homepage: https://gin-gonic.com
+homepage: https://gin-gonic.com/
+license: MIT
+stars: 87317
+forks: 8500
+watchers: 87317
+openIssues: 874
+openPullRequests: 203
+lastCommit: 2025-12-08T22:02:07Z
+lastReleaseVersion: v1.11.0
+lastReleaseDate: 2025-09-20T11:42:48Z
+created: 2014-06-16T23:57:25Z
+languages:
+  - Go
+  - Makefile
+archived: false
+hasWiki: false
+hasDiscussions: true

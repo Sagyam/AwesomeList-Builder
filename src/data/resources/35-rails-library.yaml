@@ -2,7 +2,9 @@ type: library
 id: rails-library
 name: Ruby on Rails
 url: https://rubyonrails.org
-description: Rails is a web application development framework written in Ruby. It's designed to make programming web applications easier by making assumptions about what every developer needs.
+description: Rails is a web application development framework written in Ruby.
+  It's designed to make programming web applications easier by making
+  assumptions about what every developer needs.
 category: Web Framework
 tags:
   - ruby
@@ -13,9 +15,15 @@ topics:
   - web-development
   - ruby
   - backend
+  - activejob
+  - activerecord
+  - framework
+  - html
+  - mvc
+  - rails
 language: en
-dateAdded: '2024-01-15T10:00:00Z'
-lastVerified: '2025-12-10T10:00:00Z'
+dateAdded: 2024-01-15T10:00:00Z
+lastVerified: 2025-12-10T10:00:00Z
 featured: true
 trending: false
 image: https://images.unsplash.com/photo-1498050108023-c5249f4df085?w=800&auto=format&fit=crop
@@ -29,3 +37,24 @@ package:
 repository: https://github.com/rails/rails
 documentation: https://guides.rubyonrails.org
 homepage: https://rubyonrails.org
+license: MIT
+stars: 57956
+forks: 22056
+watchers: 57956
+openIssues: 1391
+openPullRequests: 881
+lastCommit: 2025-12-10T06:48:50Z
+lastReleaseVersion: v8.1.1
+lastReleaseDate: 2025-10-28T23:46:29Z
+created: 2008-04-11T02:19:47Z
+languages:
+  - Ruby
+  - JavaScript
+  - HTML
+  - SCSS
+  - CSS
+  - Dockerfile
+  - Shell
+archived: false
+hasWiki: false
+hasDiscussions: true

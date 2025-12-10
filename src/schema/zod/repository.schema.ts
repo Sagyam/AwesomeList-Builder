@@ -1,9 +1,5 @@
-import { z } from "zod";
-import {
-  BaseResourceSchemaObject,
-  MaturitySchema,
-  ResourceStatusSchema,
-} from "@/schema/zod/base.schema";
+import {z} from "zod";
+import {BaseResourceSchemaObject, MaturitySchema, ResourceStatusSchema,} from "@/schema/zod/base.schema";
 
 export const RepositorySchema = BaseResourceSchemaObject.extend({
   type: z.literal("repository"),
@@ -17,8 +13,17 @@ export const RepositorySchema = BaseResourceSchemaObject.extend({
   forks: z.number().int().nonnegative("Forks must be a non-negative integer").optional(),
   watchers: z.number().int().nonnegative("Watchers must be a non-negative integer").optional(),
   openIssues: z.number().int().nonnegative("Open issues must be a non-negative integer").optional(),
+  openPullRequests: z
+    .number()
+    .int()
+    .nonnegative("Open pull requests must be a non-negative integer")
+    .optional(),
   lastCommit: z.iso
     .datetime({ message: "lastCommit must be a valid ISO 8601 datetime" })
+    .optional(),
+  lastReleaseVersion: z.string().optional(),
+  lastReleaseDate: z.iso
+    .datetime({ message: "lastReleaseDate must be a valid ISO 8601 datetime" })
     .optional(),
   created: z.iso.datetime({ message: "Created date must be a valid ISO 8601 datetime" }).optional(),
   primaryLanguage: z.string().optional(),
@@ -27,6 +32,8 @@ export const RepositorySchema = BaseResourceSchemaObject.extend({
   maturity: MaturitySchema.optional(),
   hasWiki: z.boolean().optional(),
   hasDiscussions: z.boolean().optional(),
+  archived: z.boolean().optional(),
+  topics: z.array(z.string().min(1)).optional(),
 });
 
 export type RepositoryInput = z.infer<typeof RepositorySchema>;

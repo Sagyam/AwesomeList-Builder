@@ -28,7 +28,7 @@ interface ResourceCardProps {
   featured?: boolean;
   registry?: Registry;
   packageName?: string;
-  version?: string;
+  lastReleaseVersion?: string;
   downloads?: string;
 }
 
@@ -51,7 +51,7 @@ export function ResourceCard({
   featured = false,
   registry,
   packageName,
-  version,
+  lastReleaseVersion,
   downloads,
 }: ResourceCardProps) {
   // Use languages array if available, otherwise fall back to single language
@@ -199,7 +199,11 @@ export function ResourceCard({
         <CardFooter className="justify-between">
           <div className="flex items-center gap-4 text-sm text-muted-foreground flex-wrap">
             {registry && (
-              <RegistryBadge registry={registry} packageName={packageName} version={version} />
+              <RegistryBadge
+                registry={registry}
+                packageName={packageName}
+                lastReleaseVersion={lastReleaseVersion}
+              />
             )}
             {techIcons.length > 0 && (
               <div className="flex items-center gap-1.5">

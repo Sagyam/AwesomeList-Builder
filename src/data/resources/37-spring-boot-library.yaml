@@ -2,7 +2,8 @@ type: library
 id: spring-boot-library
 name: Spring Boot
 url: https://spring.io/projects/spring-boot
-description: Spring Boot makes it easy to create stand-alone, production-grade Spring based Applications that you can just run.
+description: Spring Boot makes it easy to create stand-alone, production-grade
+  Spring based Applications that you can just run.
 category: Java Framework
 tags:
   - java
@@ -13,9 +14,12 @@ topics:
   - java
   - web-development
   - backend
+  - framework
+  - spring
+  - spring-boot
 language: en
-dateAdded: '2024-01-15T10:00:00Z'
-lastVerified: '2025-12-10T10:00:00Z'
+dateAdded: 2024-01-15T10:00:00Z
+lastVerified: 2025-12-10T10:00:00Z
 featured: true
 trending: false
 image: https://images.unsplash.com/photo-1517694712202-14dd9538aa97?w=800&auto=format&fit=crop
@@ -29,3 +33,31 @@ package:
 repository: https://github.com/spring-projects/spring-boot
 documentation: https://docs.spring.io/spring-boot/docs/current/reference/html/
 homepage: https://spring.io/projects/spring-boot
+license: Apache-2.0
+stars: 79315
+forks: 41703
+watchers: 79315
+openIssues: 549
+openPullRequests: 19
+lastCommit: 2025-12-09T18:48:51Z
+lastReleaseVersion: v4.0.0
+lastReleaseDate: 2025-11-20T18:18:13Z
+created: 2012-10-19T15:02:57Z
+languages:
+  - Java
+  - Kotlin
+  - HTML
+  - JavaScript
+  - Groovy
+  - Shell
+  - Ruby
+  - FreeMarker
+  - Batchfile
+  - Smarty
+  - Mustache
+  - Dockerfile
+  - Vim Snippet
+  - CSS
+archived: false
+hasWiki: true
+hasDiscussions: false

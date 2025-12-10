@@ -2,7 +2,8 @@ type: library
 id: cobra-library
 name: Cobra
 url: https://cobra.dev
-description: Cobra is both a library for creating powerful modern CLI applications as well as a program to generate applications and command files.
+description: Cobra is both a library for creating powerful modern CLI
+  applications as well as a program to generate applications and command files.
 category: CLI Framework
 tags:
   - go
@@ -13,9 +14,23 @@ topics:
   - go
   - cli
   - developer-tools
+  - cli-app
+  - cobra
+  - cobra-generator
+  - cobra-library
+  - command
+  - command-cobra
+  - command-line
+  - commandline
+  - golang
+  - golang-application
+  - golang-library
+  - posix
+  - posix-compliant-flags
+  - subcommands
 language: en
-dateAdded: '2024-01-15T10:00:00Z'
-lastVerified: '2025-12-10T10:00:00Z'
+dateAdded: 2024-01-15T10:00:00Z
+lastVerified: 2025-12-10T10:00:00Z
 featured: false
 trending: false
 difficulty: beginner
@@ -27,3 +42,19 @@ package:
 repository: https://github.com/spf13/cobra
 documentation: https://cobra.dev
 homepage: https://cobra.dev
+license: Apache-2.0
+stars: 42586
+forks: 3030
+watchers: 42586
+openIssues: 333
+openPullRequests: 99
+lastCommit: 2025-12-10T02:18:50Z
+lastReleaseVersion: v1.10.2
+lastReleaseDate: 2025-12-04T00:07:49Z
+created: 2013-09-03T20:40:26Z
+languages:
+  - Go
+  - Makefile
+archived: false
+hasWiki: true
+hasDiscussions: false

@@ -2,7 +2,9 @@ type: library
 id: express-library
 name: Express.js
 url: https://expressjs.com
-description: Fast, unopinionated, minimalist web framework for Node.js providing a robust set of features for web and mobile applications with numerous HTTP utility methods and middleware.
+description: Fast, unopinionated, minimalist web framework for Node.js providing
+  a robust set of features for web and mobile applications with numerous HTTP
+  utility methods and middleware.
 category: Backend Framework
 tags:
   - nodejs
@@ -11,9 +13,12 @@ tags:
 topics:
   - backend
   - nodejs
+  - express
+  - javascript
+  - server
 language: en
-dateAdded: '2024-03-10T10:00:00Z'
-lastVerified: '2025-12-09T10:00:00Z'
+dateAdded: 2024-03-10T10:00:00Z
+lastVerified: 2025-12-09T10:00:00Z
 image: https://images.unsplash.com/photo-1627398242454-45a1465c2479?w=800&auto=format&fit=crop
 imageAlt: Backend framework
 difficulty: beginner
@@ -32,3 +37,17 @@ status: active
 maturity: stable
 languages:
   - JavaScript
+  - Makefile
+  - Shell
+stars: 68330
+forks: 21740
+watchers: 68330
+openIssues: 218
+openPullRequests: 107
+lastCommit: 2025-12-09T15:32:14Z
+lastReleaseVersion: v5.2.1
+lastReleaseDate: 2025-12-01T20:54:44Z
+created: 2009-06-26T18:56:01Z
+archived: false
+hasWiki: true
+hasDiscussions: true

@@ -3,7 +3,6 @@
  */
 
 import {BaseApiClient} from "./base-client.ts";
-import {cacheManager} from "./cache-manager.ts";
 
 export interface GitHubRepository {
   name: string;
@@ -37,6 +36,18 @@ export interface GitHubLanguages {
   [language: string]: number;
 }
 
+export interface GitHubRelease {
+  tag_name: string;
+  name: string;
+  published_at: string;
+  draft: boolean;
+  prerelease: boolean;
+}
+
+export interface GitHubSearchResult {
+  total_count: number;
+}
+
 export interface RepositoryMetadata {
   name: string;
   owner: string;
@@ -49,7 +60,10 @@ export interface RepositoryMetadata {
   forks: number;
   watchers: number;
   openIssues: number;
+  openPullRequests: number;
   lastCommit: string;
+  lastReleaseVersion?: string;
+  lastReleaseDate?: string;
   created: string;
   primaryLanguage?: string;
   languages: string[];
@@ -89,15 +103,6 @@ export class GitHubClient extends BaseApiClient {
       return null;
     }
 
-    const cacheKey = `github_repo_${parsed.owner}_${parsed.repo}`;
-
-    // Check cache first
-    const cached = cacheManager.get<RepositoryMetadata>(cacheKey);
-    if (cached) {
-      console.log(`Using cached data for ${parsed.owner}/${parsed.repo}`);
-      return cached;
-    }
-
     try {
       // Fetch repository data
       const repo = await this.retryWithBackoff(() =>
@@ -115,6 +120,34 @@ export class GitHubClient extends BaseApiClient {
         console.warn(`Failed to fetch languages for ${parsed.owner}/${parsed.repo}:`, error);
       }
 
+      // Fetch open pull requests count
+      let openPullRequests = 0;
+      try {
+        const prSearch = await this.retryWithBackoff(() =>
+          this.request<GitHubSearchResult>(
+            `/search/issues?q=repo:${parsed.owner}/${parsed.repo}+type:pr+state:open`
+          )
+        );
+        openPullRequests = prSearch.total_count;
+      } catch (error) {
+        console.warn(`Failed to fetch PR count for ${parsed.owner}/${parsed.repo}:`, error);
+      }
+
+      // Fetch latest release
+      let lastReleaseVersion: string | undefined;
+      let lastReleaseDate: string | undefined;
+      try {
+        const releases = await this.retryWithBackoff(() =>
+          this.request<GitHubRelease[]>(`/repos/${parsed.owner}/${parsed.repo}/releases?per_page=1`)
+        );
+        if (releases.length > 0 && !releases[0].draft && !releases[0].prerelease) {
+          lastReleaseVersion = releases[0].tag_name;
+          lastReleaseDate = releases[0].published_at;
+        }
+      } catch (error) {
+        console.warn(`Failed to fetch releases for ${parsed.owner}/${parsed.repo}:`, error);
+      }
+
       const metadata: RepositoryMetadata = {
         name: repo.name,
         owner: repo.owner.login,
@@ -127,7 +160,10 @@ export class GitHubClient extends BaseApiClient {
         forks: repo.forks_count,
         watchers: repo.watchers_count,
         openIssues: repo.open_issues_count,
+        openPullRequests,
         lastCommit: repo.pushed_at,
+        lastReleaseVersion,
+        lastReleaseDate,
         created: repo.created_at,
         primaryLanguage: repo.language || undefined,
         languages,
@@ -136,9 +172,6 @@ export class GitHubClient extends BaseApiClient {
         hasDiscussions: repo.has_discussions,
         topics: repo.topics || [],
       };
-
-      // Cache the result
-      cacheManager.set(cacheKey, metadata);
 
       return metadata;
     } catch (error) {

@@ -2,7 +2,9 @@ type: library
 id: typescript-library
 name: TypeScript
 url: https://www.typescriptlang.org
-description: TypeScript is JavaScript with syntax for types. A strongly typed programming language that builds on JavaScript giving you better tooling at any scale.
+description: TypeScript is JavaScript with syntax for types. A strongly typed
+  programming language that builds on JavaScript giving you better tooling at
+  any scale.
 category: Programming Language
 tags:
   - typescript
@@ -11,9 +13,13 @@ tags:
 topics:
   - web-development
   - programming
+  - javascript
+  - language
+  - typechecker
+  - typescript
 language: en
-dateAdded: '2024-02-15T10:00:00Z'
-lastVerified: '2025-12-09T10:00:00Z'
+dateAdded: 2024-02-15T10:00:00Z
+lastVerified: 2025-12-09T10:00:00Z
 featured: true
 image: https://images.unsplash.com/photo-1555952494-efd681c7e3f9?w=800&auto=format&fit=crop
 imageAlt: TypeScript
@@ -33,3 +39,17 @@ status: active
 maturity: stable
 languages:
   - TypeScript
+  - JavaScript
+  - Shell
+stars: 107034
+forks: 13153
+watchers: 107034
+openIssues: 5462
+openPullRequests: 506
+lastCommit: 2025-12-09T20:41:28Z
+lastReleaseVersion: v5.9.3
+lastReleaseDate: 2025-10-01T19:06:07Z
+created: 2014-06-17T15:28:39Z
+archived: false
+hasWiki: true
+hasDiscussions: false

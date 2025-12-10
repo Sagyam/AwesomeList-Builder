@@ -2,7 +2,8 @@ type: repository
 id: gitlab-runner
 name: GitLab Runner
 url: https://gitlab.com/gitlab-org/gitlab-runner
-description: GitLab Runner is the open source project that is used to run your CI/CD jobs and send the results back to GitLab
+description: GitLab Runner is the open source project that is used to run your
+  CI/CD jobs and send the results back to GitLab
 category: DevOps
 tags:
   - gitlab
@@ -13,13 +14,33 @@ topics:
   - continuous-integration
   - devops
   - automation
+  - golang
+  - hacktoberfest
 language: en
-dateAdded: '2024-03-15T10:00:00Z'
-lastVerified: '2025-12-10T10:00:00Z'
+dateAdded: 2024-03-15T10:00:00Z
+lastVerified: 2025-12-10T10:00:00Z
 featured: false
 trending: false
 difficulty: intermediate
 isFree: true
 accessLevel: free
-owner: gitlab-org
+owner: GitLab.org
 repositoryUrl: https://gitlab.com/gitlab-org/gitlab-runner
+ownerUrl: https://gitlab.com/groups/gitlab-org
+stars: 2521
+forks: 2521
+watchers: 2521
+openPullRequests: 88
+lastCommit: 2025-12-10T07:13:42.149Z
+lastReleaseVersion: v18.6.6
+lastReleaseDate: 2025-12-09T23:30:10.580Z
+created: 2015-04-27T21:10:25.322Z
+primaryLanguage: Go
+languages:
+  - Go
+  - Shell
+  - Makefile
+  - HCL
+  - PowerShell
+hasWiki: false
+hasDiscussions: false
