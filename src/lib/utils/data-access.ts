@@ -1,6 +1,6 @@
-import {loadProjectData} from "@/lib/parsers/project-parser";
-import type {Project, ProjectMetadata} from "@/schema/ts/project.interface";
-import type {Resource} from "@/schema/ts/types";
+import { loadProjectData } from "@/lib/parsers/project-parser";
+import type { Project, ProjectMetadata } from "@/schema/ts/project.interface";
+import type { Resource } from "@/schema/ts/types";
 
 /**
  * Get complete project data (metadata + resources)
@@ -87,7 +87,40 @@ export function getResourcesByTag(tag: string): Resource[] {
  * Get a resource display name (handles both name and title fields)
  */
 export function getResourceName(resource: Resource): string {
-  return resource.name || resource.title || "Untitled";
+  if (resource.type === "podcast") {
+    return resource.metadata.title;
+  }
+  return (resource as any).name || (resource as any).title || "Untitled";
+}
+
+/**
+ * Get resource description
+ */
+export function getResourceDescription(resource: Resource): string {
+  if (resource.type === "podcast") {
+    return resource.metadata.description;
+  }
+  return (resource as any).description || "";
+}
+
+/**
+ * Get resource URL
+ */
+export function getResourceUrl(resource: Resource): string {
+  if (resource.type === "podcast") {
+    return resource.metadata.link;
+  }
+  return (resource as any).url || "";
+}
+
+/**
+ * Get resource image
+ */
+export function getResourceImage(resource: Resource): string | undefined {
+  if (resource.type === "podcast") {
+    return resource.metadata.image;
+  }
+  return (resource as any).image;
 }
 
 /**
@@ -177,9 +210,9 @@ export function getAllLanguages(): string[] {
  */
 export function rankResources(resources: Resource[]): Resource[] {
   const featured = resources.filter((r) => r.featured || r.trending);
-  const withImages = resources.filter((r) => !r.featured && !r.trending && "image" in r && r.image);
+  const withImages = resources.filter((r) => !r.featured && !r.trending && getResourceImage(r));
   const withoutImages = resources.filter(
-    (r) => !r.featured && !r.trending && (!("image" in r) || !r.image)
+    (r) => !r.featured && !r.trending && !getResourceImage(r)
   );
 
   return [...featured, ...withImages, ...withoutImages];

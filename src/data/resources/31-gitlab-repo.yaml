@@ -25,11 +25,11 @@ owner: GitLab.org
 repositoryUrl: https://gitlab.com/gitlab-org/gitlab-foss
 homepage: https://about.gitlab.com
 ownerUrl: https://gitlab.com/groups/gitlab-org
-stars: 7136
+stars: 7137
 forks: 8240
-watchers: 7136
+watchers: 7137
 openPullRequests: 0
-lastCommit: 2025-12-11T03:58:18.129Z
+lastCommit: 2025-12-11T08:32:08.346Z
 lastReleaseVersion: v18.6.0
 lastReleaseDate: 2025-11-20T00:00:00.000Z
 created: 2013-09-26T06:02:36.000Z
@@ -43,4 +43,4 @@ languages:
 hasWiki: false
 hasDiscussions: false
 image: https://gitlab.com/uploads/-/system/project/avatar/13083/project_avatar.png
-imageAlt: GitLab FOSS project avatar
+imageAlt: GitLab.org's avatar

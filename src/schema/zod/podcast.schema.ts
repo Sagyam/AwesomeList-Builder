@@ -1,36 +1,38 @@
 import { z } from "zod";
 import { BaseResourceSchemaObject } from "@/schema/zod/base.schema";
 
-export const PodcastSchema = BaseResourceSchemaObject.extend({
+export const PodcastEpisodeSchema = z.object({
+  title: z.string(),
+  published: z.string(),
+  duration: z.string().optional(),
+  url: z.string().url().optional(),
+  image: z.string().url().optional(),
+});
+
+export const PodcastMetadataSchema = z.object({
+  title: z.string().min(1, "Podcast title is required"),
+  description: z.string(),
+  link: z.string().url().optional(),
+  image: z.string().url().optional(),
+  author: z.string().optional(),
+  copyright: z.string().optional(),
+  language: z.string().optional(),
+  lastBuildDate: z.string().optional(),
+  itunesId: z.string().optional(),
+  episodes: z.array(PodcastEpisodeSchema),
+});
+
+export const PodcastSchema = BaseResourceSchemaObject.omit({
+  title: true,
+  description: true,
+  url: true,
+  image: true,
+}).extend({
   type: z.literal("podcast"),
-  title: z.string().min(1, "Podcast episode title is required"),
-  host: z.string().min(1, "Host name is required"),
-  hostUrl: z.url("Host URL must be a valid URL").optional(),
+  rssFeed: z.string().url("RSS feed must be a valid URL"),
   platform: z.string().optional(),
-  rssFeed: z.url("RSS feed must be a valid URL"),
-  episodeNumber: z.number().int().positive("Episode number must be a positive integer").optional(),
-  season: z.number().int().positive("Season number must be a positive integer").optional(),
-  published: z.iso.datetime({ message: "Published date must be a valid ISO 8601 datetime" }).optional(),
-  duration: z
-    .string()
-    .regex(
-      /^PT(\d+H)?(\d+M)?(\d+S)?$/,
-      "Duration must be in ISO 8601 format (e.g., PT1H30M for 1 hour 30 minutes)"
-    )
-    .optional(),
-  thumbnail: z.url("Thumbnail must be a valid URL").optional(),
-  explicit: z.boolean().optional(),
-  transcript: z.url("Transcript must be a valid URL").optional(),
-  socialLinks: z.array(z.string().url()).optional(),
-  episodes: z.array(
-    z.object({
-      title: z.string(),
-      published: z.string(),
-      duration: z.string().optional(),
-      url: z.string().url().optional(),
-      image: z.string().url().optional(),
-    })
-  ).optional(),
+  hostUrl: z.string().url().optional(),
+  metadata: PodcastMetadataSchema,
 });
 
 export type PodcastInput = z.infer<typeof PodcastSchema>;

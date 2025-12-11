@@ -7,6 +7,8 @@ import {
   getProjectMetadata,
   getResourceById,
   getResourceName,
+  getResourceDescription,
+  getResourceUrl,
 } from "@/lib/utils/data-access";
 
 export const getStaticPaths = (() => {
@@ -19,6 +21,8 @@ export const getStaticPaths = (() => {
 
 const { resource } = Astro.props;
 const name = getResourceName(resource);
+const description = getResourceDescription(resource);
+const url = getResourceUrl(resource);
 const metadata = getProjectMetadata();
 
 // Format dates
@@ -34,12 +38,12 @@ const formatDate = (dateString?: string) => {
 
 <Layout
         title={`${name} - ${metadata.title}`}
-        description={resource.description}
+        description={description}
         keywords={[...metadata.keywords, ...resource.tags]}
         author={metadata.author.name}
 >
     <!-- Project Header -->
-    <section class="border-b bg-gradient-to-b from-background to-secondary/20" data-pagefind-body>
+    <section class="border-b bg-linear-to-b from-background to-secondary/20" data-pagefind-body>
         <div class="container mx-auto px-4 sm:px-6 lg:px-8 py-12 md:py-16">
             <div class="max-w-4xl">
                 <!-- Breadcrumb -->
@@ -62,12 +66,12 @@ const formatDate = (dateString?: string) => {
 
                 <!-- Description -->
                 <p class="text-xl text-muted-foreground mb-6"
-                   data-pagefind-meta="description">{resource.description}</p>
+                   data-pagefind-meta="description">{description}</p>
 
                 <!-- Quick Actions -->
                 <div class="flex flex-wrap gap-3">
                     <a
-                            href={resource.url}
+                            href={url}
                             target="_blank"
                             rel="noopener noreferrer"
                             class="inline-flex items-center justify-center rounded-lg text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring bg-primary text-primary-foreground hover:bg-primary/90 h-11 px-6 gap-2"
@@ -75,7 +79,7 @@ const formatDate = (dateString?: string) => {
                         Visit Resource
                         <ExternalLink className="h-4 w-4"/>
                     </a>
-                    {resource.repository && (
+                    {"repository" in resource && resource.repository && (
                             <a
                                     href={resource.repository}
                                     target="_blank"
@@ -86,7 +90,7 @@ const formatDate = (dateString?: string) => {
                                 GitHub
                             </a>
                     )}
-                    {resource.documentation && (
+                    {"documentation" in resource && resource.documentation && (
                             <a
                                     href={resource.documentation}
                                     target="_blank"
@@ -123,7 +127,7 @@ const formatDate = (dateString?: string) => {
                     )}
 
                     <!-- Features (for tools) -->
-                    {resource.features && resource.features.length > 0 && (
+                    {"features" in resource && resource.features && resource.features.length > 0 && (
                             <div>
                                 <h2 class="text-2xl font-bold mb-4">Features</h2>
                                 <ul class="space-y-2">
@@ -138,7 +142,7 @@ const formatDate = (dateString?: string) => {
                     )}
 
                     <!-- Prerequisites (for courses) -->
-                    {resource.prerequisites && resource.prerequisites.length > 0 && (
+                    {"prerequisites" in resource && resource.prerequisites && resource.prerequisites.length > 0 && (
                             <div>
                                 <h2 class="text-2xl font-bold mb-4">Prerequisites</h2>
                                 <ul class="space-y-2">
@@ -160,42 +164,42 @@ const formatDate = (dateString?: string) => {
                         <div class="rounded-lg border bg-card p-6 space-y-4">
                             <h3 class="font-semibold">Resource Information</h3>
 
-                            {resource.stars !== undefined && (
+                            {"stars" in resource && resource.stars !== undefined && (
                                     <div class="flex items-center justify-between">
                                         <span class="text-sm text-muted-foreground">Stars</span>
                                         <span class="font-medium">{resource.stars.toLocaleString()}</span>
                                     </div>
                             )}
 
-                            {resource.downloads && (
+                            {"downloads" in resource && resource.downloads && (
                                     <div class="flex items-center justify-between">
                                         <span class="text-sm text-muted-foreground">Downloads</span>
                                         <span class="font-medium">{resource.downloads}</span>
                                     </div>
                             )}
 
-                            {resource.forks !== undefined && (
+                            {"forks" in resource && resource.forks !== undefined && (
                                     <div class="flex items-center justify-between">
                                         <span class="text-sm text-muted-foreground">Forks</span>
                                         <span class="font-medium">{resource.forks.toLocaleString()}</span>
                                     </div>
                             )}
 
-                            {resource.license && (
+                            {"license" in resource && resource.license && (
                                     <div class="flex items-center justify-between">
                                         <span class="text-sm text-muted-foreground">License</span>
                                         <span class="font-medium">{resource.license}</span>
                                     </div>
                             )}
 
-                            {resource.version && (
+                            {"version" in resource && resource.version && (
                                     <div class="flex items-center justify-between">
                                         <span class="text-sm text-muted-foreground">Version</span>
                                         <span class="font-medium">{resource.version}</span>
                                     </div>
                             )}
 
-                            {resource.primaryLanguage && (
+                            {"primaryLanguage" in resource && resource.primaryLanguage && (
                                     <div class="flex items-center justify-between">
                                         <span class="text-sm text-muted-foreground">Language</span>
                                         <span class="font-medium">{resource.primaryLanguage}</span>
@@ -216,7 +220,7 @@ const formatDate = (dateString?: string) => {
                                     </div>
                             )}
 
-                            {resource.lastUpdated && (
+                            {"lastUpdated" in resource && resource.lastUpdated && (
                                     <div class="flex items-center justify-between">
                                         <span class="text-sm text-muted-foreground">Last Updated</span>
                                         <span class="font-medium">{formatDate(resource.lastUpdated)}</span>
@@ -229,28 +233,28 @@ const formatDate = (dateString?: string) => {
                                 <div class="rounded-lg border bg-card p-6 space-y-4">
                                     <h3 class="font-semibold">Course Details</h3>
 
-                                    {resource.instructor && (
+                                    {"instructor" in resource && resource.instructor && (
                                             <div class="flex items-center justify-between">
                                                 <span class="text-sm text-muted-foreground">Instructor</span>
                                                 <span class="font-medium">{resource.instructor}</span>
                                             </div>
                                     )}
 
-                                    {resource.duration && (
+                                    {"duration" in resource && resource.duration && (
                                             <div class="flex items-center justify-between">
                                                 <span class="text-sm text-muted-foreground">Duration</span>
                                                 <span class="font-medium">{resource.duration}</span>
                                             </div>
                                     )}
 
-                                    {resource.students !== undefined && (
+                                    {"students" in resource && resource.students !== undefined && (
                                             <div class="flex items-center justify-between">
                                                 <span class="text-sm text-muted-foreground">Students</span>
                                                 <span class="font-medium">{resource.students.toLocaleString()}</span>
                                             </div>
                                     )}
 
-                                    {resource.rating !== undefined && (
+                                    {"rating" in resource && resource.rating !== undefined && (
                                             <div class="flex items-center justify-between">
                                                 <span class="text-sm text-muted-foreground">Rating</span>
                                                 <span class="font-medium flex items-center gap-1">
@@ -262,7 +266,7 @@ const formatDate = (dateString?: string) => {
                                 </div>
                         )}
 
-                        {resource.type === "video" && resource.views !== undefined && (
+                        {resource.type === "video" && "views" in resource && resource.views !== undefined && (
                                 <div class="rounded-lg border bg-card p-6 space-y-4">
                                     <h3 class="font-semibold">Video Stats</h3>
 
@@ -271,7 +275,7 @@ const formatDate = (dateString?: string) => {
                                         <span class="font-medium">{resource.views.toLocaleString()}</span>
                                     </div>
 
-                                    {resource.duration && (
+                                    {"duration" in resource && resource.duration && (
                                             <div class="flex items-center justify-between">
                                                 <span class="text-sm text-muted-foreground">Duration</span>
                                                 <span class="font-medium">{resource.duration}</span>

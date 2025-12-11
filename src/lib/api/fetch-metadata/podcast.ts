@@ -42,40 +42,19 @@ async function fetchPodcasts(force = false) {
             const metadata = await podcastClient.fetchPodcastMetadata(podcast.rssFeed);
 
             if (metadata) {
-                podcast.title = metadata.title;
-                podcast.description = metadata.description;
-                podcast.image = metadata.image || podcast.image;
-                podcast.host = metadata.author || podcast.host;
-                // If hostUrl is missing, try to use the link from RSS
-                podcast.hostUrl = podcast.hostUrl || metadata.link;
-                // If main url is missing, use the link from RSS
-                podcast.url = podcast.url || metadata.link || "";
+                podcast.metadata = metadata;
 
-                if (metadata.lastBuildDate) {
-                    try {
-                        podcast.published = new Date(metadata.lastBuildDate).toISOString();
-                    } catch (e) {
-                        console.warn(`Invalid date for podcast ${podcast.id}: ${metadata.lastBuildDate}`);
-                    }
-                }
-
-                if (metadata.episodes && metadata.episodes.length > 0) {
-                    podcast.episodes = metadata.episodes.map(ep => {
-                        let published = new Date().toISOString();
-                        try {
-                            published = new Date(ep.published).toISOString();
-                        } catch (e) {
-                            // keep default
-                        }
-                        return {
-                            title: ep.title,
-                            published,
-                            duration: ep.duration,
-                            url: ep.url,
-                            image: ep.image
-                        };
-                    });
-                }
+                // Clean up legacy top-level fields that are now in metadata
+                const p = podcast as any;
+                delete p.title;
+                delete p.description;
+                delete p.image;
+                delete p.host;
+                delete p.published;
+                delete p.duration;
+                delete p.episodes;
+                delete p.url; // Now in metadata.link
+                delete p.imageAlt;
 
                 saveResource(podcast);
                 stats.updated++;
@@ -90,10 +69,6 @@ async function fetchPodcasts(force = false) {
         }
     }
 
-    // Only update timestamp if we ran a full update (implied by this script usually being part of a larger process, 
-    // but if run standalone we might not want to update the global timestamp? 
-    // Actually, if we update podcasts, we should probably update the timestamp or maybe have granular timestamps.
-    // For now, let's update it if we did work.)
     if (stats.updated > 0) {
         updateMetadataTimestamp();
     }

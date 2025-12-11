@@ -8,6 +8,9 @@ import {
     getAllResources,
     getProjectMetadata,
     getResourceName,
+    getResourceDescription,
+    getResourceUrl,
+    getResourceImage,
     rankResources,
 } from "@/lib/utils/data-access";
 
@@ -22,8 +25,8 @@ const languages = getAllLanguages();
 const resourcesData = rankedResources.map((resource) => ({
   id: resource.id,
   name: getResourceName(resource),
-  description: resource.description,
-  url: resource.url,
+  description: getResourceDescription(resource),
+  url: getResourceUrl(resource),
     type: resource.type,
   category: resource.category,
   language:
@@ -37,7 +40,7 @@ const resourcesData = rankedResources.map((resource) => ({
   stars: "stars" in resource ? resource.stars : undefined,
   license: "license" in resource ? resource.license : undefined,
   tags: resource.tags,
-  image: "image" in resource ? resource.image : undefined,
+  image: getResourceImage(resource),
   imageAlt: "imageAlt" in resource ? resource.imageAlt : undefined,
   archived: resource.archived,
   trending: resource.trending,

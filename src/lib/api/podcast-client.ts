@@ -2,27 +2,12 @@
  * Podcast API Client using RSS feeds
  */
 
-import Parser from "rss-parser";
+import { XMLParser } from "fast-xml-parser";
 import { BaseApiClient, ApiError } from "./base-client.ts";
-
-export interface PodcastMetadata {
-    title: string;
-    description: string;
-    image?: string;
-    author?: string;
-    link?: string;
-    lastBuildDate?: string;
-    episodes: Array<{
-        title: string;
-        published: string;
-        duration?: string;
-        url?: string;
-        image?: string;
-    }>;
-}
+import type { PodcastMetadata } from "@/schema/ts/podcast.interface.ts";
 
 export class PodcastClient extends BaseApiClient {
-    private parser: Parser;
+    private parser: XMLParser;
 
     constructor() {
         super({
@@ -36,7 +21,11 @@ export class PodcastClient extends BaseApiClient {
                 enabled: true,
             },
         });
-        this.parser = new Parser();
+        this.parser = new XMLParser({
+            ignoreAttributes: false,
+            attributeNamePrefix: "@_",
+            textNodeName: "#text",
+        });
     }
 
     /**
@@ -45,28 +34,37 @@ export class PodcastClient extends BaseApiClient {
     async fetchPodcastMetadata(rssUrl: string): Promise<PodcastMetadata | null> {
         try {
             const feedContent = await this.requestFeed(rssUrl);
-            const feed = await this.parser.parseString(feedContent);
+            const feed = this.parser.parse(feedContent);
 
-            if (!feed) {
+            if (!feed?.rss?.channel) {
+                console.warn(`Invalid RSS feed structure for ${rssUrl}`);
                 return null;
             }
 
-            // Extract episodes (limit to last 5)
-            const episodes = (feed.items || []).slice(0, 5).map((item) => ({
-                title: item.title || "Untitled Episode",
-                published: item.pubDate || new Date().toISOString(),
-                duration: item.itunes?.duration,
-                url: item.enclosure?.url || item.link,
-                image: item.itunes?.image,
-            }));
+            const channel = feed.rss.channel;
+            // Handle single item vs array of items
+            const items = channel.item ? (Array.isArray(channel.item) ? channel.item : [channel.item]) : [];
+
+            const episodes = items.slice(0, 5).map((item: any) => {
+                const enclosure = item.enclosure ? (Array.isArray(item.enclosure) ? item.enclosure[0] : item.enclosure) : null;
+                return {
+                    title: item.title,
+                    published: item.pubDate || new Date().toISOString(),
+                    duration: item["itunes:duration"] ? String(item["itunes:duration"]) : undefined,
+                    url: enclosure?.["@_url"] || item.link,
+                    image: item["itunes:image"]?.["@_href"],
+                };
+            });
 
             return {
-                title: feed.title || "",
-                description: feed.description || "",
-                image: feed.image?.url || feed.itunes?.image,
-                author: feed.itunes?.author || feed.author,
-                link: feed.link,
-                lastBuildDate: feed.lastBuildDate || feed.pubDate,
+                title: channel.title,
+                description: channel.description,
+                link: channel.link,
+                image: channel.image?.url || channel["itunes:image"]?.["@_href"],
+                author: channel["itunes:author"] || channel["googleplay:author"] || channel.author,
+                lastBuildDate: channel.lastBuildDate || channel.pubDate,
+                language: channel.language,
+                copyright: channel.copyright,
                 episodes,
             };
         } catch (error) {

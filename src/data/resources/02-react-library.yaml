@@ -43,11 +43,11 @@ languages:
   - CSS
   - CoffeeScript
   - Shell
-stars: 241493
-forks: 50036
-watchers: 241493
-openIssues: 1089
-openPullRequests: 239
+stars: 241500
+forks: 50039
+watchers: 241500
+openIssues: 1086
+openPullRequests: 238
 lastCommit: 2025-12-10T19:22:58Z
 lastReleaseVersion: v19.2.1
 lastReleaseDate: 2025-12-03T15:46:02Z
