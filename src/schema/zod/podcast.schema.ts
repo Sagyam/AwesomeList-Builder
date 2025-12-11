@@ -7,10 +7,10 @@ export const PodcastSchema = BaseResourceSchemaObject.extend({
   host: z.string().min(1, "Host name is required"),
   hostUrl: z.url("Host URL must be a valid URL").optional(),
   platform: z.string().optional(),
-  rssFeed: z.url("RSS feed must be a valid URL").optional(),
+  rssFeed: z.url("RSS feed must be a valid URL"),
   episodeNumber: z.number().int().positive("Episode number must be a positive integer").optional(),
   season: z.number().int().positive("Season number must be a positive integer").optional(),
-  published: z.iso.datetime({ message: "Published date must be a valid ISO 8601 datetime" }),
+  published: z.iso.datetime({ message: "Published date must be a valid ISO 8601 datetime" }).optional(),
   duration: z
     .string()
     .regex(
@@ -21,6 +21,16 @@ export const PodcastSchema = BaseResourceSchemaObject.extend({
   thumbnail: z.url("Thumbnail must be a valid URL").optional(),
   explicit: z.boolean().optional(),
   transcript: z.url("Transcript must be a valid URL").optional(),
+  socialLinks: z.array(z.string().url()).optional(),
+  episodes: z.array(
+    z.object({
+      title: z.string(),
+      published: z.string(),
+      duration: z.string().optional(),
+      url: z.string().url().optional(),
+      image: z.string().url().optional(),
+    })
+  ).optional(),
 });
 
 export type PodcastInput = z.infer<typeof PodcastSchema>;

@@ -57,9 +57,9 @@ languages:
   - PLpgSQL
   - Batchfile
   - TSQL
-stars: 44735
+stars: 44734
 forks: 1999
-watchers: 44735
+watchers: 44734
 openIssues: 2458
 openPullRequests: 91
 lastCommit: 2025-12-10T16:44:57Z

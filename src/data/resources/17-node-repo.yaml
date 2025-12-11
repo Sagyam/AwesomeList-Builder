@@ -32,11 +32,11 @@ ownerUrl: https://github.com/nodejs
 repositoryUrl: https://github.com/nodejs/node
 homepage: https://nodejs.org
 license: NOASSERTION
-stars: 114679
-forks: 33984
-watchers: 114679
-openIssues: 2393
-lastCommit: 2025-12-10T17:20:50Z
+stars: 114676
+forks: 33991
+watchers: 114676
+openIssues: 2385
+lastCommit: 2025-12-11T02:29:09Z
 created: 2014-11-26T19:57:11Z
 primaryLanguage: JavaScript
 languages:
@@ -58,7 +58,7 @@ status: active
 maturity: stable
 hasWiki: false
 hasDiscussions: false
-openPullRequests: 661
+openPullRequests: 652
 lastReleaseVersion: v24.12.0
 lastReleaseDate: 2025-12-10T16:50:44Z
 archived: false

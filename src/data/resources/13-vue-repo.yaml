@@ -10,7 +10,7 @@ tags:
   - vue
   - framework
   - progressive
-topics: [ ]
+topics: []
 language: en
 dateAdded: 2024-02-10T10:00:00Z
 lastVerified: 2025-12-09T10:00:00Z
@@ -23,11 +23,11 @@ ownerUrl: https://github.com/vuejs
 repositoryUrl: https://github.com/vuejs/core
 homepage: https://vuejs.org/
 license: MIT
-stars: 52367
+stars: 52373
 forks: 8976
-watchers: 52367
-openIssues: 1034
-lastCommit: 2025-12-10T08:30:43Z
+watchers: 52373
+openIssues: 1032
+lastCommit: 2025-12-11T02:19:48Z
 created: 2018-06-12T13:49:36Z
 primaryLanguage: TypeScript
 languages:
@@ -40,7 +40,7 @@ status: active
 maturity: stable
 hasWiki: false
 hasDiscussions: true
-openPullRequests: 370
+openPullRequests: 369
 archived: false
 image: https://avatars.githubusercontent.com/u/6128107?v=4
 imageAlt: vuejs's avatar

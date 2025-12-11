@@ -1,26 +1,36 @@
 type: podcast
 id: devtools-podcast
-title: ShopTalk Show
-url: https://shoptalkshow.com
-description: Live podcast about front-end web design and UX. Chris Coyier and Dave Rupert talk about HTML CSS JavaScript accessibility and all things that affect websites and web apps.
-category: Learning Resource
-tags:
-  - podcast
-  - frontend
-  - design
-topics:
-  - web-development
-  - frontend
-language: en
-dateAdded: '2024-07-18T10:00:00Z'
-lastVerified: '2025-12-09T10:00:00Z'
-image: https://images.unsplash.com/photo-1478737270239-2f02b77fc618?w=800&auto=format&fit=crop
-imageAlt: Tech podcast
-difficulty: intermediate
-isFree: true
-accessLevel: free
-host: Chris Coyier and Dave Rupert
-platform: Multiple platforms
-published: '2024-06-01T10:00:00Z'
-duration: PT50M
 rssFeed: https://shoptalkshow.com/feed/podcast
+title: ShopTalk
+description: A podcast about web design and development.
+image: https://shoptalkshow.com/wp-content/uploads/2021/02/artwork.png
+host: Chris Coyier & Dave Rupert
+hostUrl: https://shoptalkshow.com/series/default-podcast/
+url: https://shoptalkshow.com/series/default-podcast/
+published: 2025-12-09T00:36:36.000Z
+episodes:
+  - title: "694: Invoicing with Studioworks with Jessica and Chris"
+    published: 2025-12-08T09:00:12.000Z
+    duration: 01:01:20
+    url: https://cdn.simplecast.com/audio/167887a0-ac00-4cf9-bc69-b5ca845997db/episodes/audio/4551d1b6-18f4-4d87-ba1d-9c7b598a06b2/default_tc.mp3?nocache
+    image: https://i0.wp.com/shoptalkshow.com/wp-content/uploads/2025/12/CleanShot-2025-12-05-at-16.44.45.png?fit=796%2C723&ssl=1
+  - title: "693: Hobbies, Puzzle Game Circuit, and Web Monetization News"
+    published: 2025-12-01T09:00:09.000Z
+    duration: 01:09:02
+    url: https://cdn.simplecast.com/audio/167887a0-ac00-4cf9-bc69-b5ca845997db/episodes/70369e9e-4469-4740-a6ff-86798bbf2648/audio/c78e2448-7d2b-40eb-9cd5-7b7f6a949c3f/default_tc.mp3?nocache
+    image: https://i0.wp.com/shoptalkshow.com/wp-content/uploads/2013/03/logo-itunes-1400.png?fit=1400%2C1400&ssl=1
+  - title: "692: Killer Feature of Web Components, Skills > MCP, and Streaming HTML?"
+    published: 2025-11-24T09:00:16.000Z
+    duration: 00:57:05
+    url: https://cdn.simplecast.com/audio/167887a0-ac00-4cf9-bc69-b5ca845997db/episodes/95839e56-3b53-4d99-9837-ec272c522d9e/audio/e0f9a5ca-2d91-43b1-a5ca-ec93059bbd77/default_tc.mp3?nocache
+    image: https://i0.wp.com/shoptalkshow.com/wp-content/uploads/2013/03/logo-itunes-1400.png?fit=1400%2C1400&ssl=1
+  - title: "691: Charts + Graphs, Vibe Coding an App, and Debating Affordances"
+    published: 2025-11-17T09:50:28.000Z
+    duration: 01:08:59
+    url: https://cdn.simplecast.com/audio/167887a0-ac00-4cf9-bc69-b5ca845997db/episodes/1edbf13c-113f-4cd1-b7cb-7c6d3cbf26e0/audio/6abb1db0-c803-4180-adc2-261b3ef8fb11/default_tc.mp3?nocache
+    image: https://i0.wp.com/shoptalkshow.com/wp-content/uploads/2013/03/logo-itunes-1400.png?fit=1400%2C1400&ssl=1
+  - title: "690: Steve Ruiz and tldraw"
+    published: 2025-11-10T08:36:37.000Z
+    duration: 01:12:58
+    url: https://cdn.simplecast.com/audio/167887a0-ac00-4cf9-bc69-b5ca845997db/episodes/cc3b9af1-8d5b-4247-b084-330eca92cd4b/audio/887c68be-aebc-4a09-ba1c-8ac28da1db3c/default_tc.mp3?nocache
+    image: https://i0.wp.com/shoptalkshow.com/wp-content/uploads/2013/03/logo-itunes-1400.png?fit=1400%2C1400&ssl=1

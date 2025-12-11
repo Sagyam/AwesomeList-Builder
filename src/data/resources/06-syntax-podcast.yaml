@@ -2,7 +2,10 @@ type: podcast
 id: syntax-podcast
 title: Syntax - Tasty Web Development Treats
 url: https://syntax.fm
-description: Full Stack Developers Wes Bos and Scott Tolinski dive deep into web development topics, explaining how they work and talking about their own experiences. From React to CSS to serverless.
+description: Full Stack Developers Wes Bos and Scott Tolinski dive deep into web
+  development topics, explaining how they work and talking about their own
+  experiences. They cover from JavaScript frameworks like React, to the latest
+  advancements in CSS to simplifying web tooling.
 category: Learning Resource
 tags:
   - podcast
@@ -12,16 +15,43 @@ topics:
   - web-development
   - education
 language: en
-dateAdded: '2024-07-01T10:00:00Z'
-lastVerified: '2025-12-09T10:00:00Z'
+dateAdded: 2024-07-01T10:00:00Z
+lastVerified: 2025-12-09T10:00:00Z
 trending: true
-image: https://images.unsplash.com/photo-1590602847861-f357a9332bbc?w=800&auto=format&fit=crop
+image: https://megaphone.imgix.net/podcasts/5197fe5a-42f7-11f0-affd-87d9985a1760/image/c86a54acd72683732c4773e25bf0ae14.png?ixlib=rails-4.3.1&max-w=3000&max-h=3000&fit=crop&auto=format,compress
 imageAlt: Podcast recording
 difficulty: intermediate
 isFree: true
 accessLevel: free
-host: Wes Bos and Scott Tolinski
+host: Wes Bos & Scott Tolinski - Full Stack JavaScript Web Developers
 platform: Multiple platforms
-published: '2024-01-01T10:00:00Z'
+published: 2024-01-01T10:00:00Z
 duration: PT45M
-rssFeed: https://syntax.fm/rss
+rssFeed: https://feed.syntax.fm/rss
+hostUrl: https://syntax.fm
+episodes:
+  - title: "962: The Home Server / Synology Show"
+    published: 2025-12-10T12:00:00.000Z
+    duration: "2120"
+    url: https://traffic.megaphone.fm/FSI2592102992.mp3
+    image: https://megaphone.imgix.net/podcasts/bb463086-d54d-11f0-b9f1-63b50fd098fa/image/b38c7362e1c69213df6d4c504dd3c4a5.png?ixlib=rails-4.3.1&max-w=3000&max-h=3000&fit=crop&auto=format,compress
+  - title: "961: Keeping Up With The Fast and Furious Web"
+    published: 2025-12-08T12:00:00.000Z
+    duration: "1682"
+    url: https://traffic.megaphone.fm/FSI7948226652.mp3
+    image: https://megaphone.imgix.net/podcasts/f7337034-d20c-11f0-ae6d-976e7ff4d6aa/image/0332255d1ca6718525235eb74591d3ca.png?ixlib=rails-4.3.1&max-w=3000&max-h=3000&fit=crop&auto=format,compress
+  - title: "960: Reacting to the Weird + Creative Corners of the Web"
+    published: 2025-12-03T12:00:00.000Z
+    duration: "1653"
+    url: https://traffic.megaphone.fm/FSI7637152292.mp3
+    image: https://megaphone.imgix.net/podcasts/ba406aa6-cf96-11f0-a29a-3f5c039fc9f3/image/0c94e7b5407e17287e273ced6449c904.png?ixlib=rails-4.3.1&max-w=3000&max-h=3000&fit=crop&auto=format,compress
+  - title: "959: TypeScript on the GPU with TypeGPU creator Iwo Plaza"
+    published: 2025-12-01T12:00:00.000Z
+    duration: "1536"
+    url: https://traffic.megaphone.fm/FSI5252849311.mp3
+    image: https://megaphone.imgix.net/podcasts/6e1505bc-ca0d-11f0-9baf-cbaee5dc9404/image/3d5c5a4ef5ed11a86235779a1fb6ce78.png?ixlib=rails-4.3.1&max-w=3000&max-h=3000&fit=crop&auto=format,compress
+  - title: "958: 2025 Holiday Gift Guide"
+    published: 2025-11-26T12:00:00.000Z
+    duration: "3929"
+    url: https://traffic.megaphone.fm/FSI1409561011.mp3
+    image: https://megaphone.imgix.net/podcasts/14cad3fa-ca7c-11f0-86a3-3765918cfa66/image/0ea3f5d5356b8e76f8a9325b461ab9ca.png?ixlib=rails-4.3.1&max-w=3000&max-h=3000&fit=crop&auto=format,compress
