@@ -17,7 +17,6 @@ difficulty: intermediate
 isFree: true
 accessLevel: free
 platform: Personal Blog
-
 metadata:
   title: "Exploring HyperLogLog: An Interactive Guide"
   description: Learn to estimate large unique counts efficiently using

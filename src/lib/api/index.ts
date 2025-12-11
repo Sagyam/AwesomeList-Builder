@@ -12,4 +12,5 @@ export type { GitHubRepository, RepositoryMetadata } from "./github-client.ts";
 export { GitHubClient, githubClient } from "./github-client.ts";
 export type { GitLabProject, GitLabRepositoryMetadata } from "./gitlab-client.ts";
 export { GitLabClient, gitlabClient } from "./gitlab-client.ts";
+export {NewsletterClient, newsletterClient} from "./newsletter-client.ts";
 export {PodcastClient, podcastClient} from "./podcast-client.ts";

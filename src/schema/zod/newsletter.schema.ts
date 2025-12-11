@@ -1,27 +1,43 @@
-import { z } from "zod";
-import { BaseResourceSchemaObject } from "@/schema/zod/base.schema";
+import {z} from "zod";
+import {BaseResourceSchemaObject} from "@/schema/zod/base.schema";
 
-export const NewsletterSchema = BaseResourceSchemaObject.extend({
-  type: z.literal("newsletter"),
-  name: z.string().min(1, "Newsletter name is required"),
+export const NewsletterMetadataSchema = z.object({
+    title: z.string().min(1, "Newsletter title is required"),
+    description: z.string(),
+    link: z.string().url(),
+    image: z.string().url().optional(),
   author: z.string().optional(),
-  authorUrl: z.url("Author URL must be a valid URL").optional(),
-  frequency: z.string().min(1, "Frequency is required (e.g., weekly, monthly)"),
-  subscribeUrl: z.url("Subscribe URL must be a valid URL").optional(),
-  archiveUrl: z.url("Archive URL must be a valid URL").optional(),
-  subscribers: z
-    .number()
-    .int()
-    .nonnegative("Subscriber count must be a non-negative integer")
+    authorUrl: z.string().url().optional(),
+    language: z.string().optional(),
+    copyright: z.string().optional(),
+    lastBuildDate: z.string().optional(),
+    subscribers: z.number().int().nonnegative().optional(),
+    frequency: z.string().optional(),
+    firstIssue: z.string().optional(),
+    latestIssue: z
+        .object({
+            title: z.string(),
+            published: z.string(),
+            url: z.string().url().optional(),
+        })
     .optional(),
-  firstIssue: z.iso
-    .datetime({ message: "First issue date must be a valid ISO 8601 datetime" })
-    .optional(),
+});
+
+export const NewsletterSchema = BaseResourceSchemaObject.omit({
+    title: true,
+    description: true,
+    name: true,
+    url: true,
+}).extend({
+    type: z.literal("newsletter"),
+    rssUrl: z.string().url("RSS URL must be a valid URL"),
   platform: z.string().optional(),
-  format: z.enum(["email", "web", "both"], {
-    message: "Newsletter format must be one of: email, web, or both.",
-  }),
-  hasRss: z.boolean().optional(),
+    format: z.enum(["email", "web", "both"]).optional(),
+    subscribeUrl: z.string().url("Subscribe URL must be a valid URL").optional(),
+    archiveUrl: z.string().url("Archive URL must be a valid URL").optional(),
+    image: z.string().url("Image URL must be a valid URL").optional(),
+    imageAlt: z.string().optional(),
+    metadata: NewsletterMetadataSchema,
 });
 
 export type NewsletterInput = z.infer<typeof NewsletterSchema>;

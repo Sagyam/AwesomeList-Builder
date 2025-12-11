@@ -96,6 +96,9 @@ export function getResourceName(resource: Resource): string {
   if (resource.type === "article") {
     return resource.metadata.title;
   }
+  if (resource.type === "newsletter") {
+    return resource.metadata.title;
+  }
   return (resource as any).name || (resource as any).title || "Untitled";
 }
 
@@ -110,6 +113,9 @@ export function getResourceDescription(resource: Resource): string {
     return resource.metadata.description || "";
   }
   if (resource.type === "article") {
+    return resource.metadata.description;
+  }
+  if (resource.type === "newsletter") {
     return resource.metadata.description;
   }
   return (resource as any).description || "";
@@ -132,6 +138,10 @@ export function getResourceUrl(resource: Resource): string {
   }
   if (resource.type === "article") {
     return resource.metadata.link;
+  }
+  if (resource.type === "newsletter") {
+    // Prefer subscribeUrl if available, otherwise use metadata link
+    return resource.subscribeUrl || resource.metadata.link;
   }
   return (resource as any).url || "";
 }
@@ -160,6 +170,10 @@ export function getResourceImage(resource: Resource): string | undefined {
   }
   if (resource.type === "article") {
     return resource.metadata.image;
+  }
+  if (resource.type === "newsletter") {
+    // Prefer user-provided image, fallback to RSS metadata image
+    return resource.image || resource.metadata.image;
   }
   return (resource as any).image;
 }

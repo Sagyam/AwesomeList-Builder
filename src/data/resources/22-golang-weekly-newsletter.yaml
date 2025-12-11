@@ -1,0 +1,35 @@
+type: newsletter
+id: golang-weekly-newsletter
+rssUrl: https://golangweekly.com/rss
+category: Learning Resource
+tags:
+  - newsletter
+  - golang
+  - backend
+  - weekly
+topics:
+  - backend-development
+  - golang
+  - programming
+language: en
+dateAdded: 2024-07-15T10:00:00Z
+lastVerified: 2025-12-11T10:00:00Z
+difficulty: intermediate
+isFree: true
+accessLevel: free
+subscribeUrl: https://golangweekly.com/
+archiveUrl: https://golangweekly.com/issues
+format: email
+platform: Cooperpress
+image: https://images.unsplash.com/photo-1607799279861-4dd421887fb3?w=800&auto=format&fit=crop
+imageAlt: Go programming newsletter with gopher mascot
+metadata:
+  title: Golang Weekly
+  description: A weekly newsletter about the Go programming language
+  link: https://golangweekly.com/
+  frequency: weekly
+  firstIssue: Wed, 19 Nov 2025 00:00:00 +0000
+  latestIssue:
+    title: Shhh.. Go's getting a 'secret mode'
+    published: Wed, 10 Dec 2025 00:00:00 +0000
+    url: https://golangweekly.com/issues/582
