@@ -2,6 +2,7 @@
  * API Clients for external data fetching
  */
 
+export {ArticleClient, articleClient} from "./article-client.ts";
 export type { ArxivEntry, PaperMetadata } from "./arxiv-client.ts";
 export { ArxivClient, arxivClient } from "./arxiv-client.ts";
 export type { ApiClientConfig, CacheConfig, RateLimitConfig } from "./base-client.ts";

@@ -23,10 +23,10 @@ ownerUrl: https://github.com/vuejs
 repositoryUrl: https://github.com/vuejs/core
 homepage: https://vuejs.org/
 license: MIT
-stars: 52374
-forks: 8979
-watchers: 52374
-openIssues: 1029
+stars: 52377
+forks: 8980
+watchers: 52377
+openIssues: 1030
 lastCommit: 2025-12-11T08:41:13Z
 created: 2018-06-12T13:49:36Z
 primaryLanguage: TypeScript

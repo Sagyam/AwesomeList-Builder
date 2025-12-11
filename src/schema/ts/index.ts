@@ -1,4 +1,4 @@
-export type { Article } from "./article.interface";
+export type {Article, ArticleMetadata} from "./article.interface";
 export type { BaseResource } from "./base.interface";
 export type { Book } from "./book.interface";
 export type { Certification } from "./certification.interface";

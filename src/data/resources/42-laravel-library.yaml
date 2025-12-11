@@ -29,12 +29,12 @@ repository: https://github.com/laravel/framework
 documentation: https://laravel.com/docs
 homepage: https://laravel.com
 license: MIT
-stars: 34348
+stars: 34349
 forks: 11725
-watchers: 34348
-openIssues: 120
-openPullRequests: 36
-lastCommit: 2025-12-11T05:38:36Z
+watchers: 34349
+openIssues: 118
+openPullRequests: 33
+lastCommit: 2025-12-11T16:08:09Z
 lastReleaseVersion: v12.42.0
 lastReleaseDate: 2025-12-09T15:52:26Z
 created: 2013-01-10T21:27:28Z

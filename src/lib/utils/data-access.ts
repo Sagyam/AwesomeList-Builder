@@ -93,6 +93,9 @@ export function getResourceName(resource: Resource): string {
   if (resource.type === "book") {
     return resource.metadata.title;
   }
+  if (resource.type === "article") {
+    return resource.metadata.title;
+  }
   return (resource as any).name || (resource as any).title || "Untitled";
 }
 
@@ -105,6 +108,9 @@ export function getResourceDescription(resource: Resource): string {
   }
   if (resource.type === "book") {
     return resource.metadata.description || "";
+  }
+  if (resource.type === "article") {
+    return resource.metadata.description;
   }
   return (resource as any).description || "";
 }
@@ -123,6 +129,9 @@ export function getResourceUrl(resource: Resource): string {
     }
     // Fallback to Open Library ISBN page
     return `https://openlibrary.org/isbn/${resource.isbn}`;
+  }
+  if (resource.type === "article") {
+    return resource.metadata.link;
   }
   return (resource as any).url || "";
 }
@@ -148,6 +157,9 @@ export function getResourceImage(resource: Resource): string | undefined {
         images.openLibraryMedium ||
         images.openLibrarySmall
     );
+  }
+  if (resource.type === "article") {
+    return resource.metadata.image;
   }
   return (resource as any).image;
 }

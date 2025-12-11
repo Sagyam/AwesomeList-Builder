@@ -1,7 +1,7 @@
 // Export all Zod schemas
 
 export type { ArticleInput } from "./article.schema";
-export { ArticleSchema } from "./article.schema";
+export {ArticleMetadataSchema, ArticleSchema} from "./article.schema";
 
 // Export Zod input types
 export type { BaseResourceInput } from "./base.schema";

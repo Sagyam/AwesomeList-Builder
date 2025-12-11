@@ -6,7 +6,7 @@
     "url": "https://github.com/sagyam"
   },
   "type": "module",
-  "version": "0.0.5",
+  "version": "0.1.9",
   "scripts": {
     "dev": "astro dev --host",
     "prebuild": "bun run fetch --force",
@@ -20,7 +20,7 @@
     "check": "biome check .",
     "check:fix": "biome check --write .",
     "validate": "bun run src/lib/validators/project-validator.ts",
-    "fetch": "bun run src/lib/api/fetch-metadata/index.ts"
+    "fetch": "bun run src/lib/api/fetch-metadata/article.ts"
   },
   "dependencies": {
     "@astrojs/mdx": "^4.3.12",

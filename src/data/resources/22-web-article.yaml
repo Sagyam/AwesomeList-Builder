@@ -1,26 +1,28 @@
 type: article
 id: web-article
-title: The State of JavaScript 2024
-url: https://stateofjs.com
-description: Annual survey results covering JavaScript ecosystem trends frameworks libraries and tools. Discover what technologies JavaScript developers are using learning and want to explore.
-category: Learning Resource
+url: https://blog.sagyamthapa.com.np/an-interactive-guide-to-hyperloglog
+category: Blog
 tags:
-  - javascript
-  - survey
-  - trends
+  - react
+  - hooks
+  - tutorial
 topics:
-  - web-development
-  - javascript
+  - probabilistic data structure
+  - interactive app
 language: en
-dateAdded: '2024-09-15T10:00:00Z'
-lastVerified: '2025-12-09T10:00:00Z'
-trending: true
-image: https://images.unsplash.com/photo-1579468118864-1b9ea3c0db4a?w=800&auto=format&fit=crop
-imageAlt: JavaScript survey
-difficulty: beginner
+dateAdded: 2024-06-10T10:00:00Z
+lastVerified: 2025-12-09T10:00:00Z
+featured: true
+difficulty: intermediate
 isFree: true
 accessLevel: free
-author: Sacha Greif
-authorUrl: https://stateofjs.com
-published: '2024-09-01T10:00:00Z'
-readTime: 15 min
+platform: Personal Blog
+
+metadata:
+  title: "Exploring HyperLogLog: An Interactive Guide"
+  description: Learn to estimate large unique counts efficiently using
+    HyperLogLog. Dive into the algorithm, its applications, and play with an
+    interactive app
+  link: https://blog.sagyamthapa.com.np/an-interactive-guide-to-hyperloglog
+  image: https://hashnode.com/utility/r?url=https%3A%2F%2Fcdn.hashnode.com%2Fres%2Fhashnode%2Fimage%2Fupload%2Fv1734202494700%2F1652c5f4-f19a-4338-bc54-54cd6747f374.jpeg%3Fw%3D1200%26h%3D630%26fit%3Dcrop%26crop%3Dentropy%26auto%3Dcompress%2Cformat%26format%3Dwebp%26fm%3Dpng
+  author: Sagyam Thapa

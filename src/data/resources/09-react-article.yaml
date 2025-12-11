@@ -1,8 +1,6 @@
 type: article
 id: react-article
-title: A Complete Guide to useEffect
 url: https://overreacted.io/a-complete-guide-to-useeffect/
-description: Deep dive into React's useEffect hook. This comprehensive guide explains how useEffect works, common pitfalls, and best practices for managing side effects in React applications.
 category: Learning Resource
 tags:
   - react
@@ -12,15 +10,16 @@ topics:
   - web-development
   - react
 language: en
-dateAdded: '2024-06-10T10:00:00Z'
-lastVerified: '2025-12-09T10:00:00Z'
+dateAdded: 2024-06-10T10:00:00Z
+lastVerified: 2025-12-09T10:00:00Z
 featured: true
-image: https://images.unsplash.com/photo-1555066931-4365d14bab8c?w=800&auto=format&fit=crop
-imageAlt: React tutorial article
 difficulty: intermediate
 isFree: true
 accessLevel: free
-author: Dan Abramov
-authorUrl: https://overreacted.io
-published: '2019-03-09T10:00:00Z'
-readTime: 25 min
+platform: Personal Blog
+format: tutorial
+metadata:
+  title: A Complete Guide to useEffect — overreacted
+  description: Effects are a part of your data flow.
+  link: https://overreacted.io/a-complete-guide-to-useeffect/
+  image: https://overreacted.io/a-complete-guide-to-useeffect/opengraph-image?5b0b970dfd19bb8c

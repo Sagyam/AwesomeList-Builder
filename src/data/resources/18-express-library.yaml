@@ -36,11 +36,11 @@ languages:
   - JavaScript
   - Makefile
   - Shell
-stars: 68333
-forks: 21748
-watchers: 68333
-openIssues: 217
-openPullRequests: 106
+stars: 68336
+forks: 21752
+watchers: 68336
+openIssues: 212
+openPullRequests: 102
 lastCommit: 2025-12-09T15:32:14Z
 lastReleaseVersion: v5.2.1
 lastReleaseDate: 2025-12-01T20:54:44Z
