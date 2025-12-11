@@ -78,7 +78,7 @@ src/
 
 ## Planned Features (from ROADMAP.md)
 
-Currently in **Phase 0 - Foundation**. The roadmap includes:
+Currently in **Phase 5:** The roadmap includes:
 
 **Phase 1-2:** Data layer with YAML schemas for projects/categories, API integration for GitHub/npm/PyPI metrics
 **Phase 3:** Enhanced UI with project cards, list layouts, theme system
