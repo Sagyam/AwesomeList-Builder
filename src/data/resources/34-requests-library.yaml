@@ -34,9 +34,9 @@ repository: https://github.com/psf/requests
 documentation: https://requests.readthedocs.io
 homepage: https://requests.readthedocs.io/en/latest/
 license: Apache-2.0
-stars: 53559
-forks: 9642
-watchers: 53559
+stars: 53560
+forks: 9643
+watchers: 53560
 openIssues: 323
 openPullRequests: 119
 lastCommit: 2025-12-01T18:13:45Z

@@ -35,9 +35,9 @@ repository: https://github.com/django/django
 documentation: https://docs.djangoproject.com
 homepage: https://www.djangoproject.com/
 license: BSD-3-Clause
-stars: 86123
+stars: 86124
 forks: 33300
-watchers: 86123
+watchers: 86124
 openIssues: 368
 openPullRequests: 362
 lastCommit: 2025-12-10T22:45:51Z

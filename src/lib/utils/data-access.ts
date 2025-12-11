@@ -1,6 +1,6 @@
-import { loadProjectData } from "@/lib/parsers/project-parser";
-import type { Project, ProjectMetadata } from "@/schema/ts/project.interface";
-import type { Resource } from "@/schema/ts/types";
+import {loadProjectData} from "@/lib/parsers/project-parser";
+import type {Project, ProjectMetadata} from "@/schema/ts/project.interface";
+import type {Resource} from "@/schema/ts/types";
 
 /**
  * Get complete project data (metadata + resources)
@@ -90,6 +90,9 @@ export function getResourceName(resource: Resource): string {
   if (resource.type === "podcast") {
     return resource.metadata.title;
   }
+  if (resource.type === "book") {
+    return resource.metadata.title;
+  }
   return (resource as any).name || (resource as any).title || "Untitled";
 }
 
@@ -99,6 +102,9 @@ export function getResourceName(resource: Resource): string {
 export function getResourceDescription(resource: Resource): string {
   if (resource.type === "podcast") {
     return resource.metadata.description;
+  }
+  if (resource.type === "book") {
+    return resource.metadata.description || "";
   }
   return (resource as any).description || "";
 }
@@ -110,6 +116,14 @@ export function getResourceUrl(resource: Resource): string {
   if (resource.type === "podcast") {
     return resource.metadata.link;
   }
+  if (resource.type === "book") {
+    // Return the first link if available, otherwise construct an Open Library URL
+    if (resource.metadata.links && resource.metadata.links.length > 0) {
+      return resource.metadata.links[0].url;
+    }
+    // Fallback to Open Library ISBN page
+    return `https://openlibrary.org/isbn/${resource.isbn}`;
+  }
   return (resource as any).url || "";
 }
 
@@ -119,6 +133,21 @@ export function getResourceUrl(resource: Resource): string {
 export function getResourceImage(resource: Resource): string | undefined {
   if (resource.type === "podcast") {
     return resource.metadata.image;
+  }
+  if (resource.type === "book") {
+    // Prefer Google Books images, fallback to Open Library
+    const images = resource.metadata.images;
+    return (
+        images.large ||
+        images.medium ||
+        images.thumbnail ||
+        images.small ||
+        images.extraLarge ||
+        images.smallThumbnail ||
+        images.openLibraryLarge ||
+        images.openLibraryMedium ||
+        images.openLibrarySmall
+    );
   }
   return (resource as any).image;
 }

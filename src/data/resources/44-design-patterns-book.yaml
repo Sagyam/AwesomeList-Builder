@@ -1,0 +1,105 @@
+type: book
+id: design-patterns-book
+isbn: "0201633612"
+metadata:
+  title: Design Patterns
+  subtitle: Elements of Reusable Object-Oriented Software
+  authors:
+    - name: Erich Gamma
+    - name: Richard Helm
+    - name: Ralph Johnson
+    - name: John Vlissides
+  publisher: Pearson Deutschland GmbH
+  publishedDate: "1995"
+  description: Software -- Software Engineering.
+  pageCount: 512
+  printType: BOOK
+  language: en
+  categories:
+    - Business & Economics
+  subjects:
+    - name: Business & Economics
+      source: google
+    - name: Reusability
+      url: https://openlibrary.org/subjects/reusability
+      source: openlibrary
+    - name: Object-oriented programming (Computer science)
+      url: https://openlibrary.org/subjects/object-oriented_programming_(computer_science)
+      source: openlibrary
+    - name: Computer software
+      url: https://openlibrary.org/subjects/computer_software
+      source: openlibrary
+    - name: Software patterns
+      url: https://openlibrary.org/subjects/software_patterns
+      source: openlibrary
+    - name: Entwurfsmuster
+      url: https://openlibrary.org/subjects/entwurfsmuster
+      source: openlibrary
+    - name: Object-georiënteerd programmeren
+      url: https://openlibrary.org/subjects/object-georiënteerd_programmeren
+      source: openlibrary
+    - name: Computacao (metodologia e tecnicas)
+      url: https://openlibrary.org/subjects/computacao_(metodologia_e_tecnicas)
+      source: openlibrary
+    - name: Objektorientierte Programmierung
+      url: https://openlibrary.org/subjects/objektorientierte_programmierung
+      source: openlibrary
+    - name: Softwarewiederverwendung
+      url: https://openlibrary.org/subjects/softwarewiederverwendung
+      source: openlibrary
+    - name: Programas para computadoras
+      url: https://openlibrary.org/subjects/programas_para_computadoras
+      source: openlibrary
+    - name: Reutilización
+      url: https://openlibrary.org/subjects/reutilización
+      source: openlibrary
+    - name: Softwareentwicklung
+      url: https://openlibrary.org/subjects/softwareentwicklung
+      source: openlibrary
+    - name: Hergebruik
+      url: https://openlibrary.org/subjects/hergebruik
+      source: openlibrary
+    - name: Programacao de computadores
+      url: https://openlibrary.org/subjects/programacao_de_computadores
+      source: openlibrary
+    - name: Design
+      url: https://openlibrary.org/subjects/design
+      source: openlibrary
+    - name: Object-oriented design
+      url: https://openlibrary.org/subjects/object-oriented_design
+      source: openlibrary
+    - name: Software Design
+      url: https://openlibrary.org/subjects/software_design
+      source: openlibrary
+    - name: Software Develoment
+      url: https://openlibrary.org/subjects/software_develoment
+      source: openlibrary
+  mainCategory: Business & Economics
+  identifiers:
+    isbn_10: "3827330432"
+    isbn_13: "9783827330437"
+    google_books_id: tmNNfSkfTlcC
+    openlibrary_id: OL7408317M
+    lccn: "94034264"
+    oclc: "501190421"
+    goodreads: "85009"
+  images:
+    smallThumbnail: http://books.google.com/books/content?id=tmNNfSkfTlcC&printsec=frontcover&img=1&zoom=5&edge=curl&source=gbs_api
+    thumbnail: http://books.google.com/books/content?id=tmNNfSkfTlcC&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api
+    openLibrarySmall: https://covers.openlibrary.org/b/id/10827044-S.jpg
+    openLibraryMedium: https://covers.openlibrary.org/b/id/10827044-M.jpg
+    openLibraryLarge: https://covers.openlibrary.org/b/id/10827044-L.jpg
+  links:
+    - url: http://books.google.com/books?id=tmNNfSkfTlcC&printsec=frontcover&dq=isbn:0201633612&hl=&cd=1&source=gbs_api
+      title: Google Books Preview
+      source: google
+    - url: http://books.google.com/books?id=tmNNfSkfTlcC&dq=isbn:0201633612&hl=&source=gbs_api
+      title: Google Books Info
+      source: google
+    - title: Wikipedia Page
+      url: https://wikipedia.org/wiki/Design_Patterns
+      source: openlibrary
+  fetchedAt: 2025-12-11T11:14:45.768Z
+  sources:
+    googleBooks: true
+    openLibrary: true

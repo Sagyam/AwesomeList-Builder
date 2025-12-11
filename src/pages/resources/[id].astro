@@ -39,7 +39,7 @@ const formatDate = (dateString?: string) => {
 <Layout
         title={`${name} - ${metadata.title}`}
         description={description}
-        keywords={[...metadata.keywords, ...resource.tags]}
+        keywords={[...metadata.keywords, ...((resource as any).tags || [])]}
         author={metadata.author.name}
 >
     <!-- Project Header -->
@@ -113,11 +113,11 @@ const formatDate = (dateString?: string) => {
                 <!-- Main Content -->
                 <div class="lg:col-span-2 space-y-8">
                     <!-- Tags -->
-                    {resource.tags && resource.tags.length > 0 && (
+                    {(resource as any).tags && (resource as any).tags.length > 0 && (
                             <div>
                                 <h2 class="text-2xl font-bold mb-4">Tags</h2>
                                 <div class="flex flex-wrap gap-2">
-                                    {resource.tags.map((tag) => (
+                                    {(resource as any).tags.map((tag: string) => (
                                             <span class="inline-flex items-center rounded-md bg-secondary px-3 py-1.5 text-sm text-secondary-foreground">
                     {tag}
                   </span>
@@ -279,6 +279,113 @@ const formatDate = (dateString?: string) => {
                                             <div class="flex items-center justify-between">
                                                 <span class="text-sm text-muted-foreground">Duration</span>
                                                 <span class="font-medium">{resource.duration}</span>
+                                            </div>
+                                    )}
+                                </div>
+                        )}
+
+                        {resource.type === "book" && (
+                                <div class="rounded-lg border bg-card p-6 space-y-4">
+                                    <h3 class="font-semibold">Book Details</h3>
+
+                                    {"metadata" in resource && resource.metadata.authors && resource.metadata.authors.length > 0 && (
+                                            <div class="flex items-center justify-between">
+                                                <span class="text-sm text-muted-foreground">Author{resource.metadata.authors.length > 1 ? 's' : ''}</span>
+                                                <span class="font-medium text-right">
+                                                    {resource.metadata.authors.map((author, idx) => (
+                                                            <span key={idx}>
+                                                                {author.url ? (
+                                                                        <a href={author.url} target="_blank"
+                                                                           rel="noopener noreferrer"
+                                                                           class="hover:underline">
+                                                                            {author.name}
+                                                                        </a>
+                                                                ) : (
+                                                                    author.name
+                                                                )}
+                                                                {idx < resource.metadata.authors.length - 1 && ', '}
+                                                            </span>
+                                                    ))}
+                                                </span>
+                                            </div>
+                                    )}
+
+                                    {"metadata" in resource && resource.metadata.publisher && (
+                                            <div class="flex items-center justify-between">
+                                                <span class="text-sm text-muted-foreground">Publisher</span>
+                                                <span class="font-medium">{resource.metadata.publisher}</span>
+                                            </div>
+                                    )}
+
+                                    {"metadata" in resource && resource.metadata.publishedDate && (
+                                            <div class="flex items-center justify-between">
+                                                <span class="text-sm text-muted-foreground">Published</span>
+                                                <span class="font-medium">{resource.metadata.publishedDate}</span>
+                                            </div>
+                                    )}
+
+                                    {"isbn" in resource && resource.isbn && (
+                                            <div class="flex items-center justify-between">
+                                                <span class="text-sm text-muted-foreground">ISBN</span>
+                                                <span class="font-medium font-mono text-sm">{resource.isbn}</span>
+                                            </div>
+                                    )}
+
+                                    {"metadata" in resource && resource.metadata.pageCount && (
+                                            <div class="flex items-center justify-between">
+                                                <span class="text-sm text-muted-foreground">Pages</span>
+                                                <span class="font-medium">{resource.metadata.pageCount}</span>
+                                            </div>
+                                    )}
+
+                                    {"metadata" in resource && resource.metadata.language && (
+                                            <div class="flex items-center justify-between">
+                                                <span class="text-sm text-muted-foreground">Language</span>
+                                                <span class="font-medium">{resource.metadata.language.toUpperCase()}</span>
+                                            </div>
+                                    )}
+
+                                    {"metadata" in resource && resource.metadata.printType && (
+                                            <div class="flex items-center justify-between">
+                                                <span class="text-sm text-muted-foreground">Type</span>
+                                                <span class="font-medium">{resource.metadata.printType}</span>
+                                            </div>
+                                    )}
+
+                                    {"metadata" in resource && resource.metadata.rating && (
+                                            <div class="flex items-center justify-between">
+                                                <span class="text-sm text-muted-foreground">Rating</span>
+                                                <span class="font-medium flex items-center gap-1">
+                                                    {resource.metadata.rating.average}
+                                                    ({resource.metadata.rating.count?.toLocaleString()} reviews)
+                                                    <Star className="h-4 w-4 fill-yellow-400 stroke-yellow-400"/>
+                                                </span>
+                                            </div>
+                                    )}
+
+                                    {"metadata" in resource && resource.metadata.categories && resource.metadata.categories.length > 0 && (
+                                            <div>
+                                                <span class="text-sm text-muted-foreground block mb-2">Categories</span>
+                                                <div class="flex flex-wrap gap-1">
+                                                    {resource.metadata.categories.map((category, idx) => (
+                                                            <span key={idx}
+                                                                  class="inline-flex items-center rounded-md bg-secondary px-2 py-1 text-xs text-secondary-foreground">
+                                                                {category}
+                                                            </span>
+                                                    ))}
+                                                </div>
+                                            </div>
+                                    )}
+
+                                    {"metadata" in resource && resource.metadata.sources && (
+                                            <div class="flex items-center justify-between pt-2 border-t">
+                                                <span class="text-xs text-muted-foreground">Data from</span>
+                                                <span class="text-xs font-medium">
+                                                    {[
+                                                        resource.metadata.sources.googleBooks && "Google Books",
+                                                        resource.metadata.sources.openLibrary && "Open Library"
+                                                    ].filter(Boolean).join(" + ")}
+                                                </span>
                                             </div>
                                     )}
                                 </div>

@@ -57,12 +57,12 @@ languages:
   - PLpgSQL
   - Batchfile
   - TSQL
-stars: 44740
-forks: 1999
-watchers: 44740
+stars: 44741
+forks: 2000
+watchers: 44741
 openIssues: 2450
-openPullRequests: 91
-lastCommit: 2025-12-10T16:44:57Z
+openPullRequests: 90
+lastCommit: 2025-12-11T10:40:34Z
 lastReleaseVersion: 7.1.0
 lastReleaseDate: 2025-12-03T13:43:25Z
 created: 2019-06-20T13:33:47Z

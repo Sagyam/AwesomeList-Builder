@@ -1,13 +1,13 @@
-import type { Podcast } from "@/schema/ts/podcast.interface";
-import { podcastClient } from "../podcast-client";
+import type {Podcast} from "@/schema/ts/podcast.interface";
+import {podcastClient} from "../podcast-client";
 import {
-    loadResources,
-    saveResource,
-    printStats,
+    type FetchStats,
     loadMetadata,
+    loadResources,
+    printStats,
+    saveResource,
     shouldRefresh,
     updateMetadataTimestamp,
-    type FetchStats
 } from "./common";
 
 async function fetchPodcasts(force = false) {
@@ -19,13 +19,13 @@ async function fetchPodcasts(force = false) {
     }
 
     const resources = loadResources();
-    const podcasts = resources.filter(r => r.type === "podcast") as Podcast[];
+    const podcasts = resources.filter((r) => r.type === "podcast") as Podcast[];
 
     const stats: FetchStats = {
         total: podcasts.length,
         updated: 0,
         failed: 0,
-        skipped: 0
+        skipped: 0,
     };
 
     console.log(`Found ${podcasts.length} podcasts`);
@@ -43,18 +43,6 @@ async function fetchPodcasts(force = false) {
 
             if (metadata) {
                 podcast.metadata = metadata;
-
-                // Clean up legacy top-level fields that are now in metadata
-                const p = podcast as any;
-                delete p.title;
-                delete p.description;
-                delete p.image;
-                delete p.host;
-                delete p.published;
-                delete p.duration;
-                delete p.episodes;
-                delete p.url; // Now in metadata.link
-                delete p.imageAlt;
 
                 saveResource(podcast);
                 stats.updated++;
