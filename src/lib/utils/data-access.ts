@@ -54,7 +54,11 @@ export function getResourceById(id: string): Resource | undefined {
  */
 export function getAllCategories(): string[] {
   const resources = getAllResources();
-  const categories = new Set(resources.map((r) => r.category));
+    const categories = new Set(
+        resources
+            .map((r) => ("category" in r ? r.category : undefined))
+            .filter((cat): cat is string => typeof cat === "string")
+    );
   return Array.from(categories).sort();
 }
 
@@ -102,6 +106,24 @@ export function getResourceName(resource: Resource): string {
   if (resource.type === "video") {
     return resource.metadata.title;
   }
+    if (resource.type === "certification") {
+        return resource.metadata.title;
+    }
+    if (resource.type === "cheatsheet") {
+        return resource.metadata.title;
+    }
+    if (resource.type === "community") {
+        return resource.metadata.name;
+    }
+    if (resource.type === "conference") {
+        return resource.metadata.name;
+    }
+    if (resource.type === "documentation") {
+        return resource.metadata.title;
+    }
+    if (resource.type === "tool") {
+        return resource.metadata.name;
+    }
   return (resource as any).name || (resource as any).title || "Untitled";
 }
 
@@ -124,6 +146,24 @@ export function getResourceDescription(resource: Resource): string {
   if (resource.type === "video") {
     return resource.metadata.description;
   }
+    if (resource.type === "certification") {
+        return resource.metadata.description;
+    }
+    if (resource.type === "cheatsheet") {
+        return resource.metadata.description;
+    }
+    if (resource.type === "community") {
+        return resource.metadata.description;
+    }
+    if (resource.type === "conference") {
+        return resource.metadata.description;
+    }
+    if (resource.type === "documentation") {
+        return resource.metadata.description;
+    }
+    if (resource.type === "tool") {
+        return resource.metadata.description;
+    }
   return (resource as any).description || "";
 }
 
@@ -153,6 +193,24 @@ export function getResourceUrl(resource: Resource): string {
     // Construct YouTube URL from video ID
     return `https://www.youtube.com/watch?v=${resource.videoId}`;
   }
+    if (resource.type === "certification") {
+        return resource.certificationUrl;
+    }
+    if (resource.type === "cheatsheet") {
+        return resource.cheatsheetUrl;
+    }
+    if (resource.type === "community") {
+        return resource.communityUrl;
+    }
+    if (resource.type === "conference") {
+        return resource.conferenceUrl;
+    }
+    if (resource.type === "documentation") {
+        return resource.documentationUrl;
+    }
+    if (resource.type === "tool") {
+        return resource.toolUrl;
+    }
   return (resource as any).url || "";
 }
 
@@ -196,6 +254,24 @@ export function getResourceImage(resource: Resource): string | undefined {
       thumbnails.default?.url
     );
   }
+    if (resource.type === "certification") {
+        return resource.metadata.image;
+    }
+    if (resource.type === "cheatsheet") {
+        return resource.metadata.image;
+    }
+    if (resource.type === "community") {
+        return resource.metadata.image;
+    }
+    if (resource.type === "conference") {
+        return resource.metadata.image;
+    }
+    if (resource.type === "documentation") {
+        return resource.metadata.image;
+    }
+    if (resource.type === "tool") {
+        return resource.metadata.image;
+    }
   return (resource as any).image;
 }
 

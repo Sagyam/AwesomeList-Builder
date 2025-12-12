@@ -1,25 +1,52 @@
-import { z } from "zod";
-import { BaseResourceSchemaObject } from "@/schema/zod/base.schema";
+import {z} from "zod";
 
-export const CheatsheetSchema = BaseResourceSchemaObject.extend({
-  type: z.literal("cheatsheet"),
+/**
+ * Cheatsheet Schema - Minimal user input (type, id, cheatsheetUrl)
+ * All other data is auto-fetched from web scraping
+ */
+
+export const CheatsheetMetadataSchema = z.object({
+  // Core information
   title: z.string().min(1, "Cheatsheet title is required"),
+  description: z.string(),
   author: z.string().optional(),
   authorUrl: z.url("Author URL must be a valid URL").optional(),
+
+  // Cheatsheet details
   subject: z.string().min(1, "Subject is required"),
-  published: z.iso
-    .datetime({ message: "Published date must be a valid ISO 8601 datetime" })
-    .optional(),
-  updated: z.iso.datetime({ message: "Updated date must be a valid ISO 8601 datetime" }).optional(),
-  format: z.string().min(1, "Format is required (e.g., PDF, HTML, Image)"),
+  topics: z.array(z.string().min(1)).optional(),
+  published: z.string().optional(),
+  updated: z.string().optional(),
+  format: z.string().optional(),
   pages: z.number().int().positive("Page count must be a positive integer").optional(),
   downloadUrl: z.url("Download URL must be a valid URL").optional(),
   printable: z.boolean().optional(),
   interactive: z.boolean().optional(),
-  version: z
-    .string()
-    .regex(/^\d+\.\d+(\.\d+)?/, "Version must follow semantic versioning (e.g., 1.0.0)")
-    .optional(),
+  version: z.string().optional(),
+
+  // Additional metadata
+  image: z.string().optional(),
+  language: z.string().optional(),
+  license: z.string().optional(),
+  fileSize: z.string().optional(),
+
+  // Metadata about the metadata
+  fetchedAt: z.string(),
+});
+
+/**
+ * Cheatsheet Schema - User provides ONLY type, id, and cheatsheetUrl
+ */
+export const CheatsheetSchema = z.object({
+  type: z.literal("cheatsheet"),
+  id: z.string().min(1, "Cheatsheet ID is required"),
+  cheatsheetUrl: z.url("Cheatsheet URL must be a valid URL"),
+  category: z.string().min(1, "Category is required"),
+  tags: z.array(z.string().min(1)),
+  featured: z.boolean().optional(),
+  trending: z.boolean().optional(),
+  archived: z.boolean().optional(),
+  metadata: CheatsheetMetadataSchema,
 });
 
 export type CheatsheetInput = z.infer<typeof CheatsheetSchema>;

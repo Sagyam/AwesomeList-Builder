@@ -5,6 +5,12 @@ import {fetchRepositories} from "./repository";
 import {fetchBooks} from "./book";
 import {fetchNewsletters} from "./newsletter";
 import {fetchVideos} from "./video";
+import {fetchCertifications} from "./certification";
+import {fetchCheatsheets} from "./cheatsheet";
+import {fetchCommunities} from "./community";
+import {fetchConferences} from "./conference";
+import {fetchDocumentations} from "./documentation";
+import {fetchTools} from "./tool";
 
 async function fetchAll(force = false) {
     console.log("🚀 Starting full metadata update...");
@@ -17,6 +23,12 @@ async function fetchAll(force = false) {
         await fetchArticles(force);
         await fetchNewsletters(force);
         await fetchVideos(force);
+        await fetchCertifications(force);
+        await fetchCheatsheets(force);
+        await fetchCommunities(force);
+        await fetchConferences(force);
+        await fetchDocumentations(force);
+        await fetchTools(force);
 
         console.log("\n✨ All metadata updates completed!");
     } catch (error) {

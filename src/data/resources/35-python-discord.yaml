@@ -1,0 +1,40 @@
+type: community
+id: python-discord
+communityUrl: https://pythondiscord.com/
+category: Community
+tags:
+  - python
+  - discord
+  - community
+  - learning
+trending: true
+metadata:
+  name: Python Discord
+  description: A large, friendly community focused on helping others learn Python. We host regular events, code jams, and have dedicated channels for learning, debugging, and sharing projects.
+  platform: Discord
+  members: 450000
+  onlineMembers: 25000
+  moderators:
+    - lemon
+    - joe
+    - jb
+  created: '2017-01-15'
+  activity: very-high
+  rulesUrl: https://pythondiscord.com/pages/rules/
+  inviteOnly: false
+  verified: true
+  requiresApproval: false
+  languages:
+    - English
+  topics:
+    - Python
+    - Programming
+    - Learning
+    - Code Jams
+    - Bot Development
+  image: https://pythondiscord.com/static/logos/logo_circle.png
+  categories:
+    - Python
+    - Programming Education
+    - Open Source
+  fetchedAt: '2025-12-12T00:00:00.000Z'

@@ -1,0 +1,53 @@
+type: documentation
+id: react-docs
+documentationUrl: https://react.dev/
+category: Documentation
+tags:
+  - react
+  - documentation
+  - javascript
+  - official
+trending: true
+metadata:
+  title: React Documentation
+  description: The official React documentation covering everything you need to know about React, from the basics to advanced topics. Learn React with interactive examples and comprehensive guides.
+  project: React
+  projectUrl: https://react.dev/
+  version: '19.0'
+  versions:
+    - '19.0'
+    - '18.2'
+    - '17.0'
+    - '16.14'
+  repository: https://github.com/reactjs/react.dev
+  format: Web
+  sections:
+    - Learn React
+    - API Reference
+    - Community
+    - Blog
+  searchable: true
+  interactive: true
+  lastUpdated: '2025-12-05'
+  officialDocs: true
+  maintainer: Meta Open Source
+  license: MIT
+  image: https://react.dev/images/og-home.png
+  language: English
+  languages:
+    - English
+    - Spanish
+    - French
+    - German
+    - Japanese
+    - Korean
+    - Portuguese
+    - Russian
+    - Chinese
+  topics:
+    - React
+    - JavaScript
+    - UI
+    - Components
+    - Hooks
+  fetchedAt: '2025-12-12T00:00:00.000Z'

@@ -1,0 +1,53 @@
+type: tool
+id: figma
+toolUrl: https://www.figma.com/
+category: Development Tool
+tags:
+  - design
+  - ui-ux
+  - collaboration
+  - prototyping
+trending: false
+metadata:
+  name: Figma
+  description: Figma is a collaborative web application for interface design, with additional offline features enabled by desktop applications for macOS and Windows. The feature set of Figma focuses on user interface and user experience design, with an emphasis on real-time collaboration.
+  tagline: The collaborative interface design tool
+  homepage: https://www.figma.com/
+  documentation: https://help.figma.com/
+  downloadUrl: https://www.figma.com/downloads/
+  license: Proprietary
+  platforms:
+    - Web
+    - macOS
+    - Windows
+    - iOS
+    - Android
+  features:
+    - Real-time Collaboration
+    - Vector Networks
+    - Auto Layout
+    - Components
+    - Prototyping
+    - Developer Handoff
+    - Version History
+    - Plugins
+  category: Design Tools
+  version: Latest
+  lastUpdated: '2025-12-11'
+  pricing: Freemium
+  pricingUrl: https://www.figma.com/pricing/
+  isOpenSource: false
+  developer: Figma, Inc. (Adobe)
+  developerUrl: https://www.figma.com/
+  image: https://www.figma.com/images/og.png
+  language: English
+  topics:
+    - UI/UX Design
+    - Prototyping
+    - Collaboration
+    - Design Systems
+    - Interface Design
+  requirements:
+    - Modern web browser or desktop app
+    - Internet connection for real-time features
+  fetchedAt: '2025-12-12T00:00:00.000Z'

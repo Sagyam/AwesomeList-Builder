@@ -1,0 +1,36 @@
+type: cheatsheet
+id: docker-cheatsheet
+cheatsheetUrl: https://dockerlabs.collabnix.com/docker/cheatsheet/
+category: Learning Resource
+tags:
+  - docker
+  - containers
+  - cheatsheet
+  - devops
+trending: true
+metadata:
+  title: Docker Cheat Sheet
+  description: The ultimate Docker cheatsheet covering all essential Docker commands, Dockerfile instructions, and best practices for containerization.
+  author: Collabnix Community
+  authorUrl: https://collabnix.com/
+  subject: Docker Containers
+  topics:
+    - Docker
+    - Containers
+    - DevOps
+    - Microservices
+  published: '2019-03-20'
+  updated: '2024-11-15'
+  format: Web
+  pages: 1
+  downloadUrl: https://dockerlabs.collabnix.com/docker/cheatsheet/docker-cheatsheet.pdf
+  printable: true
+  interactive: true
+  version: '3.1'
+  image: https://dockerlabs.collabnix.com/images/docker-cheatsheet-thumb.png
+  language: English
+  languages:
+    - English
+  license: MIT
+  fileSize: 180 KB
+  fetchedAt: '2025-12-12T00:00:00.000Z'
