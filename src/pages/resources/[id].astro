@@ -266,19 +266,47 @@ const formatDate = (dateString?: string) => {
                                 </div>
                         )}
 
-                        {resource.type === "video" && "views" in resource && resource.views !== undefined && (
+                        {resource.type === "video" && "metadata" in resource && resource.metadata && (
                                 <div class="rounded-lg border bg-card p-6 space-y-4">
                                     <h3 class="font-semibold">Video Stats</h3>
 
                                     <div class="flex items-center justify-between">
                                         <span class="text-sm text-muted-foreground">Views</span>
-                                        <span class="font-medium">{resource.views.toLocaleString()}</span>
+                                        <span class="font-medium">{resource.metadata.statistics.viewCount.toLocaleString()}</span>
                                     </div>
 
-                                    {"duration" in resource && resource.duration && (
+                                    {resource.metadata.statistics.likeCount !== undefined && (
+                                            <div class="flex items-center justify-between">
+                                                <span class="text-sm text-muted-foreground">Likes</span>
+                                                <span class="font-medium">{resource.metadata.statistics.likeCount.toLocaleString()}</span>
+                                            </div>
+                                    )}
+
+                                    {resource.metadata.statistics.commentCount !== undefined && (
+                                            <div class="flex items-center justify-between">
+                                                <span class="text-sm text-muted-foreground">Comments</span>
+                                                <span class="font-medium">{resource.metadata.statistics.commentCount.toLocaleString()}</span>
+                                            </div>
+                                    )}
+
+                                    {resource.metadata.contentDetails.duration && (
                                             <div class="flex items-center justify-between">
                                                 <span class="text-sm text-muted-foreground">Duration</span>
-                                                <span class="font-medium">{resource.duration}</span>
+                                                <span class="font-medium">{resource.metadata.contentDetails.duration}</span>
+                                            </div>
+                                    )}
+
+                                    {resource.metadata.channel && (
+                                            <div class="flex items-center justify-between">
+                                                <span class="text-sm text-muted-foreground">Channel</span>
+                                                <span class="font-medium">{resource.metadata.channel.title}</span>
+                                            </div>
+                                    )}
+
+                                    {resource.metadata.publishedAt && (
+                                            <div class="flex items-center justify-between">
+                                                <span class="text-sm text-muted-foreground">Published</span>
+                                                <span class="font-medium">{new Date(resource.metadata.publishedAt).toLocaleDateString()}</span>
                                             </div>
                                     )}
                                 </div>

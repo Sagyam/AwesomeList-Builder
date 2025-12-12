@@ -1,26 +1,90 @@
 type: video
 id: webperf-video
-title: Web Performance Fundamentals
-url: https://www.youtube.com/watch?v=0fONene3OIA
-description: Learn the fundamentals of web performance optimization. Understand how browsers work measuring performance metrics and techniques to make your websites faster for better user experience.
-category: Learning Resource
-tags:
-  - performance
-  - optimization
-  - tutorial
-topics:
-  - web-development
-  - performance
-language: en
-dateAdded: '2024-10-05T10:00:00Z'
-lastVerified: '2025-12-09T10:00:00Z'
-image: https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800&auto=format&fit=crop
-imageAlt: Web performance
-difficulty: intermediate
-isFree: true
-accessLevel: free
-platform: YouTube
-creator: Web Dev Simplified
-published: '2024-08-15T10:00:00Z'
-duration: PT45M
-views: 850000
+videoId: 0fONene3OIA
+metadata:
+  title: The ultimate guide to web performance
+  description: >-
+    Learn how to analyze and optimize the performance of any website. In this
+    tutorial, we explore tips and tricks to build faster UIs that are ideal for
+    search engine optimization. 
+
+
+    #webdevelopment #javascript #css 
+
+
+    🔥 Become a PRO member https://fireship.io/pro
+
+    💵 Use code BEYOND25 to save 25%
+
+
+    Unlighthouse https://github.com/harlan-zw/unlighthouse
+
+    Web Vitals Plugin https://web.dev/debug-cwvs-with-web-vitals-extension/
+  publishedAt: 2023-05-08T21:52:43Z
+  channel:
+    id: UC2Xd-TjJByJyK2w1zNwY0zQ
+    title: Beyond Fireship
+    customUrl: "@beyondfireship"
+    thumbnails:
+      default:
+        url: https://yt3.ggpht.com/ByJ-xfme8oSO1czhb6Se8gwHuIk5beGhUdXi6JlmMm_PqJFehODAEjsNAG-57Qg49sfz61wD=s88-c-k-c0x00ffffff-no-rj
+        width: 88
+        height: 88
+      medium:
+        url: https://yt3.ggpht.com/ByJ-xfme8oSO1czhb6Se8gwHuIk5beGhUdXi6JlmMm_PqJFehODAEjsNAG-57Qg49sfz61wD=s240-c-k-c0x00ffffff-no-rj
+        width: 240
+        height: 240
+      high:
+        url: https://yt3.ggpht.com/ByJ-xfme8oSO1czhb6Se8gwHuIk5beGhUdXi6JlmMm_PqJFehODAEjsNAG-57Qg49sfz61wD=s800-c-k-c0x00ffffff-no-rj
+        width: 800
+        height: 800
+  thumbnails:
+    default:
+      url: https://i.ytimg.com/vi/0fONene3OIA/default.jpg
+      width: 120
+      height: 90
+    medium:
+      url: https://i.ytimg.com/vi/0fONene3OIA/mqdefault.jpg
+      width: 320
+      height: 180
+    high:
+      url: https://i.ytimg.com/vi/0fONene3OIA/hqdefault.jpg
+      width: 480
+      height: 360
+    standard:
+      url: https://i.ytimg.com/vi/0fONene3OIA/sddefault.jpg
+      width: 640
+      height: 480
+    maxres:
+      url: https://i.ytimg.com/vi/0fONene3OIA/maxresdefault.jpg
+      width: 1280
+      height: 720
+  statistics:
+    viewCount: 531779
+    likeCount: 29482
+    commentCount: 366
+    favoriteCount: 0
+  contentDetails:
+    duration: PT6M43S
+    dimension: 2d
+    definition: hd
+    caption: false
+    licensedContent: true
+    projection: rectangular
+  defaultLanguage: en
+  defaultAudioLanguage: en
+  categoryId: "22"
+  categoryName: People & Blogs
+  topicDetails:
+    topicCategories:
+      - https://en.wikipedia.org/wiki/Knowledge
+      - https://en.wikipedia.org/wiki/Technology
+  status:
+    uploadStatus: processed
+    privacyStatus: public
+    license: youtube
+    embeddable: true
+    publicStatsViewable: true
+    madeForKids: false
+  fetchedAt: 2025-12-12T06:32:47.126Z
+  etag: zSnx5RH25IIT7h6V-jciHFz-zrc

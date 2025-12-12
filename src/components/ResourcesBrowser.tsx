@@ -3,7 +3,7 @@ import * as React from "react";
 import {FilterBar, type FilterState} from "@/components/FilterBar";
 import {LayoutToggle} from "@/components/LayoutToggle";
 import {Pagination} from "@/components/Pagination";
-import {ResourceCard} from "@/components/resource-card";
+import {ResourceCardFactory} from "@/components/resource-card/ResourceCardFactory";
 import {ResourceListItem} from "@/components/ResourceListItem";
 import {Search} from "@/components/Search";
 import {SortBar, type SortOption, type SortOrder} from "@/components/SortBar";
@@ -192,7 +192,7 @@ export function ResourcesBrowser({
             {viewMode === "grid" && paginatedResources.length > 0 && (
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                     {paginatedResources.map((resource) => (
-                        <ResourceCard key={resource.id} {...resource} />
+                        <ResourceCardFactory key={resource.id} resource={resource}/>
                     ))}
                 </div>
             )}

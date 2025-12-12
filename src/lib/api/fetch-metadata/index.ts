@@ -4,6 +4,7 @@ import {fetchPapers} from "./paper";
 import {fetchRepositories} from "./repository";
 import {fetchBooks} from "./book";
 import {fetchNewsletters} from "./newsletter";
+import {fetchVideos} from "./video";
 
 async function fetchAll(force = false) {
     console.log("🚀 Starting full metadata update...");
@@ -15,6 +16,7 @@ async function fetchAll(force = false) {
         await fetchBooks(force);
         await fetchArticles(force);
         await fetchNewsletters(force);
+        await fetchVideos(force);
 
         console.log("\n✨ All metadata updates completed!");
     } catch (error) {

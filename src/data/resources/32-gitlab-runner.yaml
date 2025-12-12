@@ -24,11 +24,11 @@ accessLevel: free
 owner: GitLab.org
 repositoryUrl: https://gitlab.com/gitlab-org/gitlab-runner
 ownerUrl: https://gitlab.com/groups/gitlab-org
-stars: 2522
+stars: 2523
 forks: 2521
-watchers: 2522
-openPullRequests: 90
-lastCommit: 2025-12-11T15:09:17.321Z
+watchers: 2523
+openPullRequests: 86
+lastCommit: 2025-12-12T05:38:13.869Z
 lastReleaseVersion: v18.6.6
 lastReleaseDate: 2025-12-09T23:30:10.580Z
 created: 2015-04-27T21:10:25.322Z

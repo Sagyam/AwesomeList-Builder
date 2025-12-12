@@ -1,27 +1,131 @@
 type: video
 id: fireship-video
-title: 100+ Web Development Things you Should Know
-url: https://www.youtube.com/watch?v=erEgovG9WBs
-description: Are you a full-stack web developer? Test your knowledge with 100 web development things that every software engineer should know. From HTML and CSS to React and Node.js.
-category: Learning Resource
-tags:
-  - youtube
-  - web-development
-  - concepts
-topics:
-  - web-development
-  - education
-language: en
-dateAdded: '2024-08-10T10:00:00Z'
-lastVerified: '2025-12-09T10:00:00Z'
-trending: true
-image: https://images.unsplash.com/photo-1611162617474-5b21e879e113?w=800&auto=format&fit=crop
-imageAlt: YouTube video content
-difficulty: intermediate
-isFree: true
-accessLevel: free
-platform: YouTube
-creator: Fireship
-published: '2024-06-15T10:00:00Z'
-duration: PT15M
-views: 2500000
+videoId: erEgovG9WBs
+metadata:
+  title: 100+ Web Development Things you Should Know
+  description: >-
+    WebDev 101 is a complete introduction into the world of web development.
+    Learn the basic concepts and skills required to build fullstack web apps
+    with HTML, CSS, and JavaScript. 
+
+
+    #webdevelopment #learntocode #programming 
+
+    🔗 Resources
+
+
+    Web Dev Basics https://developer.mozilla.org/en-US/docs/Learn
+
+    Fullstack tutorials https://fireship.io/lessons/
+
+    Computer Science 101 https://youtu.be/-uleG_Vecis
+
+    10 Fullatack Web Apps https://youtu.be/FQPlEnKav48
+
+
+    📚 Chapters
+
+
+    🔥 Get More Content - Upgrade to PRO
+
+
+    Upgrade to Fireship PRO at https://fireship.io/pro
+
+    Use code lORhwXd2 for 25% off your first payment. 
+
+
+    🎨 My Editor Settings
+
+
+    - Atom One Dark 
+
+    - vscode-icons
+
+    - Fira Code Font
+
+
+    🔖 Topics Covered
+
+
+    - Web Development roa
+
+    - HTML and CSS Tutorial
+
+    - How to get started in web development?
+
+    - Web development roadmap for 2022
+
+    - Intro to web development for beginners
+  publishedAt: 2022-06-14T16:39:51Z
+  channel:
+    id: UCsBjURrPoezykLs9EqgamOA
+    title: Fireship
+    customUrl: "@fireship"
+    thumbnails:
+      default:
+        url: https://yt3.ggpht.com/ytc/AIdro_mKzklyPPhghBJQH5H3HpZ108YcE618DBRLAvRUD1AjKNw=s88-c-k-c0x00ffffff-no-rj
+        width: 88
+        height: 88
+      medium:
+        url: https://yt3.ggpht.com/ytc/AIdro_mKzklyPPhghBJQH5H3HpZ108YcE618DBRLAvRUD1AjKNw=s240-c-k-c0x00ffffff-no-rj
+        width: 240
+        height: 240
+      high:
+        url: https://yt3.ggpht.com/ytc/AIdro_mKzklyPPhghBJQH5H3HpZ108YcE618DBRLAvRUD1AjKNw=s800-c-k-c0x00ffffff-no-rj
+        width: 800
+        height: 800
+  thumbnails:
+    default:
+      url: https://i.ytimg.com/vi/erEgovG9WBs/default.jpg
+      width: 120
+      height: 90
+    medium:
+      url: https://i.ytimg.com/vi/erEgovG9WBs/mqdefault.jpg
+      width: 320
+      height: 180
+    high:
+      url: https://i.ytimg.com/vi/erEgovG9WBs/hqdefault.jpg
+      width: 480
+      height: 360
+    standard:
+      url: https://i.ytimg.com/vi/erEgovG9WBs/sddefault.jpg
+      width: 640
+      height: 480
+    maxres:
+      url: https://i.ytimg.com/vi/erEgovG9WBs/maxresdefault.jpg
+      width: 1280
+      height: 720
+  statistics:
+    viewCount: 1863216
+    likeCount: 78671
+    commentCount: 1873
+    favoriteCount: 0
+  contentDetails:
+    duration: PT13M18S
+    dimension: 2d
+    definition: hd
+    caption: false
+    licensedContent: true
+    projection: rectangular
+  defaultLanguage: en
+  defaultAudioLanguage: en
+  categoryId: "28"
+  categoryName: Science & Technology
+  topicDetails:
+    topicCategories:
+      - https://en.wikipedia.org/wiki/Knowledge
+      - https://en.wikipedia.org/wiki/Technology
+  tags:
+    - webdev
+    - app development
+    - lesson
+    - tutorial
+  status:
+    uploadStatus: processed
+    privacyStatus: public
+    license: youtube
+    embeddable: true
+    publicStatsViewable: true
+    madeForKids: false
+  fetchedAt: 2025-12-12T06:32:47.497Z
+  etag: DoUxcBW1zTYFjIhK4q1CMKBy7zc

@@ -1,24 +1,136 @@
-import { z } from "zod";
-import { BaseResourceSchemaObject } from "@/schema/zod/base.schema";
+import {z} from "zod";
 
-export const VideoSchema = BaseResourceSchemaObject.extend({
-  type: z.literal("video"),
-  title: z.string().min(1, "Video title is required"),
-  platform: z.string().min(1, "Platform name is required (e.g., YouTube, Vimeo)"),
-  creator: z.string().min(1, "Creator name is required"),
-  creatorUrl: z.url("Creator URL must be a valid URL").optional(),
-  channel: z.string().optional(),
-  thumbnail: z.url("Thumbnail must be a valid URL").optional(),
-  published: z.iso.datetime({ message: "Published date must be a valid ISO 8601 datetime" }),
+/**
+ * Video Schema - Minimal user input (type, id, videoId only)
+ * All other data is auto-fetched from YouTube Data API v3
+ */
+
+export const VideoThumbnailItemSchema = z.object({
+    url: z.string().url(),
+    width: z.number().int().positive(),
+    height: z.number().int().positive(),
+});
+
+export const VideoThumbnailsSchema = z.object({
+    default: VideoThumbnailItemSchema.optional(),
+    medium: VideoThumbnailItemSchema.optional(),
+    high: VideoThumbnailItemSchema.optional(),
+    standard: VideoThumbnailItemSchema.optional(),
+    maxres: VideoThumbnailItemSchema.optional(),
+});
+
+export const VideoChannelSchema = z.object({
+    id: z.string().min(1),
+    title: z.string().min(1),
+    customUrl: z.string().optional(),
+    thumbnails: VideoThumbnailsSchema.optional(),
+});
+
+export const VideoStatisticsSchema = z.object({
+    viewCount: z.number().int().nonnegative(),
+    likeCount: z.number().int().nonnegative().optional(),
+    commentCount: z.number().int().nonnegative().optional(),
+    favoriteCount: z.number().int().nonnegative().optional(),
+});
+
+export const VideoContentDetailsSchema = z.object({
   duration: z
     .string()
     .regex(
       /^PT(\d+H)?(\d+M)?(\d+S)?$/,
       "Duration must be in ISO 8601 format (e.g., PT1H30M for 1 hour 30 minutes)"
     ),
-  hasSubtitles: z.boolean().optional(),
-  views: z.number().int().nonnegative("Views must be a non-negative integer").optional(),
-  quality: z.string().optional(),
+    dimension: z.string(),
+    definition: z.string(),
+    caption: z.boolean(),
+    licensedContent: z.boolean(),
+    projection: z.string(),
+});
+
+export const VideoLocalizationSchema = z.object({
+    title: z.string(),
+    description: z.string(),
+});
+
+export const VideoTopicDetailsSchema = z.object({
+    topicIds: z.array(z.string()).optional(),
+    relevantTopicIds: z.array(z.string()).optional(),
+    topicCategories: z.array(z.string()).optional(),
+});
+
+export const VideoStatusSchema = z.object({
+    uploadStatus: z.string(),
+    privacyStatus: z.string(),
+    license: z.string(),
+    embeddable: z.boolean(),
+    publicStatsViewable: z.boolean(),
+    madeForKids: z.boolean(),
+});
+
+export const VideoLiveStreamingDetailsSchema = z.object({
+    actualStartTime: z.string().optional(),
+    actualEndTime: z.string().optional(),
+    scheduledStartTime: z.string().optional(),
+    scheduledEndTime: z.string().optional(),
+    concurrentViewers: z.number().int().nonnegative().optional(),
+});
+
+export const VideoMetadataSchema = z.object({
+    // Core video information
+    title: z.string().min(1, "Video title is required"),
+    description: z.string(),
+    publishedAt: z.string(),
+
+    // Channel information
+    channel: VideoChannelSchema,
+
+    // Visual assets
+    thumbnails: VideoThumbnailsSchema,
+
+    // Statistics
+    statistics: VideoStatisticsSchema,
+
+    // Content details
+    contentDetails: VideoContentDetailsSchema,
+
+    // Localization
+    defaultLanguage: z.string().optional(),
+    defaultAudioLanguage: z.string().optional(),
+    localizations: z.record(z.string(), VideoLocalizationSchema).optional(),
+
+    // Topics & categories
+    categoryId: z.string().optional(),
+    categoryName: z.string().optional(),
+    topicDetails: VideoTopicDetailsSchema.optional(),
+
+    // Tags
+    tags: z.array(z.string()).optional(),
+
+    // Status information
+    status: VideoStatusSchema.optional(),
+
+    // Live streaming details
+    liveStreamingDetails: VideoLiveStreamingDetailsSchema.optional(),
+
+    // Metadata about the metadata
+    fetchedAt: z.string(),
+    etag: z.string(),
+});
+
+/**
+ * Video Schema - User provides ONLY type, id, and videoId
+ */
+export const VideoSchema = z.object({
+    type: z.literal("video"),
+    id: z.string().min(1, "Video ID is required"),
+    videoId: z
+        .string()
+        .min(1, "YouTube video ID is required")
+        .regex(
+            /^[a-zA-Z0-9_-]{11}$/,
+            "YouTube video ID must be exactly 11 characters (alphanumeric, underscore, or hyphen)"
+        ),
+    metadata: VideoMetadataSchema,
 });
 
 export type VideoInput = z.infer<typeof VideoSchema>;

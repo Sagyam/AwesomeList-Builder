@@ -33,12 +33,12 @@ repository: https://github.com/gin-gonic/gin
 documentation: https://gin-gonic.com/docs/
 homepage: https://gin-gonic.com/
 license: MIT
-stars: 87327
-forks: 8502
-watchers: 87327
+stars: 87333
+forks: 8501
+watchers: 87333
 openIssues: 875
-openPullRequests: 204
-lastCommit: 2025-12-08T22:02:07Z
+openPullRequests: 203
+lastCommit: 2025-12-12T05:43:25Z
 lastReleaseVersion: v1.11.0
 lastReleaseDate: 2025-09-20T11:42:48Z
 created: 2014-06-16T23:57:25Z

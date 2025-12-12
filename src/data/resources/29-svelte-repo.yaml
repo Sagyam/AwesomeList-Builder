@@ -26,11 +26,11 @@ ownerUrl: https://github.com/sveltejs
 repositoryUrl: https://github.com/sveltejs/svelte
 homepage: https://svelte.dev
 license: MIT
-stars: 85108
-forks: 4706
-watchers: 85108
-openIssues: 965
-lastCommit: 2025-12-11T01:12:15Z
+stars: 85116
+forks: 4709
+watchers: 85116
+openIssues: 964
+lastCommit: 2025-12-12T05:03:15Z
 created: 2016-11-20T18:13:05Z
 primaryLanguage: JavaScript
 languages:
@@ -43,9 +43,9 @@ status: active
 maturity: stable
 hasWiki: true
 hasDiscussions: true
-openPullRequests: 69
-lastReleaseVersion: svelte@5.45.8
-lastReleaseDate: 2025-12-08T22:33:09Z
+openPullRequests: 68
+lastReleaseVersion: svelte@5.45.10
+lastReleaseDate: 2025-12-12T03:28:30Z
 archived: false
 image: https://avatars.githubusercontent.com/u/23617963?v=4
 imageAlt: sveltejs's avatar

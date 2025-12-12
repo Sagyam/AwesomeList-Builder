@@ -30,9 +30,9 @@ repository: https://github.com/spring-projects/spring-boot
 documentation: https://docs.spring.io/spring-boot/docs/current/reference/html/
 homepage: https://spring.io/projects/spring-boot
 license: Apache-2.0
-stars: 79333
-forks: 41709
-watchers: 79333
+stars: 79339
+forks: 41714
+watchers: 79339
 openIssues: 524
 openPullRequests: 18
 lastCommit: 2025-12-11T15:47:33Z

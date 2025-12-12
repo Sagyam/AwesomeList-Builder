@@ -20,7 +20,7 @@
     "check": "biome check .",
     "check:fix": "biome check --write .",
     "validate": "bun run src/lib/validators/project-validator.ts",
-    "fetch": "bun run src/lib/api/fetch-metadata/newsletter.ts"
+    "fetch": "bun run src/lib/api/fetch-metadata/index.ts"
   },
   "dependencies": {
     "@astrojs/mdx": "^4.3.12",

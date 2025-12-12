@@ -1,16 +1,16 @@
 ---
 import { Github } from "lucide-react";
-import { ResourceCard } from "@/components/resource-card";
+import { ResourceCardFactory } from "@/components/resource-card/ResourceCardFactory";
 import Layout from "@/layouts/main.astro";
 import {
   getAllCategories,
   getAllResources,
   getFeaturedResources,
   getProjectMetadata,
-  getResourceName,
   getResourceDescription,
-  getResourceUrl,
   getResourceImage,
+  getResourceName,
+  getResourceUrl,
   getSEOMetadata,
   getTotalStars,
 } from "@/lib/utils/data-access";
@@ -27,32 +27,101 @@ const displayResources =
   featuredResources.length > 0 ? featuredResources.slice(0, 3) : allResources.slice(0, 3);
 
 // Transform resources for display
-const resourcesData = displayResources.map((resource) => ({
-  id: resource.id,
-  name: getResourceName(resource),
-  description: getResourceDescription(resource),
-  url: getResourceUrl(resource),
-  type: resource.type,
-  category: resource.category,
-  language:
-    ("primaryLanguage" in resource ? resource.primaryLanguage : undefined) ||
-    ("languages" in resource && Array.isArray(resource.languages)
-      ? resource.languages[0]
-      : undefined),
-  languages: "languages" in resource && Array.isArray(resource.languages) ? resource.languages : [],
-  stars: "stars" in resource ? resource.stars : undefined,
-  license: "license" in resource ? resource.license : undefined,
-  tags: resource.tags,
-  image: getResourceImage(resource),
-  imageAlt: "imageAlt" in resource ? resource.imageAlt : undefined,
-  archived: resource.archived,
-  trending: resource.trending,
-  featured: resource.featured,
-  registry: "package" in resource && resource.package ? resource.package.registry : undefined,
-  packageName: "package" in resource && resource.package ? resource.package.name : undefined,
-  lastReleaseVersion: "lastReleaseVersion" in resource ? resource.lastReleaseVersion : undefined,
-  downloads: "downloads" in resource ? resource.downloads : undefined,
-}));
+const resourcesData = displayResources.map((resource) => {
+  const baseData = {
+    id: resource.id,
+    name: getResourceName(resource),
+    description: getResourceDescription(resource),
+    url: getResourceUrl(resource),
+    type: resource.type,
+    category: resource.category,
+    language:
+      ("primaryLanguage" in resource ? resource.primaryLanguage : undefined) ||
+      ("languages" in resource && Array.isArray(resource.languages)
+        ? resource.languages[0]
+        : undefined),
+    languages:
+      "languages" in resource && Array.isArray(resource.languages) ? resource.languages : [],
+    stars: "stars" in resource ? resource.stars : undefined,
+    license: "license" in resource ? resource.license : undefined,
+    tags: resource.tags,
+    image: getResourceImage(resource),
+    imageAlt: "imageAlt" in resource ? resource.imageAlt : undefined,
+    archived: resource.archived,
+    trending: resource.trending,
+    featured: resource.featured,
+    registry: "package" in resource && resource.package ? resource.package.registry : undefined,
+    packageName: "package" in resource && resource.package ? resource.package.name : undefined,
+    lastReleaseVersion: "lastReleaseVersion" in resource ? resource.lastReleaseVersion : undefined,
+    downloads: "downloads" in resource ? resource.downloads : undefined,
+  };
+
+  // Add type-specific metadata
+  if (resource.type === "video" && "metadata" in resource) {
+    return {
+      ...baseData,
+      views: resource.metadata.statistics?.viewCount,
+      likes: resource.metadata.statistics?.likeCount,
+      comments: resource.metadata.statistics?.commentCount,
+      duration: resource.metadata.contentDetails?.duration,
+      channel: resource.metadata.channel?.title,
+      publishedDate: resource.metadata.publishedAt,
+    };
+  }
+
+  if (resource.type === "book" && "metadata" in resource) {
+    return {
+      ...baseData,
+      authors: resource.metadata.authors?.map((a: any) => a.name),
+      publisher: resource.metadata.publisher,
+      publishedDate: resource.metadata.publishedDate,
+      pageCount: resource.metadata.pageCount,
+      rating: resource.metadata.rating?.average,
+      categories: resource.metadata.categories,
+    };
+  }
+
+  if (resource.type === "podcast" && "metadata" in resource) {
+    return {
+      ...baseData,
+      author: resource.metadata.author,
+      episodeCount: resource.metadata.episodeCount,
+      lastUpdated: resource.metadata.lastBuildDate,
+      frequency: resource.metadata.updateFrequency,
+    };
+  }
+
+  if (resource.type === "paper") {
+    return {
+      ...baseData,
+      authors: "authors" in resource ? resource.authors : undefined,
+      published: "published" in resource ? resource.published : undefined,
+      venue: "venue" in resource ? resource.venue : undefined,
+      citations: "citations" in resource ? resource.citations : undefined,
+      field: "field" in resource ? resource.field : undefined,
+      arxivId: "arxivId" in resource ? resource.arxivId : undefined,
+      pdfUrl: "pdfUrl" in resource ? resource.pdfUrl : undefined,
+    };
+  }
+
+  if (resource.type === "newsletter" && "metadata" in resource) {
+    return {
+      ...baseData,
+      author: resource.metadata.author,
+      platform: "platform" in resource ? resource.platform : undefined,
+      frequency: resource.metadata.frequency,
+      format: "format" in resource ? resource.format : undefined,
+      subscribers: resource.metadata.subscribers,
+      latestIssueTitle: resource.metadata.latestIssue?.title,
+      latestIssueDate: resource.metadata.latestIssue?.published,
+      latestIssueUrl: resource.metadata.latestIssue?.url,
+      subscribeUrl: "subscribeUrl" in resource ? resource.subscribeUrl : undefined,
+      archiveUrl: "archiveUrl" in resource ? resource.archiveUrl : undefined,
+    };
+  }
+
+  return baseData;
+});
 ---
 
 <Layout
@@ -122,7 +191,7 @@ const resourcesData = displayResources.map((resource) => ({
       <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
         {
           resourcesData.map((resource) => (
-              <ResourceCard client:load {...resource}/>
+              <ResourceCardFactory client:load resource={resource}/>
           ))
         }
       </div>

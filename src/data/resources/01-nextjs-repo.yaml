@@ -39,11 +39,11 @@ ownerUrl: https://github.com/vercel
 repositoryUrl: https://github.com/vercel/next.js
 homepage: https://nextjs.org
 license: MIT
-stars: 136442
-forks: 30020
-watchers: 136442
-openIssues: 3161
-lastCommit: 2025-12-11T15:25:26Z
+stars: 136469
+forks: 30022
+watchers: 136469
+openIssues: 3149
+lastCommit: 2025-12-12T06:23:37Z
 created: 2016-10-05T23:32:51Z
 primaryLanguage: JavaScript
 languages:
@@ -64,7 +64,9 @@ status: active
 maturity: stable
 hasWiki: false
 hasDiscussions: true
-openPullRequests: 1094
+openPullRequests: 1081
 archived: false
 image: https://avatars.githubusercontent.com/u/14985020?v=4
 imageAlt: vercel's avatar
+lastReleaseVersion: v16.0.10
+lastReleaseDate: 2025-12-12T00:03:22Z

@@ -37,12 +37,12 @@ languages:
   - TypeScript
   - JavaScript
   - Shell
-stars: 107053
+stars: 107060
 forks: 13159
-watchers: 107053
-openIssues: 5451
-openPullRequests: 494
-lastCommit: 2025-12-10T19:19:04Z
+watchers: 107060
+openIssues: 5449
+openPullRequests: 493
+lastCommit: 2025-12-12T00:30:47Z
 lastReleaseVersion: v5.9.3
 lastReleaseDate: 2025-10-01T19:06:07Z
 created: 2014-06-17T15:28:39Z

@@ -27,9 +27,9 @@ package:
   registry: maven
   name: com.fasterxml.jackson.core:jackson-databind
 repository: https://github.com/FasterXML/jackson
-stars: 9605
+stars: 9607
 forks: 1213
-watchers: 9605
+watchers: 9607
 openIssues: 0
 openPullRequests: 0
 lastCommit: 2025-12-07T22:05:28Z
