@@ -10,44 +10,11 @@ tags:
 featured: true
 metadata:
   title: MDN Web Docs
-  description: The MDN Web Docs site provides information about Open Web technologies including HTML, CSS, and APIs for both Web sites and progressive web apps. It also has some developer-oriented documentation for Mozilla products, such as Firefox Developer Tools.
-  project: Web Platform
-  projectUrl: https://www.mozilla.org/
-  version: Latest
-  versions:
-    - Latest
-    - Archive
-  repository: https://github.com/mdn/content
-  format: Web
-  sections:
-    - HTML
-    - CSS
-    - JavaScript
-    - Web APIs
-    - HTTP
-    - Accessibility
-  searchable: true
-  interactive: true
-  lastUpdated: '2025-12-10'
-  officialDocs: true
-  maintainer: Mozilla
-  license: CC-BY-SA 2.5
-  image: https://developer.mozilla.org/mdn-social-share.png
-  language: English
-  languages:
-    - English
-    - French
-    - German
-    - Japanese
-    - Korean
-    - Portuguese
-    - Russian
-    - Spanish
-    - Chinese
-  topics:
-    - HTML
-    - CSS
-    - JavaScript
-    - Web APIs
-    - Web Development
-  fetchedAt: '2025-12-12T00:00:00.000Z'
+  description: The MDN Web Docs site provides information about Open Web
+    technologies including HTML, CSS, and APIs for both Web sites and
+    progressive web apps.
+  project: MDN Web Docs
+  projectUrl: https://developer.mozilla.org
+  image: https://developer.mozilla.org/mdn-social-share.d893525a4fb5fb1f67a2.png
+  language: en_US
+  fetchedAt: 2025-12-12T17:54:30.475Z

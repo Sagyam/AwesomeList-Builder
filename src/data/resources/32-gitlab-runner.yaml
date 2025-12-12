@@ -25,10 +25,10 @@ owner: GitLab.org
 repositoryUrl: https://gitlab.com/gitlab-org/gitlab-runner
 ownerUrl: https://gitlab.com/groups/gitlab-org
 stars: 2523
-forks: 2521
+forks: 2522
 watchers: 2523
-openPullRequests: 86
-lastCommit: 2025-12-12T05:38:13.869Z
+openPullRequests: 85
+lastCommit: 2025-12-12T17:03:20.720Z
 lastReleaseVersion: v18.6.6
 lastReleaseDate: 2025-12-09T23:30:10.580Z
 created: 2015-04-27T21:10:25.322Z

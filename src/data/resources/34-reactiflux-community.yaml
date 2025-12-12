@@ -9,31 +9,8 @@ tags:
   - javascript
 featured: true
 metadata:
-  name: Reactiflux
-  description: A community of 200,000+ React developers. We hold Q&A with the React team and other developers in the community. We just want a nice place to chat about React and related tech.
-  platform: Discord
-  members: 215000
-  onlineMembers: 12500
-  moderators:
-    - vcarl
-    - acemarke
-    - becca
-  created: '2015-06-04'
-  activity: very-high
-  rulesUrl: https://www.reactiflux.com/guidelines/
-  inviteOnly: false
-  verified: true
-  requiresApproval: false
-  languages:
-    - English
-  topics:
-    - React
-    - JavaScript
-    - Frontend Development
-    - Web Development
-  image: https://www.reactiflux.com/static/reactiflux-logo.png
-  categories:
-    - Web Development
-    - JavaScript Frameworks
-    - Open Source
-  fetchedAt: '2025-12-12T00:00:00.000Z'
+  name: Welcome
+  description: ""
+  platform: Community
+  image: https://reactiflux.com/logo-banner.png
+  fetchedAt: 2025-12-12T17:54:28.596Z

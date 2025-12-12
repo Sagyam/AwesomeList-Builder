@@ -35,12 +35,12 @@ repository: https://github.com/django/django
 documentation: https://docs.djangoproject.com
 homepage: https://www.djangoproject.com/
 license: BSD-3-Clause
-stars: 86127
-forks: 33301
-watchers: 86127
-openIssues: 365
-openPullRequests: 359
-lastCommit: 2025-12-11T17:59:59Z
+stars: 86131
+forks: 33304
+watchers: 86131
+openIssues: 363
+openPullRequests: 357
+lastCommit: 2025-12-12T16:50:37Z
 created: 2012-04-28T02:47:18Z
 languages:
   - Python

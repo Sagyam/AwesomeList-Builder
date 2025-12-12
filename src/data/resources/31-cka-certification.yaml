@@ -9,32 +9,11 @@ tags:
   - certification
 trending: true
 metadata:
-  title: Certified Kubernetes Administrator (CKA)
-  description: The Certified Kubernetes Administrator (CKA) program provides assurance that CKAs have the skills, knowledge, and competency to perform the responsibilities of Kubernetes administrators.
-  provider: Cloud Native Computing Foundation
-  providerUrl: https://www.cncf.io/
-  examCode: CKA
-  duration: 6 months
-  examDuration: 2 hours
-  cost: $395 USD
-  format: Online Proctored
-  difficultyLevel: Professional
-  prerequisites:
-    - Kubernetes experience
-    - Linux command line proficiency
-    - Container fundamentals
-  skillsRequired:
-    - Cluster architecture, installation & configuration
-    - Workloads & scheduling
-    - Services & networking
-    - Storage
-    - Troubleshooting
-  passingScore: 66
-  renewalPeriod: 3 years
-  trainingUrl: https://training.linuxfoundation.org/training/kubernetes-fundamentals/
-  practiceTestUrl: https://killer.sh/
-  image: https://training.linuxfoundation.org/wp-content/uploads/2019/03/logo_cka_whitetext-300x293.png
-  language: English
-  languages:
-    - English
-  fetchedAt: '2025-12-12T00:00:00.000Z'
+  title: Certified Kubernetes Administrator (CKA) - Linux Foundation - Education
+  description: Training in skills, knowledge, and competency to perform the
+    responsibilities of Kubernetes administrators and become a CKA.
+  provider: Linux Foundation - Education
+  providerUrl: https://training.linuxfoundation.org
+  image: https://training.linuxfoundation.org/wp-content/uploads/2020/08/CKA_sg-2.png
+  language: en_US
+  fetchedAt: 2025-12-12T17:54:23.954Z

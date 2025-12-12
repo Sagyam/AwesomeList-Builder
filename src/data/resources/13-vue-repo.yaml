@@ -23,11 +23,11 @@ ownerUrl: https://github.com/vuejs
 repositoryUrl: https://github.com/vuejs/core
 homepage: https://vuejs.org/
 license: MIT
-stars: 52384
-forks: 8982
-watchers: 52384
-openIssues: 1029
-lastCommit: 2025-12-12T03:29:51Z
+stars: 52396
+forks: 8983
+watchers: 52396
+openIssues: 1031
+lastCommit: 2025-12-12T10:02:18Z
 created: 2018-06-12T13:49:36Z
 primaryLanguage: TypeScript
 languages:
@@ -40,7 +40,7 @@ status: active
 maturity: stable
 hasWiki: false
 hasDiscussions: true
-openPullRequests: 366
+openPullRequests: 368
 archived: false
 image: https://avatars.githubusercontent.com/u/6128107?v=4
 imageAlt: vuejs's avatar

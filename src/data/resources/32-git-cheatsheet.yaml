@@ -9,32 +9,7 @@ tags:
   - reference
 featured: true
 metadata:
-  title: Git Cheat Sheet
-  description: A comprehensive reference guide for Git commands and workflows covering basic to advanced operations.
-  author: GitHub Education
-  authorUrl: https://education.github.com/
-  subject: Git Version Control
-  topics:
-    - Version Control
-    - Git
-    - Command Line
-    - Development Tools
-  published: '2020-01-15'
-  updated: '2024-06-01'
-  format: PDF
-  pages: 2
-  downloadUrl: https://education.github.com/git-cheat-sheet-education.pdf
-  printable: true
-  interactive: false
-  version: '2.0'
-  image: https://education.github.com/assets/images/git-cheat-sheet-thumb.png
-  language: English
-  languages:
-    - English
-    - Spanish
-    - French
-    - German
-    - Chinese
-  license: CC BY 4.0
-  fileSize: 256 KB
-  fetchedAt: '2025-12-12T00:00:00.000Z'
+  title: Unknown Cheatsheet
+  description: ""
+  subject: General
+  fetchedAt: 2025-12-12T17:54:25.621Z

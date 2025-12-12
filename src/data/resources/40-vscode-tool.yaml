@@ -9,43 +9,11 @@ tags:
   - microsoft
 featured: true
 metadata:
-  name: Visual Studio Code
-  description: Visual Studio Code is a lightweight but powerful source code editor which runs on your desktop and is available for Windows, macOS and Linux. It comes with built-in support for JavaScript, TypeScript and Node.js and has a rich ecosystem of extensions for other languages and runtimes.
-  tagline: Code editing. Redefined.
+  name: Visual Studio Code - The open source AI code editor
+  description: Visual Studio Code redefines AI-powered coding with GitHub Copilot
+    for building and debugging modern web and cloud applications. Visual Studio
+    Code is free and available on your favorite platform - Linux, macOS, and
+    Windows.
   homepage: https://code.visualstudio.com/
-  repository: https://github.com/microsoft/vscode
-  documentation: https://code.visualstudio.com/docs
-  downloadUrl: https://code.visualstudio.com/download
-  license: MIT
-  platforms:
-    - Windows
-    - macOS
-    - Linux
-  features:
-    - IntelliSense
-    - Debugging
-    - Git Integration
-    - Extensions
-    - Terminal
-    - Themes
-  category: Development Tools
-  version: '1.95.0'
-  lastUpdated: '2025-12-01'
-  pricing: Free
-  pricingUrl: https://code.visualstudio.com/
-  isOpenSource: true
-  developer: Microsoft
-  developerUrl: https://www.microsoft.com/
-  image: https://code.visualstudio.com/assets/images/code-stable.png
-  language: English
-  topics:
-    - Code Editor
-    - IDE
-    - Development Tools
-    - TypeScript
-    - JavaScript
-  requirements:
-    - 1.6 GHz or faster processor
-    - 1 GB RAM
-    - 200 MB disk space
-  fetchedAt: '2025-12-12T00:00:00.000Z'
+  image: https://code.visualstudio.com/opengraphimg/opengraph-home.png
+  fetchedAt: 2025-12-12T17:54:32.273Z

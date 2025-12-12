@@ -5,45 +5,8 @@ category: Conference
 tags:
   - javascript
   - conference
-  - web-development
 trending: true
 metadata:
-  name: JSConf US 2025
-  description: JSConf US is a JavaScript conference for the JavaScript community. Two days of talks, networking, and fun with JavaScript developers from around the world.
-  organizer: JSConf
-  organizerUrl: https://jsconf.com/
-  startDate: '2025-08-20'
-  endDate: '2025-08-22'
-  location: New York City, New York, USA
-  venue: Manhattan Center
-  virtual: false
-  hybrid: false
-  timezone: America/New_York
-  registrationUrl: https://jsconf.com/tickets
-  registrationDeadline: '2025-08-15'
-  cfpUrl: https://jsconf.com/cfp
-  cfpDeadline: '2025-04-30'
-  registrationFee: $699 USD
-  attendees: 1500
-  tracks:
-    - Language Features
-    - Frameworks
-    - Tooling
-    - Performance
-    - Career Development
-  speakers:
-    - TBD
-  sponsors:
-    - GitHub
-    - MongoDB
-    - Google
-  topics:
-    - JavaScript
-    - ECMAScript
-    - TypeScript
-    - Web Platform
-  recordingsUrl: https://www.youtube.com/@jsconf
-  image: https://jsconf.com/og-image.png
-  language: English
-  format: In-Person
-  fetchedAt: '2025-12-12T00:00:00.000Z'
+  name: JSConf - Conferences for the JavaScript Community
+  description: JSConf Budapest
+  fetchedAt: 2025-12-12T17:54:29.669Z

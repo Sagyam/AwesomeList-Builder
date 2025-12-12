@@ -9,45 +9,7 @@ tags:
   - frontend
 featured: true
 metadata:
-  name: React Conf 2025
-  description: The official React conference bringing together developers from around the world to discuss the latest in React and the ecosystem. Join us for talks, workshops, and networking with the React core team and community leaders.
-  organizer: Meta
-  organizerUrl: https://opensource.fb.com/
-  startDate: '2025-05-15'
-  endDate: '2025-05-16'
-  location: Las Vegas, Nevada, USA
-  venue: Henderson Convention Center
-  virtual: false
-  hybrid: true
-  timezone: America/Los_Angeles
-  registrationUrl: https://conf.react.dev/register
-  registrationDeadline: '2025-05-01'
-  cfpUrl: https://conf.react.dev/cfp
-  cfpDeadline: '2025-02-28'
-  registrationFee: $599 USD (early bird), $799 USD (regular)
-  attendees: 2000
-  tracks:
-    - Core React
-    - Server Components
-    - Performance
-    - Tooling
-    - Community
-  speakers:
-    - Dan Abramov
-    - Sophie Alpert
-    - Andrew Clark
-    - Sebastian Markbåge
-  sponsors:
-    - Vercel
-    - Netlify
-    - AWS
-  topics:
-    - React 19
-    - Server Components
-    - React Compiler
-    - Concurrent Features
-  recordingsUrl: https://www.youtube.com/@reactjs
-  image: https://conf.react.dev/og-image.png
-  language: English
-  format: Hybrid
-  fetchedAt: '2025-12-12T00:00:00.000Z'
+  name: React Conf 2025 | October 7-8 | Henderson, Nevada & online | Join us!
+  description: Hosted by
+  image: https://conf.react.dev/social-image.png
+  fetchedAt: 2025-12-12T17:54:30.208Z

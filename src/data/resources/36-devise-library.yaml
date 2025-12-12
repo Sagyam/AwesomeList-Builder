@@ -28,9 +28,9 @@ package:
   name: devise
 repository: https://github.com/heartcombo/devise
 license: MIT
-stars: 24301
-forks: 5522
-watchers: 24301
+stars: 24303
+forks: 5521
+watchers: 24303
 openIssues: 225
 openPullRequests: 73
 lastCommit: 2025-11-24T19:29:17Z

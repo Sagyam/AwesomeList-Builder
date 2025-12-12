@@ -9,45 +9,11 @@ tags:
   - official
 trending: true
 metadata:
-  title: React Documentation
-  description: The official React documentation covering everything you need to know about React, from the basics to advanced topics. Learn React with interactive examples and comprehensive guides.
-  project: React
-  projectUrl: https://react.dev/
-  version: '19.0'
-  versions:
-    - '19.0'
-    - '18.2'
-    - '17.0'
-    - '16.14'
-  repository: https://github.com/reactjs/react.dev
-  format: Web
-  sections:
-    - Learn React
-    - API Reference
-    - Community
-    - Blog
-  searchable: true
-  interactive: true
-  lastUpdated: '2025-12-05'
-  officialDocs: true
-  maintainer: Meta Open Source
-  license: MIT
+  title: React
+  description: React is the library for web and native user interfaces. Build user
+    interfaces out of individual pieces called components written in JavaScript.
+    React is designed to let you seamlessly combine components written by
+    independent people, teams, and organizations.
+  projectUrl: https://react.dev
   image: https://react.dev/images/og-home.png
-  language: English
-  languages:
-    - English
-    - Spanish
-    - French
-    - German
-    - Japanese
-    - Korean
-    - Portuguese
-    - Russian
-    - Chinese
-  topics:
-    - React
-    - JavaScript
-    - UI
-    - Components
-    - Hooks
-  fetchedAt: '2025-12-12T00:00:00.000Z'
+  fetchedAt: 2025-12-12T17:54:30.774Z

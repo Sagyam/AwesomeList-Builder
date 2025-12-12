@@ -6,36 +6,12 @@ tags:
   - aws
   - cloud
   - architecture
-  - certification
 featured: true
 metadata:
-  title: AWS Certified Solutions Architect - Associate
-  description: The AWS Certified Solutions Architect - Associate examination is intended for individuals who perform a solutions architect role and have one or more years of hands-on experience designing available, cost-efficient, fault-tolerant, and scalable distributed systems on AWS.
-  provider: Amazon Web Services
+  title: AWS Certified Solutions Architect – Associate
+  description: Category, Associate. Exam duration, 130 minutes. Exam format, 65
+    questions; either multiple choice or multiple response. Cost, 150 USD.
+  provider: Amazon Web Services, Inc.
   providerUrl: https://aws.amazon.com
-  examCode: SAA-C03
-  duration: 3 months
-  examDuration: 130 minutes
-  cost: $150 USD
-  format: Online
-  difficultyLevel: Associate
-  prerequisites:
-    - Basic AWS knowledge
-    - One year of hands-on experience
-  skillsRequired:
-    - AWS architecture best practices
-    - Compute, networking, storage, and database services
-    - Cost optimization
-    - Security and compliance
-  passingScore: 72
-  renewalPeriod: 3 years
-  trainingUrl: https://aws.amazon.com/training/
-  practiceTestUrl: https://aws.amazon.com/certification/certification-prep/
-  image: https://d1.awsstatic.com/training-and-certification/certification-badges/AWS-Certified-Solutions-Architect-Associate_badge.3419559c682629072f1eb968d59dea0741772c0f.png
-  language: English
-  languages:
-    - English
-    - Japanese
-    - Korean
-    - Simplified Chinese
-  fetchedAt: '2025-12-12T00:00:00.000Z'
+  language: en_US
+  fetchedAt: 2025-12-12T17:54:23.636Z

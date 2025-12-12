@@ -96,8 +96,8 @@ metadata:
       width: 1280
       height: 720
   statistics:
-    viewCount: 1863216
-    likeCount: 78671
+    viewCount: 1863410
+    likeCount: 78677
     commentCount: 1873
     favoriteCount: 0
   contentDetails:
@@ -127,5 +127,5 @@ metadata:
     embeddable: true
     publicStatsViewable: true
     madeForKids: false
-  fetchedAt: 2025-12-12T06:32:47.497Z
-  etag: DoUxcBW1zTYFjIhK4q1CMKBy7zc
+  fetchedAt: 2025-12-12T17:54:23.090Z
+  etag: 0_5fvTomUiRMSxlMDeJSUvV5j4Y

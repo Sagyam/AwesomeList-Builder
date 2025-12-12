@@ -12,6 +12,7 @@ import type {
     ToolMetadata,
 } from "@/schema/ts";
 import {BaseApiClient} from "./base-client.ts";
+import {getOrCaptureImage} from "@/lib/utils/screenshot";
 
 interface ScrapedMetadata {
     title?: string;
@@ -79,12 +80,15 @@ export class MetadataClient extends BaseApiClient {
         try {
             const scraped = await this.fetchPageMetadata(certificationUrl);
 
+            // Get or capture image with fallback
+            const image = await getOrCaptureImage(certificationUrl, scraped.image);
+
             const metadata: CertificationMetadata = {
                 title: scraped.title || "Unknown Certification",
                 description: scraped.description || "",
                 provider: scraped.siteName || this.extractDomain(certificationUrl),
                 providerUrl: this.extractBaseUrl(certificationUrl),
-                image: scraped.image,
+                image,
                 language: scraped.locale,
                 fetchedAt: new Date().toISOString(),
             };
@@ -103,6 +107,9 @@ export class MetadataClient extends BaseApiClient {
         try {
             const scraped = await this.fetchPageMetadata(cheatsheetUrl);
 
+            // Get or capture image with fallback
+            const image = await getOrCaptureImage(cheatsheetUrl, scraped.image);
+
             const metadata: CheatsheetMetadata = {
                 title: scraped.title || "Unknown Cheatsheet",
                 description: scraped.description || "",
@@ -111,7 +118,7 @@ export class MetadataClient extends BaseApiClient {
                 published: scraped.publishedTime,
                 updated: scraped.modifiedTime,
                 topics: scraped.keywords,
-                image: scraped.image,
+                image,
                 language: scraped.locale,
                 fetchedAt: new Date().toISOString(),
             };
@@ -132,12 +139,15 @@ export class MetadataClient extends BaseApiClient {
 
             const platform = this.detectPlatform(communityUrl);
 
+            // Get or capture image with fallback
+            const image = await getOrCaptureImage(communityUrl, scraped.image);
+
             const metadata: CommunityMetadata = {
                 name: scraped.title || "Unknown Community",
                 description: scraped.description || "",
                 platform,
                 topics: scraped.keywords,
-                image: scraped.image,
+                image,
                 fetchedAt: new Date().toISOString(),
             };
 
@@ -155,11 +165,14 @@ export class MetadataClient extends BaseApiClient {
         try {
             const scraped = await this.fetchPageMetadata(conferenceUrl);
 
+            // Get or capture image with fallback
+            const image = await getOrCaptureImage(conferenceUrl, scraped.image);
+
             const metadata: ConferenceMetadata = {
                 name: scraped.title || "Unknown Conference",
                 description: scraped.description || "",
                 topics: scraped.keywords,
-                image: scraped.image,
+                image,
                 language: scraped.locale,
                 fetchedAt: new Date().toISOString(),
             };
@@ -180,13 +193,16 @@ export class MetadataClient extends BaseApiClient {
         try {
             const scraped = await this.fetchPageMetadata(documentationUrl);
 
+            // Get or capture image with fallback
+            const image = await getOrCaptureImage(documentationUrl, scraped.image);
+
             const metadata: DocumentationMetadata = {
                 title: scraped.title || "Unknown Documentation",
                 description: scraped.description || "",
                 project: scraped.siteName,
                 projectUrl: this.extractBaseUrl(documentationUrl),
                 topics: scraped.keywords,
-                image: scraped.image,
+                image,
                 language: scraped.locale,
                 fetchedAt: new Date().toISOString(),
             };
@@ -205,13 +221,16 @@ export class MetadataClient extends BaseApiClient {
         try {
             const scraped = await this.fetchPageMetadata(toolUrl);
 
+            // Get or capture image with fallback
+            const image = await getOrCaptureImage(toolUrl, scraped.image);
+
             const metadata: ToolMetadata = {
                 name: scraped.title || "Unknown Tool",
                 description: scraped.description || "",
                 homepage: toolUrl,
                 developer: scraped.author || scraped.siteName,
                 topics: scraped.keywords,
-                image: scraped.image,
+                image,
                 language: scraped.locale,
                 fetchedAt: new Date().toISOString(),
             };
