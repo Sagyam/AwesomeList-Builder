@@ -49,28 +49,48 @@ const DEFAULT_OPTIONS: Required<ScreenshotOptions> = {
 let browserInstance: Browser | null = null;
 
 /**
+ * Check if Playwright browser is available
+ */
+let browserAvailable: boolean | null = null;
+
+async function isBrowserAvailable(): Promise<boolean> {
+    if (browserAvailable !== null) return browserAvailable;
+
+    try {
+        const testBrowser = await chromium.launch({
+            headless: true,
+            args: ["--no-sandbox", "--disable-setuid-sandbox"],
+        });
+        await testBrowser.close();
+        browserAvailable = true;
+        return true;
+    } catch {
+        browserAvailable = false;
+        console.warn(
+            "\n⚠️  Playwright browser not available. Screenshot feature disabled."
+        );
+        console.warn(
+            "   Install locally: bunx playwright install chromium --with-deps\n"
+        );
+        return false;
+    }
+}
+
+/**
  * Get or create browser instance
  */
 async function getBrowser(): Promise<Browser> {
     if (!browserInstance) {
-        try {
-            browserInstance = await chromium.launch({
-                headless: true,
-                args: [
-                    "--no-sandbox",
-                    "--disable-setuid-sandbox",
-                    "--disable-dev-shm-usage",
-                    "--disable-accelerated-2d-canvas",
-                    "--disable-gpu",
-                ],
-            });
-        } catch (error) {
-            console.error(
-                "\n⚠️  Screenshot feature requires Playwright browser binaries."
-            );
-            console.error("   Run: bunx playwright install chromium\n");
-            throw error;
-        }
+        browserInstance = await chromium.launch({
+            headless: true,
+            args: [
+                "--no-sandbox",
+                "--disable-setuid-sandbox",
+                "--disable-dev-shm-usage",
+                "--disable-accelerated-2d-canvas",
+                "--disable-gpu",
+            ],
+        });
     }
     return browserInstance;
 }
@@ -284,8 +304,17 @@ export async function getOrCaptureImage(
         console.log(`✗ og:image invalid or inaccessible: ${ogImageUrl}`);
     }
 
-    // Fallback to screenshot if enabled (with graceful error handling)
+    // Fallback to screenshot if enabled and browser is available
     if (screenshotsEnabled) {
+        // Check if browser is available before attempting screenshot
+        const available = await isBrowserAvailable();
+        if (!available) {
+            console.warn(
+                `⚠️  Cannot capture screenshot for ${pageUrl}: Playwright browser not installed`
+            );
+            return undefined;
+        }
+
         try {
             console.log(`⟳ Capturing screenshot for: ${pageUrl}`);
             const result = await captureScreenshot(pageUrl, options);
@@ -294,7 +323,7 @@ export async function getOrCaptureImage(
                 return result.publicPath;
             }
         } catch (error) {
-            // If screenshot fails (e.g., missing dependencies), continue without image
+            // If screenshot fails, continue without image
             console.warn(
                 `⚠️  Screenshot capture failed for ${pageUrl}, continuing without image`
             );
