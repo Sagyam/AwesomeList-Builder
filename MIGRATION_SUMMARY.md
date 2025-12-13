@@ -45,14 +45,30 @@ Trigger via GitHub Actions UI:
 
 Set these in GitHub repository secrets if needed:
 
+- `GH_API_TOKEN` - GitHub personal access token (optional, for higher rate limits)
 - `GITLAB_TOKEN` - For GitLab repositories
 - `YOUTUBE_TOKEN` - For YouTube video metadata
 
-### Metadata Caching
+### Granular Cache Control
 
-- Default cache: 7 days (configured in `src/data/metadata.yaml`)
-- Manually force refresh: `bun run fetch --force`
-- GitHub Action always uses `--force` to ensure fresh data
+Configure cache TTLs independently in `src/data/metadata.yaml`:
+
+```yaml
+dataRefresh:
+  cache:
+    metadata:
+      ttl: 1  # Refresh GitHub stars, downloads daily
+    screenshots:
+      regenerate: false  # Don't regenerate existing screenshots
+    ai:
+      ttl: 30  # Cache AI responses for 30 days (future use)
+```
+
+- **Metadata cache** - Controls how often to refresh GitHub stars, npm downloads, etc.
+- **Screenshot cache** - Set `regenerate: false` to skip regenerating existing screenshots
+- **AI cache** - Reserved for future AI-powered metadata extraction
+
+Manually force refresh: `bun run fetch --force`
 
 ## Files Modified
 

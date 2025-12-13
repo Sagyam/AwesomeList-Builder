@@ -249,5 +249,5 @@ export class GitHubClient extends BaseApiClient {
 }
 
 // Export a singleton instance
-// You can set GITHUB_TOKEN environment variable for higher rate limits
-export const githubClient = new GitHubClient(process.env.GITHUB_TOKEN);
+// You can set GH_API_TOKEN environment variable for higher rate limits
+export const githubClient = new GitHubClient(process.env.GH_API_TOKEN || process.env.GITHUB_TOKEN);

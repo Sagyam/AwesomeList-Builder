@@ -37,5 +37,16 @@ created: 2024-01-01T00:00:00.000Z
 updated: 2025-12-09T00:00:00.000Z
 dataRefresh:
   enabled: true
-  intervalDays: 7
-  lastRefresh: 2025-12-12T17:54:32.274Z
+  cache:
+    # Metadata cache (GitHub stars, npm downloads, etc.) - in days
+    metadata:
+      ttl: 1
+      lastRefresh: 2025-12-12T17:54:32.274Z
+    # Screenshot cache - only regenerate if missing
+    screenshots:
+      regenerate: false
+      lastRefresh: null
+    # AI response cache (for future AI-powered metadata extraction) - in days
+    ai:
+      ttl: 30
+      lastRefresh: null

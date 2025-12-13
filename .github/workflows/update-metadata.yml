@@ -46,7 +46,7 @@ jobs:
 
       - name: Fetch metadata
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GH_API_TOKEN: ${{ secrets.GH_API_TOKEN || github.token }}
           GITLAB_TOKEN: ${{ secrets.GITLAB_TOKEN }}
           YOUTUBE_TOKEN: ${{ secrets.YOUTUBE_TOKEN }}
           ENABLE_SCREENSHOTS: true
