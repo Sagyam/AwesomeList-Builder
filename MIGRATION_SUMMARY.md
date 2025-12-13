@@ -9,8 +9,9 @@ Metadata generation (GitHub stars, package stats, screenshots) has been moved fr
 - ✅ **Faster deployments** - Vercel builds complete in ~1-2 minutes (down from 5-10 minutes)
 - ✅ **Lower costs** - Reduced Vercel build minutes usage
 - ✅ **More reliable** - GitHub Actions has better Playwright support than AWS Lambda
-- ✅ **Cached metadata** - Metadata updates respect cache TTL to minimize API calls
-- ✅ **Graceful degradation** - Failed API calls don't block deployment
+- ✅ **Cached metadata** - Granular cache control for metadata, screenshots, and AI responses
+- ✅ **Graceful degradation** - Failed API calls, rate limits (429), and timeouts don't block deployment
+- ✅ **Screenshot timeout** - Prevents hanging on slow/unresponsive sites (45s max)
 
 ## How It Works
 

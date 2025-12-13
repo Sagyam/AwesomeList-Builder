@@ -132,7 +132,7 @@ function generateFilename(url: string, format: string): string {
 }
 
 /**
- * Capture screenshot of a webpage
+ * Capture screenshot of a webpage with timeout
  */
 export async function captureScreenshot(
     url: string,
@@ -141,29 +141,46 @@ export async function captureScreenshot(
     const opts = {...DEFAULT_OPTIONS, ...options};
     let page: Page | null = null;
 
-    try {
-        // Ensure output directory exists
-        const outputPath = join(process.cwd(), opts.outputDir);
-        if (!existsSync(outputPath)) {
-            await mkdir(outputPath, {recursive: true});
-        }
+    // Wrap entire capture in a timeout promise
+    const timeoutPromise = new Promise<ScreenshotResult>((_, reject) => {
+        setTimeout(() => reject(new Error('Screenshot capture timed out after 45 seconds')), 45000);
+    });
 
-        // Get browser and create page
-        const browser = await getBrowser();
-        page = await browser.newPage({
-            viewport: {
-                width: opts.width,
-                height: opts.height,
-            },
-            userAgent:
-                "Mozilla/5.0 (compatible; AwesomeList-Builder-Screenshot/1.0; +https://github.com/yourrepo)",
-        });
+    const capturePromise = async (): Promise<ScreenshotResult> => {
+        try {
+            // Ensure output directory exists
+            const outputPath = join(process.cwd(), opts.outputDir);
+            if (!existsSync(outputPath)) {
+                await mkdir(outputPath, {recursive: true});
+            }
 
-        // Navigate to URL with timeout
-        await page.goto(url, {
-            waitUntil: "networkidle",
-            timeout: 30000,
-        });
+            // Get browser and create page
+            const browser = await getBrowser();
+            page = await browser.newPage({
+                viewport: {
+                    width: opts.width,
+                    height: opts.height,
+                },
+                userAgent:
+                    "Mozilla/5.0 (compatible; AwesomeList-Builder-Screenshot/1.0; +https://github.com/yourrepo)",
+            });
+
+            // Set overall page timeout
+            page.setDefaultTimeout(30000);
+
+            // Navigate to URL with timeout - try networkidle, fallback to domcontentloaded
+            try {
+                await page.goto(url, {
+                    waitUntil: "networkidle",
+                    timeout: 20000,
+                });
+            } catch (error) {
+                console.warn(`⚠️  Network idle failed for ${url}, trying domcontentloaded...`);
+                await page.goto(url, {
+                    waitUntil: "domcontentloaded",
+                    timeout: 15000,
+                });
+            }
 
         // Wait for content to load
         await page.waitForTimeout(opts.waitTime);
@@ -231,6 +248,23 @@ export async function captureScreenshot(
 
         const errorMessage =
             error instanceof Error ? error.message : String(error);
+        console.error(`✗ Failed to capture screenshot for ${url}:`, errorMessage);
+
+            throw error;
+        }
+    };
+
+    // Race between capture and timeout
+    try {
+        return await Promise.race([capturePromise(), timeoutPromise]);
+    } catch (error) {
+        // Close page if open
+        if (page) {
+            await page.close().catch(() => {
+            });
+        }
+
+        const errorMessage = error instanceof Error ? error.message : String(error);
         console.error(`✗ Failed to capture screenshot for ${url}:`, errorMessage);
 
         return {
