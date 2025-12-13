@@ -265,6 +265,21 @@ export class ArticleClient extends BaseApiClient {
       clearTimeout(timeoutId);
 
       if (!response.ok) {
+        // Handle rate limiting gracefully
+        if (response.status === 429) {
+          console.warn(`⚠️  Rate limited (429) for ${url}, skipping...`);
+          throw new ApiError(`HTTP 429: Too Many Requests (skipped)`, 429);
+        }
+
+        // Handle server errors gracefully
+        if (response.status >= 500) {
+          console.warn(`⚠️  Server error (${response.status}) for ${url}, skipping...`);
+          throw new ApiError(
+            `HTTP ${response.status}: ${response.statusText} (skipped)`,
+            response.status
+          );
+        }
+
         throw new ApiError(`HTTP ${response.status}: ${response.statusText}`, response.status);
       }
 

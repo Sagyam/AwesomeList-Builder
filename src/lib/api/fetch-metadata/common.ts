@@ -24,9 +24,6 @@ export interface MetadataConfig {
       screenshots?: CacheConfig;
       ai?: CacheConfig;
     };
-    // Legacy support
-    intervalDays?: number;
-    lastRefresh?: string | null;
   };
 }
 
@@ -138,7 +135,7 @@ export function updateCacheTimestamp(
 }
 
 /**
- * Legacy function - updates metadata cache timestamp
+ * Updates metadata cache timestamp (convenience function)
  */
 export function updateMetadataTimestamp(metadataPath: string = METADATA_FILE): void {
   updateCacheTimestamp("metadata", metadataPath);
@@ -160,7 +157,6 @@ export function shouldRefreshCache(
     return true; // Refresh if not configured
   }
 
-  // New granular cache system
   if (config.cache && config.cache[cacheType]) {
     const cache = config.cache[cacheType];
 
@@ -180,21 +176,11 @@ export function shouldRefreshCache(
     return daysSinceRefresh >= cache.ttl;
   }
 
-  // Legacy fallback
-  if (config.lastRefresh) {
-    const lastRefresh = new Date(config.lastRefresh);
-    const now = new Date();
-    const daysSinceRefresh = (now.getTime() - lastRefresh.getTime()) / (1000 * 60 * 60 * 24);
-    const intervalDays = config.intervalDays || 7;
-
-    return daysSinceRefresh >= intervalDays;
-  }
-
   return true; // Default to refresh
 }
 
 /**
- * Legacy function - checks metadata cache
+ * Checks metadata cache (convenience function)
  */
 export function shouldRefresh(metadata: MetadataConfig, force = false): boolean {
   return shouldRefreshCache(metadata, "metadata", force);

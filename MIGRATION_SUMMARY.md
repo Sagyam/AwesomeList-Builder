@@ -11,7 +11,8 @@ Metadata generation (GitHub stars, package stats, screenshots) has been moved fr
 - ✅ **More reliable** - GitHub Actions has better Playwright support than AWS Lambda
 - ✅ **Cached metadata** - Granular cache control for metadata, screenshots, and AI responses
 - ✅ **Graceful degradation** - Failed API calls, rate limits (429), and timeouts don't block deployment
-- ✅ **Screenshot timeout** - Prevents hanging on slow/unresponsive sites (45s max)
+- ✅ **PDF support** - PDFs rendered as cover images (first page) instead of Playwright screenshots
+- ✅ **Fast failure** - Screenshots timeout after 20 seconds (prevents workflow hanging)
 
 ## How It Works
 
@@ -74,9 +75,14 @@ Manually force refresh: `bun run fetch --force`
 ## Files Modified
 
 - ✅ Created `.github/workflows/update-metadata.yml` - Metadata update workflow
+- ✅ Created `src/lib/utils/pdf-cover.ts` - Generic PDF cover generator (reusable)
 - ✅ Updated `package.json` - Removed `prebuild` and `postinstall` hooks
 - ✅ Updated `vercel.json` - Disabled screenshots during build
+- ✅ Updated `src/lib/utils/screenshot.ts` - Detects PDFs, reduced timeout to 20s
+- ✅ Updated `src/lib/api/arxiv-client.ts` - Uses generic PDF cover utility
+- ✅ Updated `src/lib/api/article-client.ts` - Graceful 429 error handling
 - ✅ Updated `src/lib/api/fetch-metadata/index.ts` - Resilient error handling
+- ✅ Updated `src/lib/api/fetch-metadata/common.ts` - Removed legacy cache support
 - ✅ Moved `playwright` to `devDependencies`
 
 ## Migration Complete

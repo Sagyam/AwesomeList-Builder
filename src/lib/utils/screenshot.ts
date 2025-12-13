@@ -7,6 +7,7 @@ import {type Browser, chromium, type Page} from "playwright";
 import {mkdir} from "node:fs/promises";
 import {existsSync} from "node:fs";
 import {join} from "node:path";
+import {generatePdfCover} from "./pdf-cover.ts";
 
 export interface ScreenshotOptions {
     /** Output directory for screenshots (relative to project root) */
@@ -141,9 +142,21 @@ export async function captureScreenshot(
     const opts = {...DEFAULT_OPTIONS, ...options};
     let page: Page | null = null;
 
-    // Wrap entire capture in a timeout promise
+    // Handle PDF files using PDF cover generator instead of Playwright
+    if (url.toLowerCase().endsWith('.pdf')) {
+        console.log(`⟳ Detected PDF, using PDF cover generator: ${url}`);
+        const result = await generatePdfCover(url, {
+            outputDir: opts.outputDir,
+            format: opts.type === "png" ? "png" : "jpeg",
+            quality: opts.quality,
+        });
+
+        return result;
+    }
+
+    // Wrap entire capture in a timeout promise (20 seconds)
     const timeoutPromise = new Promise<ScreenshotResult>((_, reject) => {
-        setTimeout(() => reject(new Error('Screenshot capture timed out after 45 seconds')), 45000);
+        setTimeout(() => reject(new Error('Screenshot capture timed out after 20 seconds')), 20000);
     });
 
     const capturePromise = async (): Promise<ScreenshotResult> => {
@@ -166,19 +179,19 @@ export async function captureScreenshot(
             });
 
             // Set overall page timeout
-            page.setDefaultTimeout(30000);
+            page.setDefaultTimeout(15000);
 
             // Navigate to URL with timeout - try networkidle, fallback to domcontentloaded
             try {
                 await page.goto(url, {
                     waitUntil: "networkidle",
-                    timeout: 20000,
+                    timeout: 10000,
                 });
             } catch (error) {
                 console.warn(`⚠️  Network idle failed for ${url}, trying domcontentloaded...`);
                 await page.goto(url, {
                     waitUntil: "domcontentloaded",
-                    timeout: 15000,
+                    timeout: 8000,
                 });
             }
 

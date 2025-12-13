@@ -2,8 +2,7 @@
  * arXiv API Client for fetching paper metadata and generating cover images
  */
 
-import {createCanvas} from "@napi-rs/canvas";
-import * as pdfjsLib from "pdfjs-dist/legacy/build/pdf.mjs";
+import {generatePdfCover} from "@/lib/utils/pdf-cover.ts";
 import {BaseApiClient} from "./base-client.ts";
 
 export interface ArxivEntry {
@@ -180,95 +179,26 @@ export class ArxivClient extends BaseApiClient {
   }
 
   /**
-   * Generate cover image from PDF first page using PDF.js and Canvas
+   * Generate cover image from PDF first page using generic PDF cover utility
    */
   private async generateCoverImage(arxivId: string, pdfUrl: string): Promise<string | undefined> {
-    const tempDir = `${process.cwd()}/temp`;
-    const tempPdfPath = `${tempDir}/${arxivId}.pdf`;
-
     try {
-      // Ensure directories exist using Bun.write
-      await Bun.write(`${tempDir}/.keep`, "");
-      await Bun.write(`${this.imageDir}/.keep`, "");
-
-      // Download PDF
-      console.log(`Downloading PDF for ${arxivId}...`);
-      const pdfResponse = await fetch(pdfUrl);
-      if (!pdfResponse.ok) {
-        throw new Error(`Failed to download PDF: ${pdfResponse.statusText}`);
-      }
-
-      const pdfBuffer = await pdfResponse.arrayBuffer();
-      await Bun.write(tempPdfPath, pdfBuffer);
-
-      // Load PDF with pdfjs-dist
       console.log(`Generating cover image for ${arxivId}...`);
-      const loadingTask = pdfjsLib.getDocument({
-        data: new Uint8Array(pdfBuffer),
-        useWorkerFetch: false,
-        isEvalSupported: false,
-        useSystemFonts: true,
+
+      const result = await generatePdfCover(pdfUrl, {
+        outputDir: this.imageDir,
+        scale: 2.0,
+        cropRatio: 0.4, // Top 40% of page (title, authors, abstract)
+        format: "png",
       });
 
-      const pdfDocument = await loadingTask.promise;
-      const page = await pdfDocument.getPage(1);
-
-      // Get viewport for the page
-      const viewport = page.getViewport({ scale: 2.0 });
-
-      // Create canvas and context
-      const canvas = createCanvas(viewport.width, viewport.height);
-      const context = canvas.getContext("2d");
-
-      // Render PDF page to canvas
-      const renderContext = {
-        canvasContext: context,
-        viewport: viewport,
-      };
-
-      await page.render(renderContext).promise;
-
-      // Crop to show only top portion (title, authors, abstract)
-      const cropHeight = Math.min(viewport.height, viewport.height * 0.4); // Top 40% of page
-      const croppedCanvas = createCanvas(viewport.width, cropHeight);
-      const croppedContext = croppedCanvas.getContext("2d");
-
-      croppedContext.drawImage(
-        canvas,
-        0,
-        0,
-        viewport.width,
-        cropHeight, // Source rectangle
-        0,
-        0,
-        viewport.width,
-        cropHeight // Destination rectangle
-      );
-
-      // Save image
-      const imageName = `${arxivId}-cover.png`;
-      const imagePath = `${this.imageDir}/${imageName}`;
-
-      const imageBuffer = croppedCanvas.toBuffer("image/png");
-      await Bun.write(imagePath, imageBuffer);
-
-      console.log(`Cover image generated: ${imagePath}`);
-
-      // Delete temporary PDF
-      const tempFile = Bun.file(tempPdfPath);
-      if (await tempFile.exists()) {
-        await Bun.$`rm ${tempPdfPath}`.quiet();
+      if (result.success) {
+        return result.publicPath;
       }
 
-      // Return relative path for use in YAML
-      return `/images/papers/${imageName}`;
+      return undefined;
     } catch (error) {
       console.error(`Error generating cover image for ${arxivId}:`, error);
-      // Clean up temp file if it exists
-      const tempFile = Bun.file(tempPdfPath);
-      if (await tempFile.exists()) {
-        await Bun.$`rm ${tempPdfPath}`.quiet();
-      }
       return undefined;
     }
   }
