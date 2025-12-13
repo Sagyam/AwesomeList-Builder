@@ -1,12 +1,10 @@
 type: cheatsheet
-id: docker-cheatsheet
-cheatsheetUrl: https://dockerlabs.collabnix.com/docker/cheatsheet/
+id: typescript-cheatsheet
+cheatsheetUrl: https://www.typescriptlang.org/cheatsheets/
 category: Learning Resource
 tags:
-  - docker
-  - containers
+  - typescript
   - cheatsheet
-  - devops
 trending: true
 metadata:
   title: The Ultimate Docker Cheat Sheet | dockerlabs
