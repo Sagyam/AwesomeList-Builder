@@ -11,7 +11,8 @@
 - **⚡ Blazing Fast** - Instant load times with Astro's static generation
 - **🎨 Beautiful UI** - Modern design with shadcn/ui components and Tailwind CSS
 - **🔍 Full-Text Search** - Built-in search powered by Pagefind
-- **📊 Rich Metadata** - Auto-fetch GitHub stars, downloads, and package stats
+- **📊 Rich Metadata** - Auto-fetch GitHub stars, downloads, and package stats via GitHub Actions
+- **📸 Auto Screenshots** - Automatic thumbnail generation for resources without preview images
 - **📱 Responsive** - Perfect on mobile, tablet, and desktop
 - **🌓 Dual Themes** - Site theme + user light/dark mode preference
 - **📈 Analytics Dashboard** - Trending projects, stats, and visualizations
